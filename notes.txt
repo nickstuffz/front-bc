@@ -1,0 +1,2 @@
+Solve:
+How to limit number of results in combobox dropdown?

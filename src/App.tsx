@@ -1,5 +1,5 @@
 import "./App.css";
-import ComboBox from "./ComboBox.tsx";
+import ComboBox from "./components/ComboBox.tsx";
 
 function App() {
   return (
