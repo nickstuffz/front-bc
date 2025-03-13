@@ -1,2 +1,4 @@
 Solve:
 How to limit number of results in combobox dropdown?
+
+How to get combobox to automatically highlight top item?

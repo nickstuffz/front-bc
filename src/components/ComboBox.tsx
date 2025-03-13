@@ -16,12 +16,27 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-//TODO: replace with API call JSON data
-import { mockCodes } from "@/mock/mockCodes.ts";
+interface ComboBoxProps {
+  allCodes: { code: string }[];
+  selectedCode: string;
+  setSelectedCode: (selectedCode: string) => void;
+}
 
-export function ComboBox() {
+export default function ComboBox({
+  allCodes,
+  selectedCode,
+  setSelectedCode,
+}: ComboBoxProps) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+
+  // console.log("ComboBox rendered");
+  // console.log("selectedCode", selectedCode);
+
+  // if (allCodes.length === 0) {
+  //   console.log("no codes");
+  // } else {
+  //   console.log("codes found");
+  // }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -32,8 +47,9 @@ export function ComboBox() {
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          {value
-            ? mockCodes.find((mockCode) => mockCode.code === value)?.code
+          {selectedCode
+            ? allCodes.find((currentCode) => currentCode.code === selectedCode)
+                ?.code
             : "select component..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -44,22 +60,27 @@ export function ComboBox() {
           <CommandList>
             <CommandEmpty>no component found</CommandEmpty>
             <CommandGroup>
-              {mockCodes.map((mockCode) => (
+              {allCodes.map((currentCode) => (
                 <CommandItem
-                  key={mockCode.code}
-                  value={mockCode.code}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                  key={currentCode.code}
+                  value={currentCode.code}
+                  onSelect={(value) => {
+                    setSelectedCode(value === selectedCode ? "" : value);
+
+                    // console.log("selectedCode set");
+
                     setOpen(false);
                   }}
                 >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === mockCode.code ? "opacity-100" : "opacity-0",
+                      selectedCode === currentCode.code
+                        ? "opacity-100"
+                        : "opacity-0",
                     )}
                   />
-                  {mockCode.code}
+                  {currentCode.code}
                 </CommandItem>
               ))}
             </CommandGroup>
@@ -69,5 +90,3 @@ export function ComboBox() {
     </Popover>
   );
 }
-
-export default ComboBox;
