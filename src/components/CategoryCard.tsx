@@ -1,21 +1,37 @@
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
+  // CardDescription,
+  // CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { compatComponent } from "../types/types.ts";
 
-export default function CategoryCard() {
+interface CategoryCardProps {
+  category: string;
+  compatData: compatComponent[];
+}
+
+export default function CategoryCard({
+  category,
+  compatData,
+}: CategoryCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Header + Footer</CardTitle>
-        <CardDescription> Card Description </CardDescription>
+        <CardTitle>compatible {category}s</CardTitle>
+        {/* <CardDescription> Description </CardDescription> */}
       </CardHeader>
-      <CardContent className="text-sm">Content</CardContent>
-      <CardFooter className="text-sm">Footer</CardFooter>
+      <CardContent className="text-sm">
+        {compatData.map((compatComponent) => (
+          <li key={compatComponent.id}>
+            {compatComponent.code} <br />
+            {compatComponent.note}
+          </li>
+        ))}
+      </CardContent>
+      {/* <CardFooter className="text-sm">Footer</CardFooter> */}
     </Card>
   );
 }
