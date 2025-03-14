@@ -2,11 +2,11 @@ import "./App.css";
 import * as React from "react";
 import axios from "axios";
 import ComboBox from "./components/ComboBox.tsx";
-import CardManager from "./components/CardManager.tsx";
+import GroupManager from "./components/GroupManager.tsx";
 
 function App() {
   const [allCodes, setAllCodes] = React.useState([]);
-  const [selectedCode, setSelectedCode] = React.useState("");
+  const [selectedCode, setSelectedCode] = React.useState("ST-RX400");
 
   // runs after initial render
   React.useEffect(() => {
@@ -21,14 +21,14 @@ function App() {
   }, []);
 
   return (
-    <>
+    <main>
       <ComboBox
         allCodes={allCodes}
         selectedCode={selectedCode}
         setSelectedCode={setSelectedCode}
       />
-      <CardManager selectedCode={selectedCode} />
-    </>
+      <GroupManager selectedCode={selectedCode} />
+    </main>
   );
 }
 

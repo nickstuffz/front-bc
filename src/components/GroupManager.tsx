@@ -1,13 +1,13 @@
 import * as React from "react";
 import axios from "axios";
-import CategoryCard from "./CategoryCard";
+import CardGroup from "./CardGroup.tsx";
 import { CompatComponent, GroupedCompatData } from "../types/types.ts";
 
-interface CardManagerProps {
+interface GroupManagerProps {
   selectedCode: string;
 }
 
-export default function CardManager({ selectedCode }: CardManagerProps) {
+export default function GroupManager({ selectedCode }: GroupManagerProps) {
   const [compatData, setCompatData] = React.useState<CompatComponent[]>([]);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -50,16 +50,15 @@ export default function CardManager({ selectedCode }: CardManagerProps) {
     },
     {},
   );
-
   return (
-    <div className="card-manager">
+    <>
       {Object.keys(groupedCompatData).map((source_pod_id) => (
-        <CategoryCard
+        <CardGroup
           key={source_pod_id}
           source_pod_id={Number(source_pod_id)}
-          compatData={groupedCompatData[source_pod_id]}
+          groupData={groupedCompatData[source_pod_id]}
         />
       ))}
-    </div>
+    </>
   );
 }
