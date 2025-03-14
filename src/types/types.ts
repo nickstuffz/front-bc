@@ -1,4 +1,4 @@
-export interface compatComponent {
+export interface CompatComponent {
   id: number;
   source_pod_id: number;
   pod_id: number;
@@ -11,3 +11,5 @@ export interface compatComponent {
   note: string;
   warning: string;
 }
+
+export type GroupedCompatData = Record<string, CompatComponent[]>;
