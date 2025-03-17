@@ -1,14 +1,14 @@
 import * as React from "react";
 import axios from "axios";
 import CardGroup from "./CardGroup.tsx";
-import { CompatComponent, GroupedCompatData } from "../types/types.ts";
+import { CompatComponentType, GroupedCompatDataType } from "../types/types.ts";
 
 interface GroupManagerProps {
   selectedCode: string;
 }
 
 export default function GroupManager({ selectedCode }: GroupManagerProps) {
-  const [compatData, setCompatData] = React.useState<CompatComponent[]>([]);
+  const [compatData, setCompatData] = React.useState<CompatComponentType[]>([]);
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
@@ -41,7 +41,7 @@ export default function GroupManager({ selectedCode }: GroupManagerProps) {
   }
 
   const groupedCompatData = compatData.reduce(
-    (acc: GroupedCompatData, compatComponent) => {
+    (acc: GroupedCompatDataType, compatComponent) => {
       if (!acc[compatComponent.source_pod_id]) {
         acc[compatComponent.source_pod_id] = [];
       }

@@ -1,16 +1,9 @@
-import {
-  Card,
-  CardContent,
-  // CardDescription,
-  // CardFooter,
-  // CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { CompatComponent, GroupedCompatData } from "../types/types.ts";
+import CategoryCard from "./CategoryCard.tsx";
+import { CompatComponentType, GroupedCompatDataType } from "../types/types.ts";
 
 interface CardGroupProps {
   source_pod_id: number;
-  groupData: CompatComponent[];
+  groupData: CompatComponentType[];
 }
 
 export default function CardGroup({
@@ -18,7 +11,7 @@ export default function CardGroup({
   groupData,
 }: CardGroupProps) {
   const catGroupData = groupData.reduce(
-    (acc: GroupedCompatData, compatComponent) => {
+    (acc: GroupedCompatDataType, compatComponent) => {
       if (!acc[compatComponent.category]) {
         acc[compatComponent.category] = [];
       }
@@ -28,23 +21,17 @@ export default function CardGroup({
     {},
   );
 
+  // Correlate to category Phrase?
   console.log(source_pod_id);
 
   return (
-    <div className="CardGroup flex justify-evenly">
+    <div className="CardGroup m-6 flex justify-evenly rounded-2xl border-2 border-gray-200 p-6">
       {Object.keys(catGroupData).map((category) => (
-        <Card key={category}>
-          <CardTitle>
-            <h4>{category}</h4>
-          </CardTitle>
-          <CardContent>
-            <ul className="list-none">
-              {catGroupData[category].map((compatComponent) => (
-                <li key={compatComponent.id}>{compatComponent.code}</li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
+        <CategoryCard
+          key={category}
+          category={category}
+          catCardData={catGroupData[category]}
+        />
       ))}
     </div>
   );
