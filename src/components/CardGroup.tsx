@@ -1,5 +1,6 @@
 import CategoryCard from "./CategoryCard.tsx";
 import { CompatComponentType, GroupedCompatDataType } from "../types/types.ts";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
 interface CardGroupProps {
   groupData: CompatComponentType[];
@@ -28,10 +29,27 @@ export default function CardGroup({ groupData }: CardGroupProps) {
     groupTitle = "Brake System Compatibility Group";
   }
 
+  // return (
+  //   <div className="CardGroup m-6 flex-col rounded-2xl border-2 border-gray-200 p-8">
+  //     <h2 className="mb-6">{groupTitle}</h2>
+  //     <div className="flex justify-evenly">
+  //       {Object.keys(catGroupData).map((category) => (
+  //         <CategoryCard
+  //           key={category}
+  //           category={category}
+  //           catCardData={catGroupData[category]}
+  //         />
+  //       ))}
+  //     </div>
+  //   </div>
+  // );
+
   return (
-    <div className="CardGroup m-6 flex-col rounded-2xl border-2 border-gray-200 p-8">
-      <h2 className="mb-6">{groupTitle}</h2>
-      <div className="flex justify-evenly">
+    <Card className="CardGroup m-6 flex-col rounded-2xl border-2 border-gray-200 p-8">
+      <CardTitle>
+        <h3>{groupTitle}</h3>
+      </CardTitle>
+      <CardContent className="flex justify-evenly">
         {Object.keys(catGroupData).map((category) => (
           <CategoryCard
             key={category}
@@ -39,7 +57,7 @@ export default function CardGroup({ groupData }: CardGroupProps) {
             catCardData={catGroupData[category]}
           />
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
