@@ -7,5 +7,5 @@ interface CompatComponentProps {
 export default function CompatComponent({
   compCompData,
 }: CompatComponentProps) {
-  return <li>{compCompData.code}</li>;
+  return <li className="border-2">{compCompData.code}</li>;
 }

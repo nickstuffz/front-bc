@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <main>
+    <main className="dark">
       <ComboBox
         allCodes={allCodes}
         selectedCode={selectedCode}

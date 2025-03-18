@@ -40,6 +40,7 @@ export default function GroupManager({ selectedCode }: GroupManagerProps) {
     return <div>{error}</div>;
   }
 
+  // groups compat data by source pod id
   const groupedCompatData = compatData.reduce(
     (acc: GroupedCompatDataType, compatComponent) => {
       if (!acc[compatComponent.source_pod_id]) {
@@ -55,7 +56,6 @@ export default function GroupManager({ selectedCode }: GroupManagerProps) {
       {Object.keys(groupedCompatData).map((source_pod_id) => (
         <CardGroup
           key={source_pod_id}
-          source_pod_id={Number(source_pod_id)}
           groupData={groupedCompatData[source_pod_id]}
         />
       ))}
