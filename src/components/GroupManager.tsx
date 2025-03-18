@@ -51,6 +51,7 @@ export default function GroupManager({ selectedCode }: GroupManagerProps) {
     },
     {},
   );
+
   return (
     <>
       {Object.keys(groupedCompatData).map((source_pod_id) => (

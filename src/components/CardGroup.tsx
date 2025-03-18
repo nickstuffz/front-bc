@@ -29,21 +29,6 @@ export default function CardGroup({ groupData }: CardGroupProps) {
     groupTitle = "Brake System Compatibility Group";
   }
 
-  // return (
-  //   <div className="CardGroup m-6 flex-col rounded-2xl border-2 border-gray-200 p-8">
-  //     <h2 className="mb-6">{groupTitle}</h2>
-  //     <div className="flex justify-evenly">
-  //       {Object.keys(catGroupData).map((category) => (
-  //         <CategoryCard
-  //           key={category}
-  //           category={category}
-  //           catCardData={catGroupData[category]}
-  //         />
-  //       ))}
-  //     </div>
-  //   </div>
-  // );
-
   return (
     <Card className="CardGroup m-6 flex-col rounded-2xl border-2 border-gray-200 p-8">
       <CardTitle>
