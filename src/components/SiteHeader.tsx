@@ -1,5 +1,5 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
-
+import { ModeToggle } from "@/components/ModeToggle";
 import { Separator } from "@/components/ui/separator";
 
 export function SiteHeader() {
@@ -11,10 +11,8 @@ export function SiteHeader() {
           orientation="vertical"
           className="mr-2 data-[orientation=vertical]:h-4"
         />
-        {/* <NavHeader /> */}
         <div className="ml-auto flex items-center gap-2">
-          {/* <ThemeSelector />
-              <ModeSwitcher /> */}
+          <ModeToggle />
         </div>
       </div>
     </header>
