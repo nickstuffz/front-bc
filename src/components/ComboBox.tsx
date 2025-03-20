@@ -29,15 +29,6 @@ export default function ComboBox({
 }: ComboBoxProps) {
   const [open, setOpen] = React.useState(false);
 
-  // console.log("ComboBox rendered");
-  // console.log("selectedCode", selectedCode);
-
-  // if (allCodes.length === 0) {
-  //   console.log("no codes");
-  // } else {
-  //   console.log("codes found");
-  // }
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

@@ -14,7 +14,7 @@ export default function CategoryCard({
 }: CategoryCardProps) {
   let prevPodId: number | null = null;
   return (
-    <Card>
+    <Card className="bg-secondary">
       <CardTitle>
         <h4>{category}</h4>
       </CardTitle>
@@ -27,7 +27,9 @@ export default function CategoryCard({
 
             return (
               <li key={compatComponent.id}>
-                {showSeparator && <Separator className="border-2" />}
+                {showSeparator && (
+                  <Separator className="border-accent-foreground my-4" />
+                )}
                 <CompatComponent compCompData={compatComponent} />
               </li>
             );

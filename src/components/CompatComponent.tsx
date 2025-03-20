@@ -10,11 +10,11 @@ export default function CompatComponent({
   compCompData,
 }: CompatComponentProps) {
   return (
-    <Card className="m-1 rounded-sm p-1">
+    <Card className="m-1 rounded-sm p-0">
       <CardContent>
         <Toggle>{compCompData.code}</Toggle>
         <br />
-        <small>{compCompData.note}</small>
+        <small className="text-xs">{compCompData.note}</small>
       </CardContent>
     </Card>
   );

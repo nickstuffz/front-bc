@@ -143,9 +143,9 @@
     @apply my-6 list-none [&>li]:mt-2;
   }
   code {
-    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+    @apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
   }
   small {
-    @apply text-sm font-medium leading-none;
+    @apply text-sm leading-none font-medium;
   }
 }

@@ -30,7 +30,7 @@ export default function CardGroup({ groupData }: CardGroupProps) {
   }
 
   return (
-    <Card className="CardGroup m-6 flex-col rounded-2xl border-2 border-gray-200 p-8">
+    <Card className="CardGroup m-6 flex-col p-8">
       <CardTitle>
         <h3>{groupTitle}</h3>
       </CardTitle>
