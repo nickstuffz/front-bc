@@ -1,7 +1,7 @@
 import * as React from "react";
 import axios from "axios";
-import CardGroup from "./CardGroup.tsx";
-import { CompatComponentType, GroupedCompatDataType } from "../types/types.ts";
+import CardGroup from "@/components/CardGroup.tsx";
+import { CompatComponentType, GroupedCompatDataType } from "@/types/types.ts";
 
 interface GroupManagerProps {
   selectedCode: string;

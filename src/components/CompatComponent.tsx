@@ -1,6 +1,5 @@
-import { CompatComponentType } from "../types/types.ts";
+import { CompatComponentType } from "@/types/types.ts";
 import { Toggle } from "@/components/ui/toggle";
-import { Card, CardContent } from "@/components/ui/card";
 
 interface CompatComponentProps {
   compCompData: CompatComponentType;
@@ -10,12 +9,11 @@ export default function CompatComponent({
   compCompData,
 }: CompatComponentProps) {
   return (
-    <Card className="m-1 rounded-sm p-0">
-      <CardContent>
-        <Toggle>{compCompData.code}</Toggle>
-        <br />
-        <small className="text-xs">{compCompData.note}</small>
-      </CardContent>
-    </Card>
+    <div className="flex flex-col">
+      <Toggle className="m-0 h-auto w-full p-0">
+        <small className="m-0 p-0">{compCompData.code}</small>
+      </Toggle>
+      <small className="text-xs">{compCompData.note}</small>
+    </div>
   );
 }

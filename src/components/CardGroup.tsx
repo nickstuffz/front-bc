@@ -1,5 +1,5 @@
-import CategoryCard from "./CategoryCard.tsx";
-import { CompatComponentType, GroupedCompatDataType } from "../types/types.ts";
+import CategoryCard from "@/components/CategoryCard.tsx";
+import { CompatComponentType, GroupedCompatDataType } from "@/types/types.ts";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
 interface CardGroupProps {
@@ -30,11 +30,11 @@ export default function CardGroup({ groupData }: CardGroupProps) {
   }
 
   return (
-    <Card className="CardGroup m-6 flex-col p-8">
+    <Card className="CardGroup bg-accent m-4 flex-col p-2">
       <CardTitle>
         <h3>{groupTitle}</h3>
       </CardTitle>
-      <CardContent className="flex justify-evenly">
+      <CardContent className="flex justify-start gap-4">
         {Object.keys(catGroupData).map((category) => (
           <CategoryCard
             key={category}

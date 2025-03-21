@@ -58,8 +58,6 @@ export default function ComboBox({
                   onSelect={(value) => {
                     setSelectedCode(value === selectedCode ? "" : value);
 
-                    // console.log("selectedCode set");
-
                     setOpen(false);
                   }}
                 >

@@ -1,7 +1,7 @@
 import * as React from "react";
 import axios from "axios";
-import ComboBox from "../components/ComboBox.tsx";
-import GroupManager from "../components/GroupManager.tsx";
+import CommandSearch from "@/components/CommandSearch.tsx";
+import GroupManager from "@/components/GroupManager.tsx";
 
 function MainContent() {
   const [allCodes, setAllCodes] = React.useState([]);
@@ -20,7 +20,7 @@ function MainContent() {
 
   return (
     <>
-      <ComboBox
+      <CommandSearch
         allCodes={allCodes}
         selectedCode={selectedCode}
         setSelectedCode={setSelectedCode}
