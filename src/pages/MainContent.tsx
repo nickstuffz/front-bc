@@ -5,7 +5,7 @@ import GroupManager from "@/components/GroupManager.tsx";
 
 function MainContent() {
   const [allCodes, setAllCodes] = React.useState([]);
-  const [selectedCode, setSelectedCode] = React.useState("ST-RX400");
+  const [selectedCodes, setSelectedCodes] = React.useState<string[]>([]);
 
   // runs after initial render
   React.useEffect(() => {
@@ -22,10 +22,13 @@ function MainContent() {
     <>
       <CommandSearch
         allCodes={allCodes}
-        selectedCode={selectedCode}
-        setSelectedCode={setSelectedCode}
+        selectedCodes={selectedCodes}
+        setSelectedCodes={setSelectedCodes}
       />
-      <GroupManager selectedCode={selectedCode} />
+      {selectedCodes.map((selectedCode) => (
+        <p>{selectedCode}</p>
+      ))}
+      {/* <GroupManager selectedCodes={selectedCodes} /> */}
     </>
   );
 }

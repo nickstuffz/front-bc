@@ -13,14 +13,14 @@ import {
 
 interface CommandSearchProps {
   allCodes: { code: string }[];
-  selectedCode: string;
-  setSelectedCode: (selectedCode: string) => void;
+  selectedCodes: string[];
+  setSelectedCodes: (selectedCodes: string[]) => void;
 }
 
 export default function CommandSearch({
   allCodes,
-  selectedCode,
-  setSelectedCode,
+  selectedCodes,
+  setSelectedCodes,
 }: CommandSearchProps) {
   const [open, setOpen] = React.useState(false);
 
@@ -54,7 +54,13 @@ export default function CommandSearch({
                 key={currentCode.code}
                 value={currentCode.code}
                 onSelect={(value) => {
-                  setSelectedCode(value === selectedCode ? "" : value);
+                  const isSelected = selectedCodes.includes(value); // check if code already selected
+
+                  const updatedSelectedCodes = isSelected
+                    ? selectedCodes.filter((code) => code !== value) // remove code
+                    : [...selectedCodes, value]; // add code
+
+                  setSelectedCodes(updatedSelectedCodes); // update selected codes
 
                   setOpen(false);
                 }}
@@ -62,7 +68,7 @@ export default function CommandSearch({
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    selectedCode === currentCode.code
+                    selectedCodes.includes(currentCode.code)
                       ? "opacity-100"
                       : "opacity-0",
                   )}
