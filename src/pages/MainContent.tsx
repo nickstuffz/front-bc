@@ -4,10 +4,9 @@ import CommandSearch from "@/components/CommandSearch.tsx";
 import GroupManager from "@/components/GroupManager.tsx";
 
 function MainContent() {
-  const [allCodes, setAllCodes] = React.useState([]);
+  const [allCodes, setAllCodes] = React.useState<{ code: string }[]>([]);
   const [selectedCodes, setSelectedCodes] = React.useState<string[]>([]);
 
-  // runs after initial render
   React.useEffect(() => {
     async function fetchAllCodes() {
       const response = await axios.get(
@@ -18,6 +17,8 @@ function MainContent() {
     fetchAllCodes();
   }, []);
 
+  console.log(selectedCodes);
+
   return (
     <>
       <CommandSearch
@@ -25,10 +26,8 @@ function MainContent() {
         selectedCodes={selectedCodes}
         setSelectedCodes={setSelectedCodes}
       />
-      {selectedCodes.map((selectedCode) => (
-        <p>{selectedCode}</p>
-      ))}
-      {/* <GroupManager selectedCodes={selectedCodes} /> */}
+
+      <GroupManager selectedCodes={selectedCodes} />
     </>
   );
 }

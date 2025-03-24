@@ -85,3 +85,7 @@ export default function CommandSearch({
     </>
   );
 }
+
+// Future Features:
+// Group by category, collapsible menu?
+// Set selected codes to show first at the top of results.
