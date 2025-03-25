@@ -5,9 +5,7 @@ interface CompatComponentProps {
   compCompData: CompatComponentType;
 }
 
-export default function CompatComponent({
-  compCompData,
-}: CompatComponentProps) {
+export function CompatComponent({ compCompData }: CompatComponentProps) {
   return (
     <div className="flex flex-col">
       <Toggle className="m-0 h-auto w-full p-0">

@@ -1,4 +1,4 @@
-import CategoryCard from "@/components/CategoryCard.tsx";
+import { CategoryCard } from "@/components/CategoryCard.tsx";
 import { CompatComponentType, GroupedCompatDataType } from "@/types/types.ts";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
@@ -6,7 +6,7 @@ interface CardGroupProps {
   groupData: CompatComponentType[];
 }
 
-export default function CardGroup({ groupData }: CardGroupProps) {
+export function CardGroup({ groupData }: CardGroupProps) {
   // groups the compat data by category
   const catGroupData = groupData.reduce(
     (acc: GroupedCompatDataType, compatComponent) => {

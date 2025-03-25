@@ -1,9 +1,9 @@
 import * as React from "react";
 import axios from "axios";
-import CommandSearch from "@/components/CommandSearch.tsx";
-import GroupManager from "@/components/GroupManager.tsx";
+import { CommandSearch } from "@/components/CommandSearch.tsx";
+import { GroupManager } from "@/components/GroupManager.tsx";
 
-function MainContent() {
+export function MainContent() {
   const [allCodes, setAllCodes] = React.useState<{ code: string }[]>([]);
   const [selectedCodes, setSelectedCodes] = React.useState<string[]>([]);
 
@@ -31,5 +31,3 @@ function MainContent() {
     </>
   );
 }
-
-export default MainContent;

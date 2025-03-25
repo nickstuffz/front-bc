@@ -1,4 +1,11 @@
 Solve:
+Use useQuery in Command component
+
 How to limit number of results in Command dropdown?
 
 How to get combobox to automatically highlight top item?
+
+Optimize query settings
+- stale time
+- retries
+- cancellations

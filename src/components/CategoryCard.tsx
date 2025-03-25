@@ -1,5 +1,5 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import CompatComponent from "@/components/CompatComponent.tsx";
+import { CompatComponent } from "@/components/CompatComponent.tsx";
 import { CompatComponentType } from "@/types/types.ts";
 import { Separator } from "@/components/ui/separator";
 
@@ -8,10 +8,7 @@ interface CategoryCardProps {
   catCardData: CompatComponentType[];
 }
 
-export default function CategoryCard({
-  category,
-  catCardData,
-}: CategoryCardProps) {
+export function CategoryCard({ category, catCardData }: CategoryCardProps) {
   let prevPodId: number | null = null;
   return (
     <Card className="bg-primary-foreground m-0 flex flex-col gap-0 p-0">

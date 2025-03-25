@@ -1,9 +1,9 @@
-import Layout from "@/layouts/Layout.tsx";
-import MainContent from "@/pages/MainContent.tsx";
+import { Layout } from "@/layouts/Layout.tsx";
+import { MainContent } from "@/pages/MainContent.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-function App() {
+export function App() {
   const queryClient = new QueryClient();
 
   return (
@@ -15,5 +15,3 @@ function App() {
     </QueryClientProvider>
   );
 }
-
-export default App;

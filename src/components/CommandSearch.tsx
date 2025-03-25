@@ -17,7 +17,7 @@ interface CommandSearchProps {
   setSelectedCodes: (selectedCodes: string[]) => void;
 }
 
-export default function CommandSearch({
+export function CommandSearch({
   allCodes,
   selectedCodes,
   setSelectedCodes,
