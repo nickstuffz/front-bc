@@ -42,8 +42,9 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
 
   console.log(queries);
 
+  // todo, add query success check for TS
   const compatDataPods = queries.map((query) => {
-    return query.data.map((component) => component.pod_id);
+    return query.data.compData.map((component) => component.pod_id);
   });
 
   // console.log(compatDataPods);
