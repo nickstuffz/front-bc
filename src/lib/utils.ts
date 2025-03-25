@@ -5,8 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function intersectMultiple(arrays: number[][]): number[] {
-  if (!arrays || arrays.length === 0) return [];
+export function intersectArrays(arrays: number[][]): number[] {
+  if (arrays.length === 0) return [];
 
   const intersectionSet = arrays.reduce((intersection, currentArray) => {
     const currentSet = new Set(currentArray);

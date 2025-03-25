@@ -1,6 +1,8 @@
 import { useQueries } from "@tanstack/react-query";
 import * as React from "react";
 import { fetchCompatData } from "@/services/api.ts";
+import { intersectArrays } from "@/lib/utils.ts";
+
 interface GroupManagerProps {
   selectedCodes: string[];
 }
@@ -39,6 +41,18 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
   }
 
   console.log(queries);
+
+  const compatDataPods = queries.map((query) => {
+    return query.data.map((component) => component.pod_id);
+  });
+
+  // console.log(compatDataPods);
+
+  console.log(intersectArrays(compatDataPods));
+
+  // BUG SQUASH NEXT: intersection returns pods even for components incompatible
+  // with each other. think about why. perhaps logic before to ensure compatibility
+  // consider UX / UI ramifications
 
   return <p>QuerySuccess</p>;
 }

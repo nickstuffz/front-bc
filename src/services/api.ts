@@ -3,9 +3,9 @@ import axios from "axios";
 
 export async function fetchCompatData(
   code: string,
-): Promise<CompatComponentType> {
+): Promise<CompatComponentType[]> {
   const response = await axios.get(
     `http://localhost:8080/api/compatibility?code=${code}`,
   );
-  return response.data;
+  return response.data as CompatComponentType[];
 }
