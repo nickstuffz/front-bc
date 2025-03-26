@@ -2,11 +2,12 @@ import { useQueries } from "@tanstack/react-query";
 import * as React from "react";
 import { fetchCompatData } from "@/services/api.ts";
 import { intersectArrays } from "@/lib/utils.ts";
+import { CardGroup } from "@/components/CardGroup.tsx";
+import { GroupedCompatDataType } from "@/types/types.ts";
 
 interface GroupManagerProps {
   selectedCodes: string[];
 }
-// import CardGroup from "@/components/CardGroup.tsx";
 
 export function GroupManager({ selectedCodes }: GroupManagerProps) {
   // TanStack queries hook to fetch data
@@ -42,45 +43,43 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
 
   console.log(queries);
 
-  // todo, add query success check for TS
+  // TODO , add query success check for TS
   const compatDataPods = queries.map((query) => {
     return query.data.compData.map((component) => component.pod_id);
   });
 
-  // console.log(compatDataPods);
+  const intersectedPods = intersectArrays(compatDataPods);
 
-  console.log(intersectArrays(compatDataPods));
+  console.log(intersectedPods);
 
-  // BUG SQUASH NEXT: intersection returns pods even for components incompatible
-  // with each other. think about why. perhaps logic before to ensure compatibility
-  // consider UX / UI ramifications
+  const filteredCompData = queries[0].data.compData.filter(
+    (component) =>
+      intersectedPods.includes(component.pod_id) && // include component IF its pod_id is part of the intersection
+      intersectedPods.includes(component.source_pod_id), // AND its source_pod_id is part of the intersection
+  );
 
-  return <p>QuerySuccess</p>;
+  console.log(filteredCompData);
+
+  // groups compat data by source pod id
+  const groupedCompatData = filteredCompData.reduce(
+    (acc: GroupedCompatDataType, compatComponent) => {
+      if (!acc[compatComponent.source_pod_id]) {
+        acc[compatComponent.source_pod_id] = [];
+      }
+      acc[compatComponent.source_pod_id].push(compatComponent);
+      return acc;
+    },
+    {},
+  );
+
+  return (
+    <>
+      {Object.keys(groupedCompatData).map((source_pod_id) => (
+        <CardGroup
+          key={source_pod_id}
+          groupData={groupedCompatData[source_pod_id]}
+        />
+      ))}
+    </>
+  );
 }
-
-// continue with data below
-
-// groups compat data by source pod id
-
-// const groupedCompatData = compatData.reduce(
-//   (acc: GroupedCompatDataType, compatComponent) => {
-//     if (!acc[compatComponent.source_pod_id]) {
-//       acc[compatComponent.source_pod_id] = [];
-//     }
-//     acc[compatComponent.source_pod_id].push(compatComponent);
-//     return acc;
-//   },
-//   {},
-// );
-
-// return (
-//   <>
-//     {Object.keys(groupedCompatData).map((source_pod_id) => (
-//       <CardGroup
-//         key={source_pod_id}
-//         groupData={groupedCompatData[source_pod_id]}
-//       />
-//     ))}
-//   </>
-// );
-// }

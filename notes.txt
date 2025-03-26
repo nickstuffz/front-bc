@@ -5,6 +5,9 @@ How to limit number of results in Command dropdown?
 
 How to get combobox to automatically highlight top item?
 
+Confirm that data filtering solution actually works.
+
+
 Optimize query settings
 - stale time
 - retries
