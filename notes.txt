@@ -12,3 +12,5 @@ Optimize query settings
 - stale time
 - retries
 - cancellations
+
+Handle errors properly, including a runtime error boundary

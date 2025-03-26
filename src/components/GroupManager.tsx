@@ -1,9 +1,9 @@
-import { useQueries } from "@tanstack/react-query";
 import * as React from "react";
+import { useQueries } from "@tanstack/react-query";
 import { fetchCompatData } from "@/services/api.ts";
 import { intersectArrays } from "@/lib/utils.ts";
 import { CardGroup } from "@/components/CardGroup.tsx";
-import { CompatDataResponse, GroupedCompatDataType } from "@/types/types.ts";
+import { GroupedCompatDataType } from "@/types/types.ts";
 
 interface GroupManagerProps {
   selectedCodes: string[];
@@ -19,68 +19,73 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
     })),
   });
 
-  // derive overall query states using `useMemo`
+  // derive overall state of queries using `useMemo`
   const overallState = React.useMemo(() => {
-    const isLoading = queries.some((query) => query.isLoading);
     const isError = queries.some((query) => query.isError);
-    return { isLoading, isError };
+    const isLoading = queries.some((query) => query.isLoading);
+    return { isError, isLoading };
   }, [queries]);
 
   // handle no selection
   if (selectedCodes.length === 0) {
     return <div>Please select a component code</div>;
   }
-
-  // handle loading state
-  if (overallState.isLoading) {
-    return <div>Loading...</div>;
-  }
-
   // handle error state
   if (overallState.isError) {
     return <div>Failed to fetch compatibility data.</div>;
   }
+  // handle loading state
+  if (overallState.isLoading) {
+    return <div>Loading...</div>;
+  }
+  // query success state
+  if (queries.every((query) => query.isSuccess)) {
+    // extract pod ids from each compatibility response
+    const compatDataPods = queries.map((query) => {
+      return query.data.compData.map((component) => component.pod_id);
+    });
 
-  console.log(queries);
+    // find intersection of these pod ids
+    const intersectedPods = intersectArrays(compatDataPods);
 
-  const compatDataPods = queries.map((query) => {
-    return (query.data as CompatDataResponse).compData.map(
-      (component) => component.pod_id,
+    // filter list of components to compatibility with all selected codes
+    const filteredCompData = queries[0].data.compData.filter(
+      // filter from first query (any query in the set will work)
+      (component) =>
+        intersectedPods.includes(component.pod_id) && // include component IF its pod_id is part of the intersected pod numbers
+        intersectedPods.includes(component.source_pod_id), // AND its source_pod_id is part of the intersected pod numbers
     );
-  });
 
-  const intersectedPods = intersectArrays(compatDataPods);
+    // selected codes set incompatible
+    if (filteredCompData.length === 0) {
+      return <div>Selected components do not share compatibility.</div>;
+    }
 
-  console.log(intersectedPods);
+    // groups filtered data by source pod id
+    const groupedCompatData = filteredCompData.reduce(
+      (groupedData: GroupedCompatDataType, compatComponent) => {
+        if (!groupedData[compatComponent.source_pod_id]) {
+          groupedData[compatComponent.source_pod_id] = [];
+        }
+        groupedData[compatComponent.source_pod_id].push(compatComponent);
+        return groupedData;
+      },
+      {},
+    );
 
-  const filteredCompData = queries[0].data.compData.filter(
-    (component) =>
-      intersectedPods.includes(component.pod_id) && // include component IF its pod_id is part of the intersection
-      intersectedPods.includes(component.source_pod_id), // AND its source_pod_id is part of the intersection
-  );
-
-  console.log(filteredCompData);
-
-  // groups compat data by source pod id
-  const groupedCompatData = filteredCompData.reduce(
-    (acc: GroupedCompatDataType, compatComponent) => {
-      if (!acc[compatComponent.source_pod_id]) {
-        acc[compatComponent.source_pod_id] = [];
-      }
-      acc[compatComponent.source_pod_id].push(compatComponent);
-      return acc;
-    },
-    {},
-  );
-
-  return (
-    <>
-      {Object.keys(groupedCompatData).map((source_pod_id) => (
-        <CardGroup
-          key={source_pod_id}
-          groupData={groupedCompatData[source_pod_id]}
-        />
-      ))}
-    </>
-  );
+    return (
+      <>
+        {Object.keys(groupedCompatData).map((source_pod_id) => (
+          <CardGroup
+            key={source_pod_id}
+            groupData={groupedCompatData[source_pod_id]}
+          />
+        ))}
+      </>
+    );
+  }
+  // handle unexpected state
+  else {
+    return <div>Unexpected state error.</div>;
+  }
 }
