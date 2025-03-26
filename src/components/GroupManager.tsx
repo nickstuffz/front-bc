@@ -3,7 +3,7 @@ import * as React from "react";
 import { fetchCompatData } from "@/services/api.ts";
 import { intersectArrays } from "@/lib/utils.ts";
 import { CardGroup } from "@/components/CardGroup.tsx";
-import { GroupedCompatDataType } from "@/types/types.ts";
+import { CompatDataResponse, GroupedCompatDataType } from "@/types/types.ts";
 
 interface GroupManagerProps {
   selectedCodes: string[];
@@ -43,9 +43,10 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
 
   console.log(queries);
 
-  // TODO , add query success check for TS
   const compatDataPods = queries.map((query) => {
-    return query.data.compData.map((component) => component.pod_id);
+    return (query.data as CompatDataResponse).compData.map(
+      (component) => component.pod_id,
+    );
   });
 
   const intersectedPods = intersectArrays(compatDataPods);

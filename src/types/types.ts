@@ -12,4 +12,9 @@ export interface CompatComponentType {
   warning: string;
 }
 
+export interface CompatDataResponse {
+  code: string;
+  compData: CompatComponentType[];
+}
+
 export type GroupedCompatDataType = Record<string, CompatComponentType[]>;

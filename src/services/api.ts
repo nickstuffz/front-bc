@@ -1,10 +1,5 @@
-import { CompatComponentType } from "@/types/types.ts";
+import { CompatDataResponse } from "@/types/types.ts";
 import axios from "axios";
-
-interface CompatDataResponse {
-  code: string;
-  compData: CompatComponentType[];
-}
 
 export async function fetchCompatData(
   code: string,
