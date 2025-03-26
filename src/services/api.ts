@@ -9,3 +9,10 @@ export async function fetchCompatData(
   );
   return response.data;
 }
+
+export async function fetchAllCodes(): Promise<{ code: string }[]> {
+  const response = await axios.get(
+    "http://localhost:8080/api/components/codes",
+  );
+  return response.data;
+}

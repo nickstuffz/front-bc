@@ -1,28 +1,35 @@
 import * as React from "react";
-import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAllCodes } from "@/services/api.ts";
 import { CommandSearch } from "@/components/CommandSearch.tsx";
 import { GroupManager } from "@/components/GroupManager.tsx";
 
 export function MainContent() {
-  const [allCodes, setAllCodes] = React.useState<{ code: string }[]>([]);
   const [selectedCodes, setSelectedCodes] = React.useState<string[]>([]);
 
-  React.useEffect(() => {
-    async function fetchAllCodes() {
-      const response = await axios.get(
-        "http://localhost:8080/api/components/codes",
-      );
-      setAllCodes(response.data);
-    }
-    fetchAllCodes();
-  }, []);
+  const allCodesResult = useQuery({
+    queryKey: ["allCodes"],
+    queryFn: fetchAllCodes,
+  });
 
-  console.log(selectedCodes);
+  let allCodes;
+
+  if (allCodesResult.isPending) {
+    allCodes = [{ code: "Loading codes..." }];
+  }
+
+  if (allCodesResult.isError) {
+    allCodes = [{ code: "Error loading codes." }];
+  }
+
+  if (allCodesResult.isSuccess) {
+    allCodes = allCodesResult.data;
+  }
 
   return (
     <>
       <CommandSearch
-        allCodes={allCodes}
+        allCodes={allCodes!}
         selectedCodes={selectedCodes}
         setSelectedCodes={setSelectedCodes}
       />

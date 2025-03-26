@@ -14,3 +14,5 @@ Optimize query settings
 - cancellations
 
 Handle errors properly, including a runtime error boundary
+
+Send errors to a banner?
