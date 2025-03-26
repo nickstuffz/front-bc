@@ -26,6 +26,8 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
     return { isError, isLoading };
   }, [queries]);
 
+  console.log(selectedCodes);
+
   // handle no selection
   if (selectedCodes.length === 0) {
     return <div>Please select a component code</div>;

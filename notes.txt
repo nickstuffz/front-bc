@@ -1,18 +1,27 @@
-Solve:
-Use useQuery in Command component
-
+Combobox:
 How to limit number of results in Command dropdown?
-
 How to get combobox to automatically highlight top item?
 
-Confirm that data filtering solution actually works.
+GroupManager:
+Confirm that data filtering solution actually works
+STEP 3 CHECK POD instead of Component for SourcePodID for efficiency?
+Restyle into a simple sensible level at first
 
+TanStack Query settings:
+Edit defaults, (no stale data, etc)
 
-Optimize query settings
-- stale time
-- retries
-- cancellations
+Errors:
+Runtime error boundary?
+Implement error visual component?
+Use library? Toastify, or DIY it
 
-Handle errors properly, including a runtime error boundary
+Badges:
+Implement badges that represent selectedCodes state.
+Import shadCN badge, import exit from lucide
 
-Send errors to a banner?
+DarkMode:
+Edit to toggle instead of select, default: system
+
+Router:
+Implement Tanstack Router?
+What pages to have in future?
