@@ -16,8 +16,6 @@ Implement error visual component?
 Use library? Toastify, or DIY it
 
 Badges:
-Implement badges that represent selectedCodes state.
-Import shadCN badge, import exit from lucide
 
 DarkMode:
 Edit to toggle instead of select, default: system
@@ -25,3 +23,5 @@ Edit to toggle instead of select, default: system
 Router:
 Implement Tanstack Router?
 What pages to have in future?
+- Compatibility
+- About
