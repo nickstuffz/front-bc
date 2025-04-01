@@ -5,16 +5,16 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider>
-      <SidebarProvider>
-        <div className="flex flex-1">
+    <div className="bg-background overscroll-none antialiased">
+      <ThemeProvider>
+        <SidebarProvider>
           <AppSidebar />
-          <div className="flex flex-1 flex-col">
+          <main className="bg-background relative flex w-full flex-1 flex-col">
             <SiteHeader />
             {children}
-          </div>
-        </div>
-      </SidebarProvider>
-    </ThemeProvider>
+          </main>
+        </SidebarProvider>
+      </ThemeProvider>
+    </div>
   );
 }

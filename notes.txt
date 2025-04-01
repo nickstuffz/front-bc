@@ -7,6 +7,10 @@ Confirm that data filtering solution actually works
 STEP 3 CHECK POD instead of Component for SourcePodID for efficiency?
 Restyle into a simple sensible level at first
 
+ComponentCode:
+Add onclicks
+Decide on UI design
+
 TanStack Query settings:
 Edit defaults, (no stale data, etc)
 

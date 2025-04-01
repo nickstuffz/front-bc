@@ -35,21 +35,24 @@ export function MainContent() {
   }
 
   return (
-    <>
-      <div className="flex items-center justify-between">
-        <div>
+    <div className="content flex flex-col gap-4 p-4">
+      <div className="content_header flex flex-col">
+        <div className="flex items-center justify-between">
+          <h4 className="text-primary">Selected Codes</h4>
+          <CommandSearch
+            allCodes={allCodes!}
+            selectedCodes={selectedCodes}
+            setSelectedCodes={setSelectedCodes}
+          />
+        </div>
+        <div className="badge_container flex flex-wrap gap-2 p-1">
           {selectedCodes.map((code) => (
             <CodeBadge key={code} code={code} removeCode={removeCode} />
           ))}
         </div>
-        <CommandSearch
-          allCodes={allCodes!}
-          selectedCodes={selectedCodes}
-          setSelectedCodes={setSelectedCodes}
-        />
       </div>
 
       <GroupManager selectedCodes={selectedCodes} />
-    </>
+    </div>
   );
 }

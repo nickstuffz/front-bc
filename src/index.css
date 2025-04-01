@@ -118,9 +118,6 @@
   * {
     @apply border-border outline-ring/50 box-border;
   }
-  body {
-    @apply bg-background text-foreground overscroll-none;
-  }
   h1 {
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
   }
@@ -132,18 +129,6 @@
   }
   h4 {
     @apply scroll-m-20 text-xl font-semibold tracking-tight;
-  }
-  p {
-    @apply leading-7 [&:not(:first-child)]:mt-6;
-  }
-  blockquote {
-    @apply mt-6 border-l-2 pl-6 italic;
-  }
-  ul {
-    @apply my-6 list-none [&>li]:mt-2;
-  }
-  code {
-    @apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
   }
   small {
     @apply text-sm leading-none font-medium;

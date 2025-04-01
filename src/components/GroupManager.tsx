@@ -30,7 +30,9 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
 
   // handle no selection
   if (selectedCodes.length === 0) {
-    return <div>Please select a component code</div>;
+    return (
+      <small className="text-primary">Please select a component code</small>
+    );
   }
   // handle error state
   if (overallState.isError) {
@@ -60,7 +62,11 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
 
     // selected codes set incompatible
     if (filteredCompData.length === 0) {
-      return <div>Selected components do not share compatibility.</div>;
+      return (
+        <small className="text-destructive">
+          Selected components do not share compatibility.
+        </small>
+      );
     }
 
     // groups filtered data by source pod id
@@ -76,18 +82,18 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
     );
 
     return (
-      <>
+      <div className="group_container flex flex-1 flex-col gap-4">
         {Object.keys(groupedCompatData).map((source_pod_id) => (
           <CardGroup
             key={source_pod_id}
             groupData={groupedCompatData[source_pod_id]}
           />
         ))}
-      </>
+      </div>
     );
   }
   // handle unexpected state
   else {
-    return <div>Unexpected state error.</div>;
+    return <small className="text-destructive">Unexpected state error.</small>;
   }
 }

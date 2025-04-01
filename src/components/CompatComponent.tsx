@@ -7,7 +7,7 @@ interface CompatComponentProps {
 
 export function CompatComponent({ compCompData }: CompatComponentProps) {
   return (
-    <div className="flex flex-col">
+    <div className="compat_component flex flex-col py-2">
       <Toggle className="m-0 h-auto w-full p-0">
         <small className="m-0 p-0">{compCompData.code}</small>
       </Toggle>
