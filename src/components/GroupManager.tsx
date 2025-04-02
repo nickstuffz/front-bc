@@ -19,14 +19,14 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
     })),
   });
 
+  console.log(selectedCodes);
+
   // derive overall state of queries using `useMemo`
   const overallState = React.useMemo(() => {
     const isError = queries.some((query) => query.isError);
     const isLoading = queries.some((query) => query.isLoading);
     return { isError, isLoading };
   }, [queries]);
-
-  console.log(selectedCodes);
 
   // handle no selection
   if (selectedCodes.length === 0) {
@@ -40,10 +40,12 @@ export function GroupManager({ selectedCodes }: GroupManagerProps) {
   }
   // handle loading state
   if (overallState.isLoading) {
+    console.log("loading");
     return <div>Loading...</div>;
   }
   // query success state
   if (queries.every((query) => query.isSuccess)) {
+    console.log("success");
     // extract pod ids from each compatibility response
     const compatDataPods = queries.map((query) => {
       return query.data.compData.map((component) => component.pod_id);

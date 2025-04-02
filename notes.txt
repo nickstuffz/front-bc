@@ -5,7 +5,7 @@ How to get combobox to automatically highlight top item?
 GroupManager:
 Confirm that data filtering solution actually works
 STEP 3 CHECK POD instead of Component for SourcePodID for efficiency?
-Restyle into a simple sensible level at first
+Why two renders with isLoading?
 
 ComponentCode:
 Add onclicks

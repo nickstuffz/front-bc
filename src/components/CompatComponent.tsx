@@ -8,10 +8,13 @@ interface CompatComponentProps {
 export function CompatComponent({ compCompData }: CompatComponentProps) {
   return (
     <div className="compat_component flex flex-col py-2">
-      <Toggle className="m-0 h-auto w-full p-0">
+      <Toggle
+        onPressedChange={() => console.log(compCompData.code)}
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground m-0 flex w-full justify-between rounded-xs border border-dotted p-0 px-4"
+      >
         <small className="m-0 p-0">{compCompData.code}</small>
+        <p className="text-[10px] leading-none">{compCompData.note}</p>
       </Toggle>
-      <small className="text-xs">{compCompData.note}</small>
     </div>
   );
 }

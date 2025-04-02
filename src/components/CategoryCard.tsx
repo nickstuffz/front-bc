@@ -17,8 +17,8 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
   let prevPodId: number | null = null;
   return (
     <AccordionItem value={category}>
-      <Card className="m-0 flex flex-col gap-2 rounded-sm border-none p-0 shadow-none">
-        <AccordionTrigger className="px-4">
+      <Card className="m-0 flex flex-col gap-0 rounded-sm border-none p-0 shadow-none">
+        <AccordionTrigger className="px-2">
           <CardTitle>{category}s</CardTitle>
         </AccordionTrigger>
         <AccordionContent>
@@ -30,14 +30,14 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
                 prevPodId = compatComponent.pod_id;
 
                 return (
-                  <>
+                  <div key={compatComponent.id}>
                     {showSeparator && (
-                      <Separator className="bg-accent-foreground my-4" />
+                      <Separator className="bg-accent-foreground my-2" />
                     )}
-                    <li className="m-0 p-0" key={compatComponent.id}>
+                    <li className="m-0 p-0">
                       <CompatComponent compCompData={compatComponent} />
                     </li>
-                  </>
+                  </div>
                 );
               })}
             </ul>

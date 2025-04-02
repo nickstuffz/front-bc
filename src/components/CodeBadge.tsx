@@ -8,7 +8,7 @@ interface CodeBadgeProps {
 
 export function CodeBadge({ code, removeCode }: CodeBadgeProps) {
   return (
-    <Badge>
+    <Badge className="hover:bg-primary/90 flex items-center justify-between gap-1.5">
       {code}
       <button onClick={() => removeCode(code)}>
         <CircleX />
