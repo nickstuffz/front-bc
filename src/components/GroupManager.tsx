@@ -4,12 +4,11 @@ import { fetchCompatData } from "@/services/api.ts";
 import { intersectArrays } from "@/lib/utils.ts";
 import { CardGroup } from "@/components/CardGroup.tsx";
 import { GroupedCompatDataType } from "@/types/types.ts";
+import { useSelectedCodes } from "@/components/SelectedCodesContext";
 
-interface GroupManagerProps {
-  selectedCodes: string[];
-}
+export function GroupManager() {
+  const selectedCodes = useSelectedCodes();
 
-export function GroupManager({ selectedCodes }: GroupManagerProps) {
   // TanStack queries hook to fetch data
   const queries = useQueries({
     queries: selectedCodes.map((code) => ({

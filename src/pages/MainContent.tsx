@@ -1,19 +1,12 @@
-import * as React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAllCodes } from "@/services/api.ts";
 import { CommandSearch } from "@/components/CommandSearch.tsx";
 import { GroupManager } from "@/components/GroupManager.tsx";
 import { CodeBadge } from "@/components/CodeBadge.tsx";
+import { useSelectedCodes } from "@/components/SelectedCodesContext";
 
 export function MainContent() {
-  const [selectedCodes, setSelectedCodes] = React.useState<string[]>([]);
-
-  function removeCode(code: string) {
-    setSelectedCodes(
-      selectedCodes.filter((selectedCode) => selectedCode !== code),
-    );
-    return;
-  }
+  const selectedCodes = useSelectedCodes();
 
   const allCodesResult = useQuery({
     queryKey: ["allCodes"],
@@ -39,20 +32,16 @@ export function MainContent() {
       <div className="content_header flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <h4 className="text-primary">Selected Codes</h4>
-          <CommandSearch
-            allCodes={allCodes!}
-            selectedCodes={selectedCodes}
-            setSelectedCodes={setSelectedCodes}
-          />
+          <CommandSearch allCodes={allCodes!} />
         </div>
         <div className="badge_container flex flex-1 flex-wrap gap-2">
           {selectedCodes.map((code) => (
-            <CodeBadge key={code} code={code} removeCode={removeCode} />
+            <CodeBadge key={code} code={code} />
           ))}
         </div>
       </div>
 
-      <GroupManager selectedCodes={selectedCodes} />
+      <GroupManager />
     </div>
   );
 }

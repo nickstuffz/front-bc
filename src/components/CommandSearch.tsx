@@ -10,19 +10,19 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+import {
+  useSelectedCodes,
+  useSelectedCodesDispatch,
+} from "@/components/SelectedCodesContext";
 
 interface CommandSearchProps {
   allCodes: { code: string }[];
-  selectedCodes: string[];
-  setSelectedCodes: (selectedCodes: string[]) => void;
 }
 
-export function CommandSearch({
-  allCodes,
-  selectedCodes,
-  setSelectedCodes,
-}: CommandSearchProps) {
+export function CommandSearch({ allCodes }: CommandSearchProps) {
   const [open, setOpen] = React.useState(false);
+  const selectedCodes = useSelectedCodes();
+  const dispatch = useSelectedCodesDispatch();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -56,11 +56,12 @@ export function CommandSearch({
                 onSelect={(value) => {
                   const isSelected = selectedCodes.includes(value); // check if code already selected
 
-                  const updatedSelectedCodes = isSelected
-                    ? selectedCodes.filter((code) => code !== value) // remove code
-                    : [...selectedCodes, value]; // add code
-
-                  setSelectedCodes(updatedSelectedCodes); // update selected codes
+                  // dispatch an action to add or remove the code
+                  if (isSelected) {
+                    dispatch({ type: "deleted", code: value }); // remove the code
+                  } else {
+                    dispatch({ type: "added", code: value }); // add the code
+                  }
 
                   setOpen(false);
                 }}
@@ -85,7 +86,3 @@ export function CommandSearch({
     </>
   );
 }
-
-// Future Features:
-// Group by category, collapsible menu?
-// Set selected codes to show first at the top of results.

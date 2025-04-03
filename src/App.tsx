@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SelectedCodesProvider } from "@/components/SelectedCodesContext";
 
 export function App() {
   const queryClient = new QueryClient();
@@ -12,15 +13,17 @@ export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <div className="overscroll-none antialiased">
-          <SidebarProvider>
-            <AppSidebar />
-            <main className="bg-background relative flex w-full flex-col">
-              <SiteHeader />
-              <MainContent />
-            </main>
-          </SidebarProvider>
-        </div>
+        <SelectedCodesProvider>
+          <div className="overscroll-none antialiased">
+            <SidebarProvider>
+              <AppSidebar />
+              <main className="bg-background relative flex w-full flex-col">
+                <SiteHeader />
+                <MainContent />
+              </main>
+            </SidebarProvider>
+          </div>
+        </SelectedCodesProvider>
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
