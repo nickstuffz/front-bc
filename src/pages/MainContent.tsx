@@ -35,7 +35,7 @@ export function MainContent() {
   }
 
   return (
-    <div className="content flex flex-col gap-4 p-4">
+    <div className="content flex flex-1 flex-col gap-4 p-4">
       <div className="content_header flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <h4 className="text-primary">Selected Codes</h4>
@@ -45,7 +45,7 @@ export function MainContent() {
             setSelectedCodes={setSelectedCodes}
           />
         </div>
-        <div className="badge_container flex flex-wrap gap-2 p-1">
+        <div className="badge_container flex flex-1 flex-wrap gap-2">
           {selectedCodes.map((code) => (
             <CodeBadge key={code} code={code} removeCode={removeCode} />
           ))}
