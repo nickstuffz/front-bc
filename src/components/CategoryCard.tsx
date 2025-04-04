@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useSelectedCodes } from "@/components/SelectedCodesContext";
 
 interface CategoryCardProps {
   category: string;
@@ -14,6 +15,7 @@ interface CategoryCardProps {
 }
 
 export function CategoryCard({ category, catCardData }: CategoryCardProps) {
+  const selectedCodes = useSelectedCodes();
   let prevPodId: number | null = null;
   return (
     <AccordionItem value={category}>
@@ -29,13 +31,20 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
                   prevPodId !== null && prevPodId !== compatComponent.pod_id;
                 prevPodId = compatComponent.pod_id;
 
+                const isPressed = selectedCodes.includes(compatComponent.code)
+                  ? true
+                  : false;
+
                 return (
                   <div key={compatComponent.id}>
                     {showSeparator && (
                       <Separator className="bg-accent-foreground my-2" />
                     )}
                     <li className="m-0 p-0">
-                      <CompatComponent compCompData={compatComponent} />
+                      <CompatComponent
+                        compCompData={compatComponent}
+                        isPressed={isPressed}
+                      />
                     </li>
                   </div>
                 );

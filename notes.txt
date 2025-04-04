@@ -29,3 +29,6 @@ Implement Tanstack Router?
 What pages to have in future?
 - Compatibility
 - About
+
+General:
+Check for consistency of data structure, kinda a mess

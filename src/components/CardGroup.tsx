@@ -1,7 +1,7 @@
 import { CategoryCard } from "@/components/CategoryCard.tsx";
 import { CompatComponentType, GroupedCompatDataType } from "@/types/types.ts";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-
+import { useSelectedCodes } from "@/components/SelectedCodesContext";
 import { Accordion } from "@/components/ui/accordion";
 
 interface CardGroupProps {
@@ -9,6 +9,8 @@ interface CardGroupProps {
 }
 
 export function CardGroup({ groupData }: CardGroupProps) {
+  const selectedCodes = useSelectedCodes();
+
   // groups the compat data by category
   const catGroupData = groupData.reduce(
     (acc: GroupedCompatDataType, compatComponent) => {
@@ -21,7 +23,7 @@ export function CardGroup({ groupData }: CardGroupProps) {
     {},
   );
 
-  // Determine the group title based on the keys of catGroupData
+  // determine the group title based on the keys of catGroupData
   let groupTitle = "";
   if (Object.keys(catGroupData).includes("rear derailleur")) {
     groupTitle = "Rear Drivetrain Group";
@@ -31,6 +33,13 @@ export function CardGroup({ groupData }: CardGroupProps) {
     groupTitle = "Brake System Group";
   }
 
+  // determine default values for accordion, sets accordion item to open if it has a pressed code
+  const defaultOpen = Object.keys(catGroupData).filter((category) => {
+    return catGroupData[category].some((component) => {
+      return selectedCodes.includes(component.code);
+    });
+  });
+
   return (
     <Card className="card_group bg-card flex flex-col gap-2 px-0 py-2">
       <CardTitle className="border-b pt-2 pr-0 pb-3 pl-4">
@@ -38,7 +47,11 @@ export function CardGroup({ groupData }: CardGroupProps) {
       </CardTitle>
 
       <CardContent>
-        <Accordion type="multiple" className="flex flex-col gap-2">
+        <Accordion
+          type="multiple"
+          defaultValue={defaultOpen}
+          className="flex flex-col gap-2"
+        >
           {Object.keys(catGroupData).map((category) => (
             <CategoryCard
               key={category}
