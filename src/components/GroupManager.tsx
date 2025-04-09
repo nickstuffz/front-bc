@@ -4,7 +4,7 @@ import { fetchCompatData } from "@/services/api.ts";
 import { intersectArrays } from "@/lib/utils.ts";
 import { CardGroup } from "@/components/CardGroup.tsx";
 import { GroupedCompatDataType } from "@/types/types.ts";
-import { useSelectedCodes } from "@/components/SelectedCodesContext";
+import { useSelectedCodes } from "@/lib/selectedCodeContext";
 
 export function GroupManager() {
   const selectedCodes = useSelectedCodes();
@@ -15,6 +15,8 @@ export function GroupManager() {
       queryKey: ["compatData", code],
       queryFn: () => fetchCompatData(code),
       enabled: !!code,
+      staleTime: 1000 * 60 * 60 * 24, // 1 day
+      gcTime: 1000 * 60 * 60 * 24, // 1 day
     })),
   });
 

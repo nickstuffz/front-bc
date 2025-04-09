@@ -1,14 +1,14 @@
-import { MainContent } from "@/pages/MainContent.tsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/AppSidebar";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SelectedCodesProvider } from "@/components/SelectedCodesContext";
+import { MainContent } from "@/pages/MainContent.tsx"; // Main content of app (not sidebar, not header)
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // Query tools from TanStack
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"; // Devtools for Tanstack
+import { ThemeProvider } from "@/components/ThemeProvider"; // Theme provider from shadCN
+import { SidebarProvider } from "@/components/ui/sidebar"; // Sidebar provider from shadCN
+import { AppSidebar } from "@/components/AppSidebar"; // Sidebar component
+import { SiteHeader } from "@/components/SiteHeader"; // Header component
+import { SelectedCodesProvider } from "@/components/SelectedCodesProvider"; // Context-Reducer for selected codes
 
 export function App() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient(); // Create a new query client for TanStack
 
   return (
     <QueryClientProvider client={queryClient}>

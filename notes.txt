@@ -12,7 +12,6 @@ Add onclicks
 Decide on UI design
 
 TanStack Query settings:
-Edit defaults, (no stale data, etc)
 
 Errors:
 Runtime error boundary?
@@ -32,3 +31,4 @@ What pages to have in future?
 
 General:
 Check for consistency of data structure, kinda a mess
+Fix scroll position memory, TSQuery built in not working, (because using loading component)

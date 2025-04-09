@@ -13,7 +13,7 @@ import {
 import {
   useSelectedCodes,
   useSelectedCodesDispatch,
-} from "@/components/SelectedCodesContext";
+} from "@/lib/selectedCodeContext";
 
 interface CommandSearchProps {
   allCodes: { code: string }[];

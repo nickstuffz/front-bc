@@ -1,13 +1,11 @@
 import * as React from "react";
+import {
+  SelectedCodesContext,
+  SelectedCodesDispatchContext,
+} from "@/lib/selectedCodeContext";
 
 type SelectedCodesType = string[];
 type SelectedCodesAction = { type: "added" | "deleted"; code: string };
-
-const SelectedCodesContext = React.createContext<SelectedCodesType | null>(
-  null,
-);
-const SelectedCodesDispatchContext =
-  React.createContext<React.Dispatch<SelectedCodesAction> | null>(null);
 
 export function SelectedCodesProvider({
   children,
@@ -23,24 +21,6 @@ export function SelectedCodesProvider({
       </SelectedCodesDispatchContext.Provider>
     </SelectedCodesContext.Provider>
   );
-}
-
-export function useSelectedCodes() {
-  const context = React.useContext(SelectedCodesContext);
-  if (context === null) {
-    throw new Error("missing selectedCodes provider");
-  }
-
-  return context;
-}
-
-export function useSelectedCodesDispatch() {
-  const context = React.useContext(SelectedCodesDispatchContext);
-  if (context === null) {
-    throw new Error("missing selectedCodesDispatch provider");
-  }
-
-  return context;
 }
 
 function selectedCodesReducer(

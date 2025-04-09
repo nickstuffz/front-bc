@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { CircleX } from "lucide-react";
-import { useSelectedCodesDispatch } from "@/components/SelectedCodesContext";
+import { useSelectedCodesDispatch } from "@/lib/selectedCodeContext";
 
 interface CodeBadgeProps {
   code: string;

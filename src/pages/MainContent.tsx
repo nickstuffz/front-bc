@@ -3,7 +3,7 @@ import { fetchAllCodes } from "@/services/api.ts";
 import { CommandSearch } from "@/components/CommandSearch.tsx";
 import { GroupManager } from "@/components/GroupManager.tsx";
 import { CodeBadge } from "@/components/CodeBadge.tsx";
-import { useSelectedCodes } from "@/components/SelectedCodesContext";
+import { useSelectedCodes } from "@/lib/selectedCodeContext";
 
 export function MainContent() {
   const selectedCodes = useSelectedCodes();
@@ -11,6 +11,8 @@ export function MainContent() {
   const allCodesResult = useQuery({
     queryKey: ["allCodes"],
     queryFn: fetchAllCodes,
+    staleTime: 1000 * 60 * 60 * 24, // 1 day
+    gcTime: 1000 * 60 * 60 * 24, // 1 day
   });
 
   let allCodes;

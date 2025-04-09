@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useSelectedCodes } from "@/components/SelectedCodesContext";
+import { useSelectedCodes } from "@/lib/selectedCodeContext";
 
 interface CategoryCardProps {
   category: string;
