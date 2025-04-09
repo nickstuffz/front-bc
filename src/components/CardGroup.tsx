@@ -1,7 +1,7 @@
 import { CategoryCard } from "@/components/CategoryCard.tsx";
 import { CompatComponentType, GroupedCompatDataType } from "@/types/types.ts";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { useSelectedCodes } from "@/lib/selectedCodeContext";
+import { useSelectedCodes } from "@/lib/selectedCodeUtils";
 import { Accordion } from "@/components/ui/accordion";
 
 interface CardGroupProps {

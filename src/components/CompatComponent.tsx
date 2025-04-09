@@ -1,6 +1,6 @@
 import { CompatComponentType } from "@/types/types.ts";
 import { Toggle } from "@/components/ui/toggle";
-import { useSelectedCodesDispatch } from "@/lib/selectedCodeContext";
+import { useSelectedCodesDispatch } from "@/lib/selectedCodeUtils";
 
 interface CompatComponentProps {
   compCompData: CompatComponentType;

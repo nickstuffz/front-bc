@@ -2,10 +2,8 @@ import * as React from "react";
 import {
   SelectedCodesContext,
   SelectedCodesDispatchContext,
-} from "@/lib/selectedCodeContext";
-
-type SelectedCodesType = string[];
-type SelectedCodesAction = { type: "added" | "deleted"; code: string };
+  selectedCodesReducer,
+} from "@/lib/selectedCodeUtils";
 
 export function SelectedCodesProvider({
   children,
@@ -21,21 +19,4 @@ export function SelectedCodesProvider({
       </SelectedCodesDispatchContext.Provider>
     </SelectedCodesContext.Provider>
   );
-}
-
-function selectedCodesReducer(
-  selectedCodes: SelectedCodesType,
-  action: SelectedCodesAction,
-) {
-  switch (action.type) {
-    case "added": {
-      return [...selectedCodes, action.code];
-    }
-    case "deleted": {
-      return selectedCodes.filter((code) => code !== action.code);
-    }
-    default: {
-      throw Error("unknown action: " + action.type);
-    }
-  }
 }
