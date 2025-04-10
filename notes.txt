@@ -8,7 +8,6 @@ STEP 3 CHECK POD instead of Component for SourcePodID for efficiency?
 Why two renders with isLoading?
 
 ComponentCode:
-Add onclicks
 Decide on UI design
 
 TanStack Query settings:
@@ -31,4 +30,9 @@ What pages to have in future?
 
 General:
 Check for consistency of data structure, kinda a mess
-Fix scroll position memory, TSQuery built in not working, (because using loading component)
+
+CardGroup:
+Accordion not opening to all selected codes on additional code state set
+
+Spinner:
+Figure out why transition cut short

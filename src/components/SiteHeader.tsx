@@ -6,6 +6,7 @@ import { useSpinnerContext } from "@/lib/spinnerUtils";
 
 export function SiteHeader() {
   const { spinnerActive } = useSpinnerContext();
+  console.log(spinnerActive);
 
   return (
     <header className="bg-background sticky inset-x-0 top-0 isolate z-10 flex shrink-0 items-center justify-between gap-2 border-b">
@@ -18,7 +19,7 @@ export function SiteHeader() {
         <div id="logo">Bicycle Compatibility</div>
       </div>
       <div className="flex h-14 items-center gap-3 px-4">
-        {spinnerActive && <Spinner />}
+        <Spinner isActive={spinnerActive} />
         <ModeToggle />
       </div>
     </header>

@@ -113,6 +113,7 @@ export function GroupManager() {
 
     // No compatible components path
     if (filteredCompData.length === 0) {
+      previousGroupedDataRef.current = null; // Clear previous data ref for next loading state
       return (
         <small className="text-destructive">
           Selected components do not share compatibility.
