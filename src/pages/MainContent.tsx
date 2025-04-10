@@ -5,11 +5,17 @@ import { CommandSearch } from "@/components/CommandSearch.tsx";
 import { GroupManager } from "@/components/GroupManager.tsx";
 import { CodeBadge } from "@/components/CodeBadge.tsx";
 import { useSelectedCodes } from "@/lib/selectedCodeUtils";
-import { useSpinnerContext } from "@/lib/spinnerUtils";
+import { useSpinnerAction, useSpinnerState } from "@/lib/spinnerUtils";
 
 export function MainContent() {
   const selectedCodes = useSelectedCodes(); // Consume selected codes from context
-  const { setSpinnerActive } = useSpinnerContext(); // Consume set spinner state from context
+  const setSpinnerActive = useSpinnerAction(); // Consume set spinner state from context
+
+  //test
+  const spinnerActive = useSpinnerState(); // Consume spinner state from context
+  console.log(spinnerActive);
+
+  console.log("main content rendered", selectedCodes);
 
   // TanStack useQuery to query all component codes
   const allCodesResult = useQuery({
@@ -21,6 +27,8 @@ export function MainContent() {
 
   // Spinner state management on allCodesResult status
   React.useEffect(() => {
+    console.log("setSpinnerActive useEffect ran", allCodesResult.isPending);
+
     if (allCodesResult.isPending) {
       setSpinnerActive(true);
     } else {

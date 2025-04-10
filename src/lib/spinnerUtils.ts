@@ -1,18 +1,23 @@
 import * as React from "react";
 
-type SpinnerContextType = {
-  spinnerActive: boolean;
-  setSpinnerActive: React.Dispatch<React.SetStateAction<boolean>>;
-};
+export const SpinnerStateContext = React.createContext<boolean | null>(null);
 
-export const SpinnerContext = React.createContext<SpinnerContextType | null>(
-  null,
-);
+export const SpinnerActionContext = React.createContext<React.Dispatch<
+  React.SetStateAction<boolean>
+> | null>(null);
 
-export function useSpinnerContext() {
-  const context = React.useContext(SpinnerContext);
-  if (!context) {
-    throw new Error("missing SpinnerContext provider");
+export function useSpinnerState() {
+  const context = React.useContext(SpinnerStateContext);
+  if (context === null) {
+    throw new Error("missing SpinnerStateContext provider");
+  }
+  return context;
+}
+
+export function useSpinnerAction() {
+  const context = React.useContext(SpinnerActionContext);
+  if (context === null) {
+    throw new Error("missing SpinnerActionContext provider");
   }
   return context;
 }

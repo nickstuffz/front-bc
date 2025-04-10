@@ -2,11 +2,11 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ModeToggle } from "@/components/ModeToggle";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/Spinner";
-import { useSpinnerContext } from "@/lib/spinnerUtils";
+import { useSpinnerState } from "@/lib/spinnerUtils";
 
 export function SiteHeader() {
-  const { spinnerActive } = useSpinnerContext();
-  console.log(spinnerActive);
+  // const spinnerActive = useSpinnerState();
+  const spinnerActive = false;
 
   return (
     <header className="bg-background sticky inset-x-0 top-0 isolate z-10 flex shrink-0 items-center justify-between gap-2 border-b">

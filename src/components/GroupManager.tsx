@@ -5,11 +5,11 @@ import { intersectArrays } from "@/lib/toolUtils";
 import { CardGroup } from "@/components/CardGroup.tsx";
 import { GroupedCompatDataType } from "@/types/types.ts";
 import { useSelectedCodes } from "@/lib/selectedCodeUtils";
-import { useSpinnerContext } from "@/lib/spinnerUtils";
+import { useSpinnerAction } from "@/lib/spinnerUtils";
 
 export function GroupManager() {
   const selectedCodes = useSelectedCodes(); // Consume selected codes from context
-  const { setSpinnerActive } = useSpinnerContext(); // Consume set spinner state from context
+  const setSpinnerActive = useSpinnerAction(); // Consume set spinner state from context
   const previousGroupedDataRef = React.useRef<GroupedCompatDataType | null>(
     null,
   ); // Ref to store previous succesful data

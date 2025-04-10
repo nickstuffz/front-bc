@@ -35,7 +35,6 @@ export function CardGroup({ groupData }: CardGroupProps) {
 
   // determine default values for accordion, sets accordion item to open if it has a pressed code
   const defaultOpen = Object.keys(catGroupData).filter((category) => {
-    console.log("defaultOpen calculated");
     return catGroupData[category].some((component) => {
       return selectedCodes.includes(component.code);
     });
