@@ -1,3 +1,4 @@
+import * as React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAllCodes } from "@/services/api.ts";
 import { CommandSearch } from "@/components/CommandSearch.tsx";
@@ -18,21 +19,25 @@ export function MainContent() {
     gcTime: 1000 * 60 * 60 * 24, // 1 day
   });
 
+  // Spinner state management on allCodesResult status
+  React.useEffect(() => {
+    if (allCodesResult.isPending) {
+      setSpinnerActive(true);
+    } else {
+      setSpinnerActive(false);
+    }
+  }, [allCodesResult.isPending, setSpinnerActive]);
+
   let allCodes: { code: string }[] = []; // Initialize empty array for all codes
   // allCodes error path
   if (allCodesResult.isError) {
-    setSpinnerActive(false);
     return (
       <small className="text-destructive">Error loading component codes</small>
     );
   }
-  // allCodes pending conditional
-  else if (allCodesResult.isPending) {
-    setSpinnerActive(true);
-  }
-  // allCodes success conditional
-  else if (allCodesResult.isSuccess) {
-    setSpinnerActive(false);
+
+  // allCodes success conditional, NO RETURN
+  if (allCodesResult.isSuccess) {
     allCodes = allCodesResult.data;
   }
 

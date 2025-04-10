@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useQueries } from "@tanstack/react-query";
 import { fetchCompatData } from "@/services/api.ts";
-import { intersectArrays } from "@/lib/utils.ts";
+import { intersectArrays } from "@/lib/toolUtils";
 import { CardGroup } from "@/components/CardGroup.tsx";
 import { GroupedCompatDataType } from "@/types/types.ts";
 import { useSelectedCodes } from "@/lib/selectedCodeUtils";
@@ -10,6 +10,9 @@ import { useSpinnerContext } from "@/lib/spinnerUtils";
 export function GroupManager() {
   const selectedCodes = useSelectedCodes(); // Consume selected codes from context
   const { setSpinnerActive } = useSpinnerContext(); // Consume set spinner state from context
+  const previousGroupedDataRef = React.useRef<GroupedCompatDataType | null>(
+    null,
+  ); // Ref to store previous succesful data
 
   // TanStack useQueries to query each selected code
   const queries = useQueries({
@@ -25,13 +28,23 @@ export function GroupManager() {
   // Derive overall state of queries
   const overallQueryState = React.useMemo(() => {
     const isError = queries.some((query) => query.isError);
-    const isLoading = queries.some((query) => query.isLoading);
+    const isPending = queries.some((query) => query.isPending);
     const isSuccess = queries.every((query) => query.isSuccess);
-    return { isError, isLoading, isSuccess };
+    return { isError, isPending, isSuccess };
   }, [queries]);
+
+  // Spinner state management on overallQueryState status
+  React.useEffect(() => {
+    if (overallQueryState.isPending) {
+      setSpinnerActive(true);
+    } else {
+      setSpinnerActive(false);
+    }
+  }, [overallQueryState.isPending, setSpinnerActive]);
 
   // Empty selectedCodes path
   if (selectedCodes.length === 0) {
+    previousGroupedDataRef.current = null; // Clear previous data ref for next loading state
     return (
       <small className="text-destructive">
         Please select a component code.
@@ -40,8 +53,7 @@ export function GroupManager() {
   }
 
   // overallQueryState error path
-  else if (overallQueryState.isError) {
-    setSpinnerActive(false);
+  if (overallQueryState.isError) {
     return (
       <small className="text-destructive">
         Failed to fetch compatibility data.
@@ -50,13 +62,28 @@ export function GroupManager() {
   }
 
   // overallQueryState loading path
-  else if (overallQueryState.isLoading) {
-    setSpinnerActive(true);
-    return <div>Loading...</div>; // REPLACE WITH EXISTING DATA UI
+  else if (overallQueryState.isPending) {
+    // Render using previous grouped data if available
+    if (previousGroupedDataRef.current) {
+      const previousGroupedData = previousGroupedDataRef.current;
+
+      return (
+        <div className="group_container flex flex-1 flex-col gap-4">
+          {Object.keys(previousGroupedDataRef.current).map((source_pod_id) => (
+            <CardGroup
+              key={source_pod_id}
+              groupData={previousGroupedData[source_pod_id]}
+            />
+          ))}
+        </div>
+      );
+    }
+    // Fallback if no previous data
+    return <small className="text-primary">Loading...</small>;
   }
 
   // overallQueryState success path
-  else if (overallQueryState.isSuccess) {
+  if (overallQueryState.isSuccess) {
     // Ensure query data is available, should cover TS non-null assertions below
     if (queries.some((query) => !query?.data?.compData)) {
       return (
@@ -64,7 +91,7 @@ export function GroupManager() {
       );
     }
 
-    // Process query data START
+    // START PROCESS QUERY DATA
 
     // Extract pod_ids from each compatibility response
     const compatDataPods = queries.map((query) => {
@@ -82,7 +109,7 @@ export function GroupManager() {
         intersectedPods.includes(component.source_pod_id), // AND its source_pod_id is part of the intersected pod ids
     );
 
-    // Process query data END
+    // END PROCESS QUERY DATA
 
     // No compatible components path
     if (filteredCompData.length === 0) {
@@ -104,6 +131,8 @@ export function GroupManager() {
       },
       {},
     );
+
+    previousGroupedDataRef.current = groupedCompatData; // Set previous data ref for next loading state
 
     return (
       <div className="group_container flex flex-1 flex-col gap-4">
