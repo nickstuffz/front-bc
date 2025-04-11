@@ -6,8 +6,6 @@ import { useSpinnerState } from "@/lib/spinnerUtils";
 
 export function SiteHeader() {
   const spinnerActive = useSpinnerState();
-  // const spinnerActive = true;
-  console.log(spinnerActive);
 
   return (
     <header className="bg-background sticky inset-x-0 top-0 isolate z-10 flex shrink-0 items-center justify-between gap-2 border-b select-none">

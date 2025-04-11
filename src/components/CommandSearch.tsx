@@ -26,6 +26,16 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
   const selectedCodes = useSelectedCodes();
   const dispatch = useSelectedCodesDispatch();
 
+  const availableCodes = React.useMemo(() => {
+    console.log("availcodes calculated");
+
+    return allCodes
+      .map((codeObj) => codeObj.code)
+      .filter((code) => !selectedCodes.includes(code));
+  }, [allCodes, selectedCodes]);
+
+  console.log(availableCodes);
+
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
@@ -52,43 +62,46 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
           </kbd>
         </p>
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search component codes..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup>
-            <CommandSeparator />
-            {allCodes.map((currentCode) => (
-              <CommandItem
-                key={currentCode.code}
-                value={currentCode.code}
-                onSelect={(value) => {
-                  const isSelected = selectedCodes.includes(value); // check if code already selected
-
-                  // dispatch an action to add or remove the code
-                  if (isSelected) {
+      {open && (
+        <CommandDialog open={open} onOpenChange={setOpen}>
+          <CommandInput placeholder="Search component codes..." />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup heading="selected">
+              {selectedCodes.map((code) => (
+                <CommandItem
+                  key={code}
+                  value={code}
+                  onSelect={(value) => {
                     dispatch({ type: "deleted", code: value }); // remove the code
-                  } else {
-                    dispatch({ type: "added", code: value }); // add the code
-                  }
+                    setOpen(false);
+                  }}
+                >
+                  <Check className={cn("mr-2 h-4 w-4", "opacity-100")} />
+                  {code}
+                </CommandItem>
+              ))}
+            </CommandGroup>
 
-                  setOpen(false);
-                }}
-              >
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    selectedCodes.includes(currentCode.code)
-                      ? "opacity-100"
-                      : "opacity-0",
-                  )}
-                />
-                {currentCode.code}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </CommandList>
-      </CommandDialog>
+            <CommandSeparator />
+            <CommandGroup>
+              {availableCodes.map((code) => (
+                <CommandItem
+                  key={code}
+                  value={code}
+                  onSelect={(value) => {
+                    dispatch({ type: "added", code: value }); // add the code
+                    setOpen(false);
+                  }}
+                >
+                  <Check className={cn("mr-2 h-4 w-4", "opacity-0")} />
+                  {code}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </CommandDialog>
+      )}
     </>
   );
 }
