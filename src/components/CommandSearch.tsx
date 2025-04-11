@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
   CommandEmpty,
@@ -10,6 +11,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+
 import {
   useSelectedCodes,
   useSelectedCodesDispatch,
@@ -38,17 +40,24 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
 
   return (
     <>
-      <p className="text-muted-foreground text-sm">
-        Press{" "}
-        <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
-          <span className="text-xs">⌘</span>J
-        </kbd>
-      </p>
+      <Button
+        className="px-2 text-xs"
+        variant="outline"
+        onClick={() => setOpen((open) => !open)}
+      >
+        Search components...
+        <p className="text-muted-foreground text-xs">
+          <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
+            <span className="text-sm">⌘</span>J
+          </kbd>
+        </p>
+      </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Search component codes..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup>
+            <CommandSeparator />
             {allCodes.map((currentCode) => (
               <CommandItem
                 key={currentCode.code}
@@ -78,9 +87,6 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
               </CommandItem>
             ))}
           </CommandGroup>
-          <CommandGroup heading="shifters"></CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings"></CommandGroup>
         </CommandList>
       </CommandDialog>
     </>

@@ -10,7 +10,7 @@ export function SiteHeader() {
   console.log(spinnerActive);
 
   return (
-    <header className="bg-background sticky inset-x-0 top-0 isolate z-10 flex shrink-0 items-center justify-between gap-2 border-b">
+    <header className="bg-background sticky inset-x-0 top-0 isolate z-10 flex shrink-0 items-center justify-between gap-2 border-b select-none">
       <div className="flex h-14 items-center gap-2 px-4">
         <SidebarTrigger className="-ml-1.5" />
         <Separator
