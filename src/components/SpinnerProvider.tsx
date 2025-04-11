@@ -5,10 +5,10 @@ export function SpinnerProvider({ children }: { children: React.ReactNode }) {
   const [spinnerActive, setSpinnerActive] = React.useState(false);
 
   return (
-    <SpinnerActionContext.Provider value={setSpinnerActive}>
-      <SpinnerStateContext.Provider value={spinnerActive}>
+    <SpinnerStateContext.Provider value={spinnerActive}>
+      <SpinnerActionContext.Provider value={setSpinnerActive}>
         {children}
-      </SpinnerStateContext.Provider>
-    </SpinnerActionContext.Provider>
+      </SpinnerActionContext.Provider>
+    </SpinnerStateContext.Provider>
   );
 }

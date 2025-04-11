@@ -5,17 +5,13 @@ import { CommandSearch } from "@/components/CommandSearch.tsx";
 import { GroupManager } from "@/components/GroupManager.tsx";
 import { CodeBadge } from "@/components/CodeBadge.tsx";
 import { useSelectedCodes } from "@/lib/selectedCodeUtils";
-import { useSpinnerAction, useSpinnerState } from "@/lib/spinnerUtils";
+import { useSpinnerAction } from "@/lib/spinnerUtils";
 
 export function MainContent() {
   const selectedCodes = useSelectedCodes(); // Consume selected codes from context
   const setSpinnerActive = useSpinnerAction(); // Consume set spinner state from context
 
-  //test
-  const spinnerActive = useSpinnerState(); // Consume spinner state from context
-  console.log(spinnerActive);
-
-  console.log("main content rendered", selectedCodes);
+  // console.log("maincontent render", selectedCodes);
 
   // TanStack useQuery to query all component codes
   const allCodesResult = useQuery({
@@ -27,8 +23,6 @@ export function MainContent() {
 
   // Spinner state management on allCodesResult status
   React.useEffect(() => {
-    console.log("setSpinnerActive useEffect ran", allCodesResult.isPending);
-
     if (allCodesResult.isPending) {
       setSpinnerActive(true);
     } else {
@@ -53,7 +47,7 @@ export function MainContent() {
     <div className="content flex flex-1 flex-col gap-4 p-4">
       <div className="content_header flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <h4 className="text-primary">Selected Codes</h4>
+          <h4>Selected Codes</h4>
           <CommandSearch allCodes={allCodes} />
         </div>
         <div className="badge_container flex flex-1 flex-wrap gap-2">

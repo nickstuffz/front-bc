@@ -11,15 +11,17 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools"; // - Tansta
 export function App() {
   const queryClient = new QueryClient(); // Create a new query client for TanStack
 
+  console.log("App render");
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <SpinnerProvider>
           <SelectedCodesProvider>
-            <div className="overscroll-none antialiased">
+            <div className="text-primary bg-background overscroll-none antialiased">
               <SidebarProvider>
                 <AppSidebar />
-                <main className="bg-background relative flex w-full flex-col">
+                <main className="relative flex w-full flex-col">
                   <SiteHeader />
                   <MainContent />
                 </main>

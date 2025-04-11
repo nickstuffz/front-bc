@@ -30,6 +30,7 @@ What pages to have in future?
 
 General:
 Check for consistency of data structure, kinda a mess
+FOUC flash of light mode in header
 
 CardGroup:
 Accordion not opening to all selected codes on additional code state set

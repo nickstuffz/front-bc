@@ -5,8 +5,9 @@ import { Spinner } from "@/components/Spinner";
 import { useSpinnerState } from "@/lib/spinnerUtils";
 
 export function SiteHeader() {
-  // const spinnerActive = useSpinnerState();
-  const spinnerActive = false;
+  const spinnerActive = useSpinnerState();
+  // const spinnerActive = true;
+  console.log(spinnerActive);
 
   return (
     <header className="bg-background sticky inset-x-0 top-0 isolate z-10 flex shrink-0 items-center justify-between gap-2 border-b">
@@ -16,7 +17,7 @@ export function SiteHeader() {
           orientation="vertical"
           className="mr-2 data-[orientation=vertical]:h-4"
         />
-        <div id="logo">Bicycle Compatibility</div>
+        <div id="logo">Bicycle Compatibility Tool</div>
       </div>
       <div className="flex h-14 items-center gap-3 px-4">
         <Spinner isActive={spinnerActive} />

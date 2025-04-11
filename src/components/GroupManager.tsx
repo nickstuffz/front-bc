@@ -14,6 +14,8 @@ export function GroupManager() {
     null,
   ); // Ref to store previous succesful data
 
+  // console.log("groupmanager render");
+
   // TanStack useQueries to query each selected code
   const queries = useQueries({
     queries: selectedCodes.map((code) => ({
@@ -78,8 +80,9 @@ export function GroupManager() {
         </div>
       );
     }
+
     // Fallback if no previous data
-    return <small className="text-primary">Loading...</small>;
+    return <small>Loading...</small>;
   }
 
   // overallQueryState success path

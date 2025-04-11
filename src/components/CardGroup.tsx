@@ -11,6 +11,8 @@ interface CardGroupProps {
 export function CardGroup({ groupData }: CardGroupProps) {
   const selectedCodes = useSelectedCodes();
 
+  // console.log("cardgroup render");
+
   // groups the compat data by category
   const catGroupData = groupData.reduce(
     (acc: GroupedCompatDataType, compatComponent) => {
