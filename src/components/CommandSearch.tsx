@@ -27,14 +27,10 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
   const dispatch = useSelectedCodesDispatch();
 
   const availableCodes = React.useMemo(() => {
-    console.log("availcodes calculated");
-
     return allCodes
       .map((codeObj) => codeObj.code)
       .filter((code) => !selectedCodes.includes(code));
   }, [allCodes, selectedCodes]);
-
-  console.log(availableCodes);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -67,24 +63,27 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
           <CommandInput placeholder="Search component codes..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="selected">
-              {selectedCodes.map((code) => (
-                <CommandItem
-                  key={code}
-                  value={code}
-                  onSelect={(value) => {
-                    dispatch({ type: "deleted", code: value }); // remove the code
-                    setOpen(false);
-                  }}
-                >
-                  <Check className={cn("mr-2 h-4 w-4", "opacity-100")} />
-                  {code}
-                </CommandItem>
-              ))}
-            </CommandGroup>
-
-            <CommandSeparator />
-            <CommandGroup>
+            {selectedCodes.length > 0 && (
+              <>
+                <CommandGroup heading="selected codes">
+                  {selectedCodes.map((code) => (
+                    <CommandItem
+                      key={code}
+                      value={code}
+                      onSelect={(value) => {
+                        dispatch({ type: "deleted", code: value }); // remove the code
+                        setOpen(false);
+                      }}
+                    >
+                      <Check className={cn("mr-2 h-4 w-4", "opacity-100")} />
+                      {code}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+                <CommandSeparator />
+              </>
+            )}
+            <CommandGroup heading="available codes">
               {availableCodes.map((code) => (
                 <CommandItem
                   key={code}

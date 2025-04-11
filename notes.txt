@@ -1,6 +1,7 @@
-Combobox:
+Command:
 How to limit number of results in Command dropdown?
 How to get combobox to automatically highlight top item?
+Conditional render short circuits transition out (maybe desired)
 
 GroupManager:
 Confirm that data filtering solution actually works
@@ -29,7 +30,7 @@ What pages to have in future?
 - About
 
 General:
-Check for consistency of data structure, kinda a mess
+Check for consistency of data structure
 FOUC flash of light mode in header
 
 CardGroup:
@@ -37,3 +38,4 @@ Accordion not opening to all selected codes on additional code state set
 
 Spinner:
 Figure out why transition cut short
+Conditional render short circuits transition out (maybe desired)
