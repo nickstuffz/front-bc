@@ -82,7 +82,7 @@ export function GroupManager() {
     }
 
     // Fallback if no previous data
-    return <small>Loading...</small>;
+    return <></>;
   }
 
   // overallQueryState success path
