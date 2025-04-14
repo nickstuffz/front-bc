@@ -39,3 +39,7 @@ Accordion not opening to all selected codes on additional code state set
 Spinner:
 Figure out why transition cut short
 Conditional render short circuits transition out (maybe desired)
+
+NOW:
+Add category to allcodes?
+Rewrite app data flow

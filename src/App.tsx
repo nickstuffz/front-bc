@@ -11,8 +11,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools"; // - Tansta
 export function App() {
   const queryClient = new QueryClient(); // Create a new query client for TanStack
 
-  console.log("App render");
-
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>

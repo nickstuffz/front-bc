@@ -28,11 +28,11 @@ export function CardGroup({ groupData }: CardGroupProps) {
   // determine the group title based on the keys of catGroupData
   let groupTitle = "";
   if (Object.keys(catGroupData).includes("rear derailleur")) {
-    groupTitle = "Rear Drivetrain Group";
+    groupTitle = "Rear Drivetrain Option";
   } else if (Object.keys(catGroupData).includes("crankset")) {
-    groupTitle = "Front Drivetrain Group";
+    groupTitle = "Front Drivetrain Option";
   } else if (Object.keys(catGroupData).includes("brake")) {
-    groupTitle = "Brake System Group";
+    groupTitle = "Brake System Option";
   }
 
   // determine default values for accordion, sets accordion item to open if it has a pressed code

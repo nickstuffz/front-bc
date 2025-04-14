@@ -15,8 +15,8 @@ export function SiteHeader() {
           orientation="vertical"
           className="mr-2 data-[orientation=vertical]:h-4"
         />
-        <div id="logo" className="font-mono font-semibold">
-          Bike Part Compatibility Tool
+        <div id="logo" className="font-mono font-semibold text-nowrap">
+          Bike Part Compatibility
         </div>
       </div>
       <div className="flex h-14 items-center gap-3 px-4">

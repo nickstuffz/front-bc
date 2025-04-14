@@ -24,6 +24,7 @@ export function GroupManager() {
       enabled: !!code, // Query only enabled if code is truthy
       staleTime: 1000 * 60 * 60 * 24, // 1 day
       gcTime: 1000 * 60 * 60 * 24, // 1 day
+      // placeholderData implementation does NOT work with useQueries, manual useEffect required
     })),
   });
 
@@ -64,7 +65,7 @@ export function GroupManager() {
   }
 
   // overallQueryState loading path
-  else if (overallQueryState.isPending) {
+  if (overallQueryState.isPending) {
     // Render using previous grouped data if available
     if (previousGroupedDataRef.current) {
       const previousGroupedData = previousGroupedDataRef.current;

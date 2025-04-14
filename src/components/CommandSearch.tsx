@@ -18,7 +18,7 @@ import {
 } from "@/lib/selectedCodeUtils";
 
 interface CommandSearchProps {
-  allCodes: { code: string }[];
+  allCodes: { code: string; category: string }[];
 }
 
 export function CommandSearch({ allCodes }: CommandSearchProps) {
@@ -68,6 +68,7 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
                 <CommandGroup heading="selected codes">
                   {selectedCodes.map((code) => (
                     <CommandItem
+                      className="flex items-center justify-between"
                       key={code}
                       value={code}
                       onSelect={(value) => {
@@ -75,8 +76,13 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
                         setOpen(false);
                       }}
                     >
-                      <Check className={cn("mr-2 h-4 w-4", "opacity-100")} />
-                      {code}
+                      <div className="flex items-center gap-1 pl-2">
+                        <Check className={cn("mr-2 h-4 w-4", "opacity-100")} />
+                        <div>{code}</div>
+                      </div>
+                      <small className="text-primary pr-3 text-xs">
+                        category
+                      </small>
                     </CommandItem>
                   ))}
                 </CommandGroup>
