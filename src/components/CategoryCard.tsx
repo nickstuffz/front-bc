@@ -33,7 +33,11 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
                   prevPodId !== null && prevPodId !== compatComponent.pod_id;
                 prevPodId = compatComponent.pod_id;
 
-                const isPressed = selectedCodes.includes(compatComponent.code)
+                const selectedCodesSet = new Set(
+                  selectedCodes.map((codeObj) => codeObj.code),
+                );
+
+                const isPressed = selectedCodesSet.has(compatComponent.code)
                   ? true
                   : false;
 

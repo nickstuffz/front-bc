@@ -18,10 +18,10 @@ export function GroupManager() {
 
   // TanStack useQueries to query each selected code
   const queries = useQueries({
-    queries: selectedCodes.map((code) => ({
-      queryKey: ["compatData", code],
-      queryFn: () => fetchCompatData(code), // Axios call to fetch compatibility data for particular code
-      enabled: !!code, // Query only enabled if code is truthy
+    queries: selectedCodes.map((codeObj) => ({
+      queryKey: ["compatData", codeObj.code],
+      queryFn: () => fetchCompatData(codeObj.code), // Axios call to fetch compatibility data for particular code
+      enabled: !!codeObj.code, // Query only enabled if code is truthy
       staleTime: 1000 * 60 * 60 * 24, // 1 day
       gcTime: 1000 * 60 * 60 * 24, // 1 day
       // placeholderData implementation does NOT work with useQueries, manual useEffect required

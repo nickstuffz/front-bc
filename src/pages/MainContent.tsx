@@ -48,8 +48,8 @@ export function MainContent() {
             <CommandSearch allCodes={allCodes} />
           </div>
           <div className="badge_container flex flex-1 flex-wrap gap-2">
-            {selectedCodes.map((code) => (
-              <CodeBadge key={code} code={code} />
+            {selectedCodes.map((codeObj) => (
+              <CodeBadge key={codeObj.code} codeObj={codeObj} />
             ))}
           </div>
         </div>

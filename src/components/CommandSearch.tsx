@@ -11,14 +11,14 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-
 import {
   useSelectedCodes,
   useSelectedCodesDispatch,
 } from "@/lib/selectedCodeUtils";
+import { CodeObjType } from "@/types/types";
 
 interface CommandSearchProps {
-  allCodes: { code: string; category: string }[];
+  allCodes: CodeObjType[];
 }
 
 export function CommandSearch({ allCodes }: CommandSearchProps) {
@@ -27,9 +27,10 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
   const dispatch = useSelectedCodesDispatch();
 
   const availableCodes = React.useMemo(() => {
-    return allCodes
-      .map((codeObj) => codeObj.code)
-      .filter((code) => !selectedCodes.includes(code));
+    const selectedCodesSet = new Set(
+      selectedCodes.map((codeObj) => codeObj.code),
+    );
+    return allCodes.filter((codeObj) => !selectedCodesSet.has(codeObj.code));
   }, [allCodes, selectedCodes]);
 
   React.useEffect(() => {
@@ -39,7 +40,6 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
         setOpen((open) => !open);
       }
     };
-
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
@@ -66,22 +66,25 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
             {selectedCodes.length > 0 && (
               <>
                 <CommandGroup heading="selected codes">
-                  {selectedCodes.map((code) => (
+                  {selectedCodes.map((codeObj) => (
                     <CommandItem
                       className="flex items-center justify-between"
-                      key={code}
-                      value={code}
-                      onSelect={(value) => {
-                        dispatch({ type: "deleted", code: value }); // remove the code
+                      key={codeObj.code}
+                      value={codeObj.code}
+                      onSelect={() => {
+                        dispatch({
+                          type: "deleted",
+                          codeObj: codeObj,
+                        });
                         setOpen(false);
                       }}
                     >
                       <div className="flex items-center gap-1 pl-2">
                         <Check className={cn("mr-2 h-4 w-4", "opacity-100")} />
-                        <div>{code}</div>
+                        <div>{codeObj.code}</div>
                       </div>
                       <small className="text-primary pr-3 text-xs">
-                        category
+                        {codeObj.category}
                       </small>
                     </CommandItem>
                   ))}
@@ -90,17 +93,26 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
               </>
             )}
             <CommandGroup heading="available codes">
-              {availableCodes.map((code) => (
+              {availableCodes.map((codeObj) => (
                 <CommandItem
-                  key={code}
-                  value={code}
-                  onSelect={(value) => {
-                    dispatch({ type: "added", code: value }); // add the code
+                  className="flex items-center justify-between"
+                  key={codeObj.code}
+                  value={codeObj.code}
+                  onSelect={() => {
+                    dispatch({
+                      type: "added",
+                      codeObj: codeObj,
+                    });
                     setOpen(false);
                   }}
                 >
-                  <Check className={cn("mr-2 h-4 w-4", "opacity-0")} />
-                  {code}
+                  <div className="flex items-center gap-1 pl-2">
+                    <Check className={cn("mr-2 h-4 w-4", "opacity-0")} />
+                    <div>{codeObj.code}</div>
+                  </div>
+                  <small className="text-primary pr-3 text-xs">
+                    {codeObj.category}
+                  </small>
                 </CommandItem>
               ))}
             </CommandGroup>

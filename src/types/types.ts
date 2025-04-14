@@ -1,3 +1,8 @@
+export interface CodeObjType {
+  code: string;
+  category: string;
+}
+
 export interface CompatComponentType {
   id: number;
   source_pod_id: number;

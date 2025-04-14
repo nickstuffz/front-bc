@@ -1,7 +1,9 @@
 import * as React from "react";
 
-type SelectedCodesType = string[];
-type SelectedCodesAction = { type: "added" | "deleted"; code: string };
+import { CodeObjType } from "@/types/types";
+
+type SelectedCodesType = CodeObjType[];
+type SelectedCodesAction = { type: "added" | "deleted"; codeObj: CodeObjType };
 
 export const SelectedCodesContext =
   React.createContext<SelectedCodesType | null>(null);
@@ -32,13 +34,12 @@ export function selectedCodesReducer(
 ) {
   switch (action.type) {
     case "added": {
-      return [...selectedCodes, action.code];
+      return [...selectedCodes, action.codeObj];
     }
     case "deleted": {
-      return selectedCodes.filter((code) => code !== action.code);
-    }
-    default: {
-      throw Error("unknown action: " + action.type);
+      return selectedCodes.filter(
+        (codeObj) => codeObj.code !== action.codeObj.code,
+      );
     }
   }
 }
