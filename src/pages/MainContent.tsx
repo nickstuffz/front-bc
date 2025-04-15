@@ -4,12 +4,16 @@ import { fetchAllCodes } from "@/services/api.ts";
 import { CommandSearch } from "@/components/CommandSearch.tsx";
 import { GroupManager } from "@/components/GroupManager.tsx";
 import { CodeBadge } from "@/components/CodeBadge.tsx";
-import { useSelectedCodes } from "@/lib/selectedCodeUtils";
+import {
+  useSelectedCodes,
+  useSelectedCodesDispatch,
+} from "@/lib/selectedCodeUtils";
 import { useSpinnerAction } from "@/lib/spinnerUtils";
 import { RefreshCcw } from "lucide-react";
 
 export function MainContent() {
   const selectedCodes = useSelectedCodes(); // Consume selected codes from context
+  const dispatch = useSelectedCodesDispatch(); // Consume selected codes dispatch from context
   const setSpinnerActive = useSpinnerAction(); // Consume set spinner state from context
 
   // TanStack useQuery to query all component codes
@@ -43,15 +47,17 @@ export function MainContent() {
 
     return (
       <div className="content flex flex-1 flex-col gap-4 p-4">
-        <div className="content_header flex flex-col gap-2.5">
+        <div className="content_header flex flex-col gap-4">
           <div className="flex justify-end">
             <CommandSearch allCodes={allCodes} />
           </div>
 
-          <div className="flex flex-col gap-1 rounded-tr-md border-t-1 border-r-1 py-2">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col gap-2 rounded-tr-md border-t-1 border-r-1 py-2">
+            <div className="flex items-center gap-3">
               <h4>Selected Codes</h4>
-              <RefreshCcw className="w-4.5" />
+              <button onClick={() => dispatch({ type: "clear" })}>
+                <RefreshCcw className="w-4.5" />
+              </button>
             </div>
             <div className="badge_container flex flex-1 flex-wrap gap-2">
               {selectedCodes.map((codeObj) => (

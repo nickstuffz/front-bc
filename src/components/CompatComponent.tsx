@@ -35,7 +35,7 @@ export function CompatComponent({
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
-        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground m-0 flex w-full justify-between rounded-xs border border-dotted p-0 px-4"
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground m-0 flex w-full justify-between rounded-sm border border-dotted p-0 px-4"
       >
         <small className="m-0 p-0">{compCompData.code}</small>
         <p className="text-[10px] leading-none">{compCompData.note}</p>

@@ -3,7 +3,9 @@ import * as React from "react";
 import { CodeObjType } from "@/types/types";
 
 type SelectedCodesType = CodeObjType[];
-type SelectedCodesAction = { type: "added" | "deleted"; codeObj: CodeObjType };
+type SelectedCodesAction =
+  | { type: "added" | "deleted" | "clear"; codeObj: CodeObjType }
+  | { type: "clear" };
 
 export const SelectedCodesContext =
   React.createContext<SelectedCodesType | null>(null);
@@ -40,6 +42,9 @@ export function selectedCodesReducer(
       return selectedCodes.filter(
         (codeObj) => codeObj.code !== action.codeObj.code,
       );
+    }
+    case "clear": {
+      return [];
     }
   }
 }
