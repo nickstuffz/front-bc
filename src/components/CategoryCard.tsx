@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { useSelectedCodes } from "@/lib/selectedCodeUtils";
 import { CircleCheck } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface CategoryCardProps {
   category: string;
@@ -20,13 +21,27 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
 
   let prevPodId: number | null = null;
 
+  const selectedCodesSet = new Set(
+    selectedCodes.map((codeObj) => codeObj.code),
+  );
+
+  const showCheck = catCardData.some((compatComponent) =>
+    selectedCodesSet.has(compatComponent.code),
+  );
+
   return (
     <AccordionItem value={category}>
       <Card className="m-0 flex flex-col gap-0 rounded-sm border-none p-0 shadow-none">
         <AccordionTrigger className="flex gap-4 px-2">
           <div className="flex flex-1 items-center justify-between">
             <CardTitle>{category}s</CardTitle>
-            <CircleCheck className="w-5" />
+            <CircleCheck
+              className={cn(
+                "w-5",
+                "transition-opacity",
+                showCheck ? "opacity-100" : "opacity-0",
+              )}
+            />
           </div>
         </AccordionTrigger>
         <AccordionContent>
@@ -36,10 +51,6 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
                 const showSeparator =
                   prevPodId !== null && prevPodId !== compatComponent.pod_id;
                 prevPodId = compatComponent.pod_id;
-
-                const selectedCodesSet = new Set(
-                  selectedCodes.map((codeObj) => codeObj.code),
-                );
 
                 const isPressed = selectedCodesSet.has(compatComponent.code)
                   ? true
