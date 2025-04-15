@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useSelectedCodes } from "@/lib/selectedCodeUtils";
+import { CircleCheck } from "lucide-react";
 
 interface CategoryCardProps {
   category: string;
@@ -22,8 +23,11 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
   return (
     <AccordionItem value={category}>
       <Card className="m-0 flex flex-col gap-0 rounded-sm border-none p-0 shadow-none">
-        <AccordionTrigger className="px-2">
-          <CardTitle>{category}s</CardTitle>
+        <AccordionTrigger className="flex gap-4 px-2">
+          <div className="flex flex-1 items-center justify-between">
+            <CardTitle>{category}s</CardTitle>
+            <CircleCheck className="w-5" />
+          </div>
         </AccordionTrigger>
         <AccordionContent>
           <CardContent className="m-0 p-0">
