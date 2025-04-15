@@ -76,7 +76,6 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
                           type: "deleted",
                           codeObj: codeObj,
                         });
-                        setOpen(false);
                       }}
                     >
                       <div className="flex items-center gap-1 pl-2">
@@ -103,7 +102,6 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
                       type: "added",
                       codeObj: codeObj,
                     });
-                    setOpen(false);
                   }}
                 >
                   <div className="flex items-center gap-1 pl-2">

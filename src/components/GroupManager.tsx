@@ -14,12 +14,10 @@ export function GroupManager() {
     null,
   ); // Ref to store previous succesful data
 
-  // console.log("groupmanager render");
-
   // TanStack useQueries to query each selected code
   const queries = useQueries({
     queries: selectedCodes.map((codeObj) => ({
-      queryKey: ["compatData", codeObj.code],
+      queryKey: ["compData", codeObj.code],
       queryFn: () => fetchCompatData(codeObj.code), // Axios call to fetch compatibility data for particular code
       enabled: !!codeObj.code, // Query only enabled if code is truthy
       staleTime: 1000 * 60 * 60 * 24, // 1 day
@@ -83,12 +81,12 @@ export function GroupManager() {
     }
 
     // Fallback if no previous data
-    return <></>;
+    return null;
   }
 
   // overallQueryState success path
   if (overallQueryState.isSuccess) {
-    // Ensure query data is available, should cover TS non-null assertions below
+    // TS doesn't recognize bundled overallQueryState. Ensure query data is available, should cover TS non-null assertions below.
     if (queries.some((query) => !query?.data?.compData)) {
       return (
         <small className="text-destructive">Missing compatibility data.</small>

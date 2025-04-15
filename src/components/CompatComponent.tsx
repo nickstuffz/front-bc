@@ -15,7 +15,7 @@ export function CompatComponent({
 
   // NOTE: this compCompData category is pulled from the compatData query: CompatComponentType
   // whereas selectedCodes is pulled from the allCodes query: CodeObjType
-  // not an ideal implementation. the SQL query on the backend ensure they will be the same though as the categories are pulled from the same table.
+  // the SQL query on the backend ensure they will be the sam, as the categories are pulled from the same table.
   function handleToggle() {
     if (isPressed) {
       dispatch({

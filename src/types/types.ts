@@ -17,7 +17,7 @@ export interface CompatComponentType {
   warning: string;
 }
 
-export interface CompatDataResponse {
+export interface CompDataResponse {
   code: string;
   compData: CompatComponentType[];
 }
