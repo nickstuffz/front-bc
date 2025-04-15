@@ -47,7 +47,7 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
   return (
     <>
       <Button
-        className="px-2 text-xs"
+        className="border-accent-foreground px-3 text-xs"
         variant="outline"
         onClick={() => setOpen((open) => !open)}
       >
