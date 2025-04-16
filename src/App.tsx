@@ -17,7 +17,7 @@ export function App() {
         <SpinnerProvider>
           <SelectedCodesProvider>
             <div className="text-primary bg-background overscroll-none antialiased">
-              <SidebarProvider>
+              <SidebarProvider defaultOpen={false}>
                 <AppSidebar />
                 <main className="relative flex w-full flex-col">
                   <SiteHeader />
