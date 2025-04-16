@@ -32,6 +32,7 @@ What pages to have in future?
 General:
 Check for consistency of data structure
 FOUC flash of light mode in header
+Some components with different notes are in the same pod, this leads to a double select in UI (might not be worth fixing)
 
 CardGroup:
 Accordion not opening to all selected codes on additional code state set

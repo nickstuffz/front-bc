@@ -52,8 +52,8 @@ export function MainContent() {
             <CommandSearch allCodes={allCodes} />
           </div>
 
-          <div className="flex flex-col gap-2 rounded-tr-md border-t-1 border-r-1 py-2">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col gap-2 rounded-tr-md border-t-1 border-r-1 pt-2">
+            <div className="flex items-center gap-2">
               <h4>Selected Codes</h4>
               <button onClick={() => dispatch({ type: "clear" })}>
                 <RefreshCcw className="w-4.5" />
