@@ -1,6 +1,6 @@
 Command:
+Scroll position undesired on code select inside Command Search. Remove
 How to limit number of results in Command dropdown?
-How to get combobox to automatically highlight top item?
 Conditional render short circuits transition out (maybe desired)
 
 GroupManager:
@@ -42,5 +42,3 @@ Figure out why transition cut short
 Conditional render short circuits transition out (maybe desired)
 
 NOW:
-Add category to allcodes?
-Rewrite app data flow
