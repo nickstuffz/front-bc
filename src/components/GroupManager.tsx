@@ -47,9 +47,7 @@ export function GroupManager() {
   if (selectedCodes.length === 0) {
     previousGroupedDataRef.current = null; // Clear previous data ref for next loading state
     return (
-      <small className="text-destructive">
-        Please select a component code.
-      </small>
+      <small className="text-primary">Please select a component code.</small>
     );
   }
 
@@ -117,7 +115,7 @@ export function GroupManager() {
     if (filteredCompData.length === 0) {
       previousGroupedDataRef.current = null; // Clear previous data ref for next loading state
       return (
-        <small className="text-destructive">
+        <small className="text-primary">
           Selected components do not share compatibility.
         </small>
       );
