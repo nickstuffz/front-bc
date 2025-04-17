@@ -58,65 +58,63 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
           </kbd>
         </p>
       </Button>
-      {open && (
-        <CommandDialog open={open} onOpenChange={setOpen}>
-          <CommandInput placeholder="Search component codes..." />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-            {selectedCodes.length > 0 && (
-              <>
-                <CommandGroup heading="selected codes">
-                  {selectedCodes.map((codeObj) => (
-                    <CommandItem
-                      className="flex items-center justify-between"
-                      key={codeObj.code}
-                      value={codeObj.code}
-                      onSelect={() => {
-                        dispatch({
-                          type: "deleted",
-                          codeObj: codeObj,
-                        });
-                      }}
-                    >
-                      <div className="flex items-center gap-1 pl-2">
-                        <Check className={cn("mr-2 h-4 w-4", "opacity-100")} />
-                        <div>{codeObj.code}</div>
-                      </div>
-                      <small className="text-primary pr-3 text-xs">
-                        {codeObj.category}
-                      </small>
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-                <CommandSeparator />
-              </>
-            )}
-            <CommandGroup heading="available codes">
-              {availableCodes.map((codeObj) => (
-                <CommandItem
-                  className="flex items-center justify-between"
-                  key={codeObj.code}
-                  value={codeObj.code}
-                  onSelect={() => {
-                    dispatch({
-                      type: "added",
-                      codeObj: codeObj,
-                    });
-                  }}
-                >
-                  <div className="flex items-center gap-1 pl-2">
-                    <Check className={cn("mr-2 h-4 w-4", "opacity-0")} />
-                    <div>{codeObj.code}</div>
-                  </div>
-                  <small className="text-primary pr-3 text-xs">
-                    {codeObj.category}
-                  </small>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </CommandDialog>
-      )}
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput className="" placeholder="Search component codes..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          {selectedCodes.length > 0 && (
+            <>
+              <CommandGroup heading="selected codes">
+                {selectedCodes.map((codeObj) => (
+                  <CommandItem
+                    className="flex items-center justify-between"
+                    key={codeObj.code}
+                    value={codeObj.code}
+                    onSelect={() => {
+                      dispatch({
+                        type: "deleted",
+                        codeObj: codeObj,
+                      });
+                    }}
+                  >
+                    <div className="flex items-center gap-1 pl-2">
+                      <Check className={cn("mr-2 h-4 w-4", "opacity-100")} />
+                      <div>{codeObj.code}</div>
+                    </div>
+                    <small className="text-primary pr-3 text-xs">
+                      {codeObj.category}
+                    </small>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+              <CommandSeparator />
+            </>
+          )}
+          <CommandGroup heading="available codes">
+            {availableCodes.map((codeObj) => (
+              <CommandItem
+                className="flex items-center justify-between"
+                key={codeObj.code}
+                value={codeObj.code}
+                onSelect={() => {
+                  dispatch({
+                    type: "added",
+                    codeObj: codeObj,
+                  });
+                }}
+              >
+                <div className="flex items-center gap-1 pl-2">
+                  <Check className={cn("mr-2 h-4 w-4", "opacity-0")} />
+                  <div>{codeObj.code}</div>
+                </div>
+                <small className="text-primary pr-3 text-xs">
+                  {codeObj.category}
+                </small>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
     </>
   );
 }

@@ -10,6 +10,7 @@ import {
 } from "@/lib/selectedCodeUtils";
 import { useSpinnerAction } from "@/lib/spinnerUtils";
 import { RefreshCcw } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function MainContent() {
   const selectedCodes = useSelectedCodes(); // Consume selected codes from context
@@ -55,9 +56,13 @@ export function MainContent() {
           <div className="flex flex-col gap-2 rounded-tr-md border-t-1 border-r-1 pt-2">
             <div className="flex items-center gap-2">
               <h4>Selected Codes</h4>
-              <button onClick={() => dispatch({ type: "clear" })}>
-                <RefreshCcw className="w-4.5" />
-              </button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => dispatch({ type: "clear" })}
+              >
+                <RefreshCcw />
+              </Button>
             </div>
             <div className="badge_container flex flex-1 flex-wrap gap-2">
               {selectedCodes.map((codeObj) => (
