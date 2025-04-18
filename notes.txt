@@ -41,4 +41,8 @@ Spinner:
 Figure out why transition cut short
 Conditional render short circuits transition out (maybe desired)
 
+ShadCn:
+NOTE the automatic npx shadcn install does NOT add necessary CSS as I'm not using a tailwind config file. MUST click manual install
+get the CSS from there
+
 NOW:

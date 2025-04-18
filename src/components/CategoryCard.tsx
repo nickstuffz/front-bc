@@ -46,7 +46,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
         </AccordionTrigger>
         <AccordionContent>
           <CardContent className="m-0 p-0">
-            <ul className="flex list-none flex-col gap-0">
+            <ul className="flex list-none flex-col">
               {catCardData.map((compatComponent) => {
                 const showSeparator =
                   prevPodId !== null && prevPodId !== compatComponent.pod_id;

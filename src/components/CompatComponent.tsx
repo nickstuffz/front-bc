@@ -35,7 +35,15 @@ export function CompatComponent({
   }
 
   return (
-    <div className="compat_component flex items-start gap-2 py-2">
+    <div className="compat_component my-2 flex items-start gap-2">
+      <button className="mt-2 pr-1" onClick={() => setIsExpanded(!isExpanded)}>
+        {isExpanded ? (
+          <Minimize className="h-4.5 w-4.5" />
+        ) : (
+          <Maximize className="h-4.5 w-4.5" />
+        )}
+      </button>
+
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
@@ -44,54 +52,38 @@ export function CompatComponent({
         {isExpanded ? (
           <>
             <div className="flex flex-1 flex-col items-start gap-0 text-start text-wrap">
-              <small className="f m-0 border-b-1 pb-1">
-                {compCompData.code}
-              </small>
+              <small className="m-0">{compCompData.code}</small>
               <p className="mt-2">{compCompData.note}</p>
               <p className="mt-2">
                 {compCompData.warning ? "# " + compCompData.warning : null}
               </p>
               <div></div>
             </div>
-            <div className="flex flex-col items-end justify-end">
-              <p>{compCompData.status}</p>
-            </div>
           </>
         ) : (
           <>
-            <small className="m-0 p-0">{compCompData.code}</small>
-
-            <p className="">{compCompData.note}</p>
+            <small>{compCompData.code}</small>
+            <div className="flex flex-col items-start justify-between">
+              <p>{compCompData.status}</p>
+              <p>{compCompData.note}</p>
+            </div>
           </>
         )}
       </Toggle>
-      <div className="flex flex-col gap-2">
-        {isExpanded ? (
-          <>
-            <button className="p-1" onClick={() => setIsExpanded(!isExpanded)}>
-              <Minimize className="h-4.5 w-4.5" />
-            </button>
-            {compCompData.link ? (
-              <a
-                target="_blank"
-                href={compCompData.link}
-                rel="noreferrer"
-                className="p-1"
-              >
-                <SquareArrowOutUpRight className="h-4.5 w-4.5" />
-              </a>
-            ) : (
-              <div className="p-1">
-                <SquareArrowOutUpRight className="text-muted h-4.5 w-4.5" />
-              </div>
-            )}
-          </>
-        ) : (
-          <button className="p-1" onClick={() => setIsExpanded(!isExpanded)}>
-            <Maximize className="h-4.5 w-4.5" />
-          </button>
-        )}
-      </div>
+      {compCompData.link ? (
+        <a
+          target="_blank"
+          href={compCompData.link}
+          rel="noreferrer"
+          className="mt-2 pl-1"
+        >
+          <SquareArrowOutUpRight className="h-4.5 w-4.5" />
+        </a>
+      ) : (
+        <div className="mt-2 pl-1">
+          <SquareArrowOutUpRight className="text-muted h-4.5 w-4.5" />
+        </div>
+      )}
     </div>
   );
 }
