@@ -36,46 +36,50 @@ export function CompatComponent({
 
   return (
     <div className="compat_component my-2 flex items-start gap-2">
-      <button className="mt-2 pr-1" onClick={() => setIsExpanded(!isExpanded)}>
-        {isExpanded ? (
-          <Minimize className="h-4.5 w-4.5" />
-        ) : (
-          <Maximize className="h-4.5 w-4.5" />
-        )}
-      </button>
+      {compCompData.warning ? (
+        <button
+          className="mt-2.5 mr-1"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? (
+            <Minimize className="h-4.5 w-4.5" />
+          ) : (
+            <Maximize className="h-4.5 w-4.5" />
+          )}
+        </button>
+      ) : (
+        <div className="mt-2.5 mr-1">
+          <Maximize className="text-muted h-4.5 w-4.5" />
+        </div>
+      )}
 
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
-        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 flex h-auto min-h-0 w-full items-start justify-between rounded-sm border border-dotted px-3 py-2.5"
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 flex h-auto w-full items-start justify-between rounded-sm border px-2 py-0"
       >
-        {isExpanded ? (
-          <>
-            <div className="flex flex-1 flex-col items-start gap-0 text-start text-wrap">
-              <small className="m-0">{compCompData.code}</small>
+        <div className="flex flex-1 flex-col items-start gap-0 py-2.5">
+          <small className="m-0">{compCompData.code}</small>
+          {isExpanded && (
+            <>
               <p className="mt-2">{compCompData.note}</p>
-              <p className="mt-2">
-                {compCompData.warning ? "# " + compCompData.warning : null}
-              </p>
-              <div></div>
-            </div>
-          </>
-        ) : (
-          <>
-            <small>{compCompData.code}</small>
-            <div className="flex flex-col items-start justify-between">
-              <p>{compCompData.status}</p>
-              <p>{compCompData.note}</p>
-            </div>
-          </>
-        )}
+              {compCompData.warning && (
+                <p className="mt-2">{"# " + compCompData.warning}</p>
+              )}
+            </>
+          )}
+        </div>
+        <div className="flex flex-col items-end justify-start gap-1.5 pt-1">
+          <p className="text-[0.62rem]">{compCompData.status}</p>
+          {!isExpanded && <p className="text-[0.62rem]">{compCompData.note}</p>}
+        </div>
       </Toggle>
       {compCompData.link ? (
         <a
           target="_blank"
           href={compCompData.link}
           rel="noreferrer"
-          className="mt-2 pl-1"
+          className="mt-2.5 ml-1"
         >
           <SquareArrowOutUpRight className="h-4.5 w-4.5" />
         </a>
@@ -87,14 +91,3 @@ export function CompatComponent({
     </div>
   );
 }
-
-//                            open link JSX
-// {hasLink ? (
-//   <a target="_blank" href={compCompData.link} rel="noreferrer">
-//     <SquareArrowOutUpRight className="w-4" />
-//   </a>
-// ) : (
-//   <div>
-//     <SquareArrowOutUpRight className="text-muted w-4" />
-//   </div>
-// )}

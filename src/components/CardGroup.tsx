@@ -50,7 +50,7 @@ export function CardGroup({ groupData }: CardGroupProps) {
         <h3>{groupTitle}</h3>
       </CardTitle>
 
-      <CardContent>
+      <CardContent className="px-4">
         <Accordion
           type="multiple"
           // defaultValue={defaultOpen}

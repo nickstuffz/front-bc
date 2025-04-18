@@ -59,7 +59,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
                 return (
                   <div key={compatComponent.id}>
                     {showSeparator && (
-                      <Separator className="bg-accent-foreground my-2" />
+                      <Separator className="bg-accent-foreground mt-1 mb-4" />
                     )}
                     <li className="m-0 p-0">
                       <CompatComponent
