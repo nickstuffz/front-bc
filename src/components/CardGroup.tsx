@@ -9,11 +9,6 @@ interface CardGroupProps {
 }
 
 export function CardGroup({ groupData }: CardGroupProps) {
-  // DEFAULT OPEN LOGIC shelved for now
-  // const selectedCodes = useSelectedCodes();
-
-  // console.log("cardgroup render");
-
   // groups the compat data by category
   const catGroupData = groupData.reduce(
     (acc: GroupedCompatDataType, compatComponent) => {
@@ -26,28 +21,18 @@ export function CardGroup({ groupData }: CardGroupProps) {
     {},
   );
 
-  // determine the group title based on the keys of catGroupData
-  let groupTitle = "";
-  if (Object.keys(catGroupData).includes("rear derailleur")) {
-    groupTitle = "Rear Drivetrain Option";
-  } else if (Object.keys(catGroupData).includes("crankset")) {
-    groupTitle = "Front Drivetrain Option";
-  } else if (Object.keys(catGroupData).includes("brake")) {
-    groupTitle = "Brake System Option";
-  }
-
-  // DEFAULT OPEN LOGIC (bug, not running every time), shelved for now to decide on proper UX
-  // determine default values for accordion, sets accordion item to open if it has a pressed code
-  // const defaultOpen = Object.keys(catGroupData).filter((category) => {
-  //   return catGroupData[category].some((component) => {
-  //     return selectedCodes.includes(component.code);
-  //   });
-  // });
-
+  const [first, second, ...rest] = groupData[0].pod_kind.split(" ");
   return (
     <Card className="card_group bg-card flex flex-col gap-2 px-0 py-2">
-      <CardTitle className="border-b pt-2 pr-0 pb-3 pl-4">
-        <h3>{groupTitle}</h3>
+      <CardTitle className="flex items-center gap-4 border-b px-4 pt-2 pb-3">
+        <div className="flex flex-col gap-1">
+          <h3>{first + " " + second + " Option"}</h3>
+          <div className="flex gap-2 font-extralight">
+            {rest.map((word) => (
+              <small>{word}</small>
+            ))}
+          </div>
+        </div>
       </CardTitle>
 
       <CardContent className="px-4">
@@ -68,3 +53,13 @@ export function CardGroup({ groupData }: CardGroupProps) {
     </Card>
   );
 }
+// DEFAULT OPEN LOGIC shelved for now
+// const selectedCodes = useSelectedCodes();
+
+// DEFAULT OPEN LOGIC (bug, not running every time), shelved for now to decide on proper UX
+// determine default values for accordion, sets accordion item to open if it has a pressed code
+// const defaultOpen = Object.keys(catGroupData).filter((category) => {
+//   return catGroupData[category].some((component) => {
+//     return selectedCodes.includes(component.code);
+//   });
+// });

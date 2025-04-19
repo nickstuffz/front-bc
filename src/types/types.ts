@@ -9,6 +9,7 @@ export interface CompatComponentType {
   pod_id: number;
   source_pod_name: string;
   pod_name: string;
+  pod_kind: string;
   code: string;
   category: string;
   status: string;
