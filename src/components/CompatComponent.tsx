@@ -62,7 +62,7 @@ export function CompatComponent({
         className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 relative flex h-auto w-full items-start justify-between gap-0 rounded-sm border px-2 py-0"
       >
         <div className="flex flex-1 flex-col items-start gap-0 py-2.5 text-start">
-          <small className="m-0">{compCompData.code}</small>
+          <small className="ml-1">{compCompData.code}</small>
           {isExpanded && (
             <>
               <p className="mt-2 text-wrap">{compCompData.note}</p>
