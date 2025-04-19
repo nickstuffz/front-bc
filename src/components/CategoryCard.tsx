@@ -19,14 +19,41 @@ interface CategoryCardProps {
 export function CategoryCard({ category, catCardData }: CategoryCardProps) {
   const selectedCodes = useSelectedCodes();
 
-  let prevPodId: number | null = null;
-
   const selectedCodesSet = new Set(
     selectedCodes.map((codeObj) => codeObj.code),
   );
 
   const showCheck = catCardData.some((compatComponent) =>
     selectedCodesSet.has(compatComponent.code),
+  );
+
+  let prevPodId: number | null = null;
+
+  const listContent = catCardData.reduce<React.ReactNode[]>(
+    (acc, compatComponent) => {
+      const showSeparator =
+        prevPodId !== null && prevPodId !== compatComponent.pod_id;
+      if (showSeparator) {
+        acc.push(
+          <Separator
+            key={`separator-${compatComponent.id}`}
+            className="bg-accent-foreground"
+          />,
+        );
+      }
+      const isPressed = selectedCodesSet.has(compatComponent.code);
+      acc.push(
+        <li className="m-0 p-0">
+          <CompatComponent
+            compCompData={compatComponent}
+            isPressed={isPressed}
+          />
+        </li>,
+      );
+      prevPodId = compatComponent.pod_id;
+      return acc;
+    },
+    [],
   );
 
   return (
@@ -46,31 +73,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
         </AccordionTrigger>
         <AccordionContent>
           <CardContent className="m-0 p-0">
-            <ul className="flex list-none flex-col">
-              {catCardData.map((compatComponent) => {
-                const showSeparator =
-                  prevPodId !== null && prevPodId !== compatComponent.pod_id;
-                prevPodId = compatComponent.pod_id;
-
-                const isPressed = selectedCodesSet.has(compatComponent.code)
-                  ? true
-                  : false;
-
-                return (
-                  <div key={compatComponent.id}>
-                    {showSeparator && (
-                      <Separator className="bg-accent-foreground mt-1 mb-4" />
-                    )}
-                    <li className="m-0 p-0">
-                      <CompatComponent
-                        compCompData={compatComponent}
-                        isPressed={isPressed}
-                      />
-                    </li>
-                  </div>
-                );
-              })}
-            </ul>
+            <ul className="flex list-none flex-col gap-4">{listContent}</ul>
           </CardContent>
         </AccordionContent>
       </Card>

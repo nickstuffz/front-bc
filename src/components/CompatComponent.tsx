@@ -38,7 +38,7 @@ export function CompatComponent({
   const isVariantNote = variantNoteCategories.includes(compCompData.category);
 
   return (
-    <div className="compat_component my-2 flex items-start gap-2">
+    <div className="compat_component flex items-start gap-2">
       {compCompData.warning || (compCompData.note && !isVariantNote) ? (
         <button
           className="mt-2.5 mr-1"
