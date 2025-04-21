@@ -21,7 +21,6 @@ Use library? Toastify, or DIY it
 Badges:
 
 DarkMode:
-Edit to toggle instead of select, default: system
 
 Router:
 Implement Tanstack Router?
@@ -33,6 +32,7 @@ General:
 Check for consistency of data structure
 FOUC flash of light mode in header
 Some components with different notes are in the same pod, this leads to a double select in UI (might not be worth fixing)
+Install React Compiler
 
 CardGroup:
 Accordion not opening to all selected codes on additional code state set
