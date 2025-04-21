@@ -17,22 +17,24 @@ interface CategoryCardProps {
 }
 
 export function CategoryCard({ category, catCardData }: CategoryCardProps) {
-  const selectedCodes = useSelectedCodes();
+  const selectedCodes = useSelectedCodes(); // Consume selected codes from context
 
+  // Create a Set from selectedCodes
   const selectedCodesSet = new Set(
     selectedCodes.map((codeObj) => codeObj.code),
   );
 
+  // Calculate showCheck boolean for AccordionItem, shows if any of the compatComponents in this category are selected
   const showCheck = catCardData.some((compatComponent) =>
     selectedCodesSet.has(compatComponent.code),
   );
 
+  // Reducer function to calculate list content, renders Separator if necessary
   let prevPodId: number | null = null;
-
   const listContent = catCardData.reduce<React.ReactNode[]>(
     (acc, compatComponent) => {
       const showSeparator =
-        prevPodId !== null && prevPodId !== compatComponent.pod_id;
+        prevPodId !== null && prevPodId !== compatComponent.pod_id; // Separator conditional, shows if pod id changes
       if (showSeparator) {
         acc.push(
           <Separator
@@ -41,7 +43,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
           />,
         );
       }
-      const isPressed = selectedCodesSet.has(compatComponent.code);
+      const isPressed = selectedCodesSet.has(compatComponent.code); // Compat component toggle state, on if in selectedCodes
       acc.push(
         <li key={compatComponent.id} className="m-0 p-0">
           <CompatComponent
@@ -50,7 +52,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
           />
         </li>,
       );
-      prevPodId = compatComponent.pod_id;
+      prevPodId = compatComponent.pod_id; // Update previous pod id, mutation is okay as variable only used in this reducer and reset above. Could include into a reducer initial object as alternative.
       return acc;
     },
     [],

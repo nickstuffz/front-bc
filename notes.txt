@@ -18,9 +18,8 @@ Runtime error boundary?
 Implement error visual component?
 Use library? Toastify, or DIY it
 
-Badges:
-
-DarkMode:
+Site Header:
+Optimize. Theme toggle is rendering 3x at start. 
 
 Router:
 Implement Tanstack Router?

@@ -5,8 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/ThemeProvider";
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
-  console.log("theme", theme);
+  const { theme, setTheme } = useTheme(); // Consume theme and setTheme from context
 
   return (
     <Button

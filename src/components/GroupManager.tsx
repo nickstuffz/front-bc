@@ -121,7 +121,7 @@ export function GroupManager() {
       );
     }
 
-    // Group components by source_pod_id for routing into CardGroup components
+    // Group components by source_pod_id for routing into CardGroups
     const groupedCompatData = filteredCompData.reduce(
       (groupedData: GroupedCompatDataType, compatComponent) => {
         if (!groupedData[compatComponent.source_pod_id]) {

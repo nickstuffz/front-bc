@@ -13,13 +13,10 @@ export function CompatComponent({
   compCompData,
   isPressed,
 }: CompatComponentProps) {
-  const dispatch = useSelectedCodesDispatch();
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const dispatch = useSelectedCodesDispatch(); // Consume selectedCodes dispatch function from context
+  const [isExpanded, setIsExpanded] = React.useState(false); // Basic state for expanded/collapsed state of compat component
 
-  // NOTE: this compCompData category is pulled from the compatData query: CompatComponentType
-  // whereas selectedCodes is pulled from the allCodes query: CodeObjType
-  // the SQL query on the backend ensure they will be the sam, as the categories are pulled from the same table.
-
+  // Handle toggle function to dispatch appropriate action
   function handleToggle() {
     if (isPressed) {
       dispatch({
@@ -34,6 +31,13 @@ export function CompatComponent({
     }
   }
 
+  // NOTE: this compCompData category used in handleToggle is pulled from the compatData query: CompatComponentType
+  // whereas selectedCodes is pulled from the allCodes query: CodeObjType
+  // the SQL query on the backend ensure they will be the sam, as the categories are pulled from the same table.
+
+  // Variant note categories are used to determine the display location of note. Variant notes are notes that spec the specific component itself,
+  // whereas other notes describe the spec of a component it is compatible with.
+  // Conveniently, variant notes are of the following categories, so this is used to delineate them
   const variantNoteCategories = ["bottom bracket", "cassette", "crankset"];
   const isVariantNote = variantNoteCategories.includes(compCompData.category);
 

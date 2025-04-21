@@ -22,10 +22,11 @@ interface CommandSearchProps {
 }
 
 export function CommandSearch({ allCodes }: CommandSearchProps) {
-  const [open, setOpen] = React.useState(false);
-  const selectedCodes = useSelectedCodes();
-  const dispatch = useSelectedCodesDispatch();
+  const [open, setOpen] = React.useState(false); // Basic state for open/closed state of command search dialog modal
+  const selectedCodes = useSelectedCodes(); // Consume selected codes from context
+  const dispatch = useSelectedCodesDispatch(); // Consume selectedCodes dispatch function from context
 
+  // Available codes calculation by filtering out selected codes from all codes
   const availableCodes = React.useMemo(() => {
     const selectedCodesSet = new Set(
       selectedCodes.map((codeObj) => codeObj.code),
@@ -33,6 +34,7 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
     return allCodes.filter((codeObj) => !selectedCodesSet.has(codeObj.code));
   }, [allCodes, selectedCodes]);
 
+  // Handle keydown event to toggle command search dialog modal state
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "j" && (e.metaKey || e.ctrlKey)) {

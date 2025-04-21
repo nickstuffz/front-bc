@@ -5,7 +5,7 @@ import { Spinner } from "@/components/Spinner";
 import { useSpinnerState } from "@/lib/spinnerUtils";
 
 export function SiteHeader() {
-  const spinnerActive = useSpinnerState();
+  const spinnerActive = useSpinnerState(); // Consume spinner state from context
 
   return (
     <header className="bg-background sticky inset-x-0 top-0 isolate z-10 flex shrink-0 items-center justify-between border-b select-none">

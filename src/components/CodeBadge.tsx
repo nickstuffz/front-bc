@@ -9,7 +9,7 @@ interface CodeBadgeProps {
 }
 
 export function CodeBadge({ codeObj }: CodeBadgeProps) {
-  const dispatch = useSelectedCodesDispatch();
+  const dispatch = useSelectedCodesDispatch(); // Consume selectedCodes dispatch function from context
 
   return (
     <Badge className="hover:bg-primary/90 flex items-center justify-between gap-1 py-1 pr-1 pl-1.5">
