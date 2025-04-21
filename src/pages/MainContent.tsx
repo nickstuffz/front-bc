@@ -49,10 +49,10 @@ export function MainContent() {
     return (
       <div className="content flex flex-1 flex-col gap-4 p-4">
         <div className="content_header flex flex-col gap-4">
-          <div className="flex items-center justify-between">
-            <div className="text-primary border-1 border-dashed border-blue-400 p-1 text-xs">
-              Shimano Compatibility <br />
-              2024-2025 ver. 3.0
+          <div className="flex items-center justify-between gap-1">
+            <div className="text-primary text-x flex flex-none flex-col rounded-xs border-1 border-dashed border-blue-400 p-1.5 pt-1">
+              <div className="text-sm sm:text-base">Shimano Compatibility</div>
+              <p className="sm:text-xs">2024-2025 ver. 3.0</p>
             </div>
             <CommandSearch allCodes={allCodes} />
           </div>
