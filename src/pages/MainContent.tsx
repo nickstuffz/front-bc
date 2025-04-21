@@ -66,7 +66,7 @@ export function MainContent() {
                 size="icon"
                 onClick={() => dispatch({ type: "clear" })}
               >
-                <RefreshCcw />
+                <RefreshCcw className="" />
               </Button>
             </div>
             <div className="badge_container flex flex-1 flex-wrap gap-2">
