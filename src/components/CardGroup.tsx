@@ -28,8 +28,8 @@ export function CardGroup({ groupData }: CardGroupProps) {
         <div className="flex flex-col gap-1">
           <h3>{first + " " + second + " Option"}</h3>
           <div className="flex gap-2 font-extralight">
-            {rest.map((word) => (
-              <small>{word}</small>
+            {rest.map((word, index) => (
+              <small key={index}>{word}</small>
             ))}
           </div>
         </div>
