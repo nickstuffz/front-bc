@@ -43,7 +43,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
       }
       const isPressed = selectedCodesSet.has(compatComponent.code);
       acc.push(
-        <li className="m-0 p-0">
+        <li key={compatComponent.id} className="m-0 p-0">
           <CompatComponent
             compCompData={compatComponent}
             isPressed={isPressed}
