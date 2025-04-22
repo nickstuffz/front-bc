@@ -10,7 +10,7 @@ import {
 
 export function AppSidebar({ ...props }) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="offcanvas" variant="floating" {...props}>
       <SidebarHeader>
         <SidebarGroup className="py-0 group-data-[collapsible=icon]:hidden">
           <SidebarGroupContent></SidebarGroupContent>

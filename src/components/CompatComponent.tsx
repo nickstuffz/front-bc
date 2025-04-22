@@ -42,7 +42,7 @@ export function CompatComponent({
   const isVariantNote = variantNoteCategories.includes(compCompData.category);
 
   return (
-    <div className="compat_component flex items-start gap-2">
+    <div className="compat_component md:border-primary/50 flex items-start gap-2 md:gap-1.5 md:rounded-lg md:border md:border-dotted md:px-1.5 md:py-2">
       {compCompData.warning || (compCompData.note && !isVariantNote) ? (
         <button
           className="mt-2.5 mr-1"
@@ -63,10 +63,10 @@ export function CompatComponent({
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
-        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 relative flex h-auto w-full items-start justify-between gap-0 rounded-sm border px-2 py-0"
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 relative flex h-auto w-full items-start justify-between gap-0 rounded-sm border p-0"
       >
-        <div className="flex flex-1 flex-col items-start gap-0 py-2.5 text-start">
-          <small className="ml-1">{compCompData.code}</small>
+        <div className="flex flex-1 flex-col items-start gap-0 px-2 py-2.5 text-start md:px-1 md:py-4">
+          <small className="ml-1 md:ml-0 md:text-xs">{compCompData.code}</small>
           {isExpanded && (
             <>
               <p className="mt-2 text-wrap">{compCompData.note}</p>
@@ -76,10 +76,14 @@ export function CompatComponent({
             </>
           )}
         </div>
-        <div className="absolute top-0 right-2 flex flex-col items-end justify-start gap-1.5 pt-1">
-          <p className="text-[0.62rem]">{compCompData.status}</p>
+        <div className="absolute top-0 right-2 flex flex-col items-end justify-start gap-1.5 pt-1 md:gap-5 md:pt-0.5">
+          <p className="text-[0.62rem] md:text-[0.6rem]">
+            {compCompData.status}
+          </p>
           {!isExpanded && isVariantNote && (
-            <p className="text-[0.62rem]">{compCompData.note}</p>
+            <p className="text-[0.62rem] md:text-[0.6rem]">
+              {compCompData.note}
+            </p>
           )}
         </div>
       </Toggle>
@@ -88,12 +92,12 @@ export function CompatComponent({
           target="_blank"
           href={compCompData.link}
           rel="noreferrer"
-          className="mt-2.5 ml-1"
+          className="mt-2.5 ml-1 md:ml-0"
         >
           <SquareArrowOutUpRight className="h-4.5 w-4.5" />
         </a>
       ) : (
-        <div className="mt-2 pl-1">
+        <div className="mt-2.5 ml-1 md:ml-0">
           <SquareArrowOutUpRight className="text-muted h-4.5 w-4.5" />
         </div>
       )}

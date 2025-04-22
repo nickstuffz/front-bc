@@ -45,3 +45,4 @@ NOTE the automatic npx shadcn install does NOT add necessary CSS as I'm not usin
 get the CSS from there
 
 NOW:
+Responsive design card groups to display horizontally.

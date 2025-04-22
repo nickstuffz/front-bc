@@ -36,8 +36,11 @@ export function CardGroup({ groupData }: CardGroupProps) {
         </div>
       </CardTitle>
 
-      <CardContent className="px-4">
-        <Accordion type="multiple" className="flex flex-col gap-2">
+      <CardContent className="px-4 md:px-2">
+        <Accordion
+          type="multiple"
+          className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-2"
+        >
           {Object.keys(catGroupData).map((category) => (
             <CategoryCard
               key={category}

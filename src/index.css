@@ -139,6 +139,9 @@
 }
 
 @layer base {
+  body {
+    @apply text-primary bg-background overscroll-none antialiased;
+  }
   * {
     @apply border-border outline-ring/50 box-border;
   }

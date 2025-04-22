@@ -59,7 +59,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
   );
 
   return (
-    <AccordionItem value={category}>
+    <AccordionItem className="flex-1 md:border-none" value={category}>
       <Card className="m-0 flex flex-col gap-0 rounded-sm border-none p-0 shadow-none">
         <AccordionTrigger className="flex gap-4 px-2">
           <div className="flex flex-1 items-center justify-start gap-2">
@@ -74,7 +74,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
           </div>
         </AccordionTrigger>
         <AccordionContent>
-          <CardContent className="m-0 p-0">
+          <CardContent className="divide-1 m-0 p-0">
             <ul className="flex list-none flex-col gap-4">{listContent}</ul>
           </CardContent>
         </AccordionContent>

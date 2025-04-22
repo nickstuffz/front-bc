@@ -16,15 +16,13 @@ export function App() {
       <ThemeProvider>
         <SpinnerProvider>
           <SelectedCodesProvider>
-            <div className="text-primary bg-background overscroll-none antialiased">
-              <SidebarProvider defaultOpen={false}>
-                <AppSidebar />
-                <main className="relative flex w-full flex-col">
-                  <SiteHeader />
-                  <MainContent />
-                </main>
-              </SidebarProvider>
-            </div>
+            <SidebarProvider defaultOpen={false}>
+              <AppSidebar />
+              <main className="relative flex w-full flex-col">
+                <SiteHeader />
+                <MainContent />
+              </main>
+            </SidebarProvider>
           </SelectedCodesProvider>
         </SpinnerProvider>
       </ThemeProvider>
