@@ -42,7 +42,7 @@ export function CompatComponent({
   const isVariantNote = variantNoteCategories.includes(compCompData.category);
 
   return (
-    <div className="compat_component md:border-primary/50 flex items-start gap-2 md:gap-1.5 md:rounded-lg md:border md:border-dotted md:px-1.5 md:py-2">
+    <div className="compat_component md:border-primary/50 flex items-start justify-center gap-2 md:gap-1.5 md:rounded-lg md:border md:border-dotted md:px-1.5 md:py-2">
       {compCompData.warning || (compCompData.note && !isVariantNote) ? (
         <button
           className="mt-2.5 mr-1"
@@ -63,29 +63,32 @@ export function CompatComponent({
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
-        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 relative flex h-auto w-full items-start justify-between gap-0 rounded-sm border p-0"
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto w-full max-w-84 flex-col gap-0 rounded-sm border p-1 md:p-0.5"
       >
-        <div className="flex flex-1 flex-col items-start gap-0 px-2 py-2.5 text-start md:px-1 md:py-4">
-          <small className="ml-1 md:ml-0 md:text-xs">{compCompData.code}</small>
-          {isExpanded && (
-            <>
-              <p className="mt-2 text-wrap">{compCompData.note}</p>
-              {compCompData.warning && (
-                <p className="mt-2 text-wrap">{"# " + compCompData.warning}</p>
-              )}
-            </>
-          )}
-        </div>
-        <div className="absolute top-0 right-2 flex flex-col items-end justify-start gap-1.5 pt-1 md:gap-5 md:pt-0.5">
-          <p className="text-[0.62rem] md:text-[0.6rem]">
+        <div className="grid w-full grid-rows-3 gap-0 p-0 text-nowrap">
+          <p className="xs:text-xs xs:mr-1.5 text-end text-[0.62rem] md:mr-0 md:text-[0.6rem]">
             {compCompData.status}
           </p>
+          <small className="2xs:text-center ml-4 self-center text-start md:ml-0 md:text-start md:text-[0.7rem]">
+            {compCompData.code}
+          </small>
           {!isExpanded && isVariantNote && (
-            <p className="text-[0.62rem] md:text-[0.6rem]">
+            <p className="xs:text-xs xs:mr-1.5 self-end text-end text-[0.62rem] md:mr-0 md:text-[0.6rem]">
               {compCompData.note}
             </p>
           )}
         </div>
+
+        {isExpanded && (
+          <div>
+            <p className="text-wrap md:text-[0.54rem]">{compCompData.note}</p>
+            {compCompData.warning && (
+              <p className="mt-1 text-wrap md:text-[0.54rem]">
+                {"# " + compCompData.warning}
+              </p>
+            )}
+          </div>
+        )}
       </Toggle>
       {compCompData.link ? (
         <a

@@ -167,3 +167,47 @@
     @apply text-[0.68rem] leading-none font-light tracking-tight;
   }
 }
+
+/* WORKAROUND: queries below are just for Chrome Dev Tools to show my breakpoints */
+/* 320px - 2xs - xs - sm - md - lg - xl - 2xl */
+@media (max-width: 320px) {
+  body {
+    @apply overscroll-none;
+  }
+}
+@media (max-width: 27rem) {
+  body {
+    @apply overscroll-none;
+  }
+}
+@media (max-width: 30rem) {
+  body {
+    @apply overscroll-none;
+  }
+}
+@media (max-width: 40rem) {
+  body {
+    @apply overscroll-none;
+  }
+}
+@media (max-width: 48rem) {
+  body {
+    @apply overscroll-none;
+  }
+}
+@media (max-width: 64rem) {
+  body {
+    @apply overscroll-none;
+  }
+}
+@media (max-width: 80rem) {
+  body {
+    @apply overscroll-none;
+  }
+}
+
+@media (max-width: 96rem) {
+  body {
+    @apply overscroll-none;
+  }
+}
