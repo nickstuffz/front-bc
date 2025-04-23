@@ -30,13 +30,12 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
   );
 
   // Reducer function to calculate list content, renders Separator if necessary
-  let prevPodId: number | null = null;
-  const ContentList = catCardData.reduce<React.ReactNode[]>(
+  const { items: ContentList } = catCardData.reduce(
     (acc, compatComponent) => {
       const showSeparator =
-        prevPodId !== null && prevPodId !== compatComponent.pod_id; // Separator conditional, shows if pod id changes
+        acc.prevPodId !== null && acc.prevPodId !== compatComponent.pod_id; // Separator conditional, shows if pod id changes
       if (showSeparator) {
-        acc.push(
+        acc.items.push(
           <Separator
             key={`separator-${compatComponent.id}`}
             className="bg-accent-foreground"
@@ -44,7 +43,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
         );
       }
       const isPressed = selectedCodesSet.has(compatComponent.code); // Compat component toggle state, on if in selectedCodes
-      acc.push(
+      acc.items.push(
         <li key={compatComponent.id} className="m-0 p-0">
           <CompatComponent
             compCompData={compatComponent}
@@ -52,10 +51,10 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
           />
         </li>,
       );
-      prevPodId = compatComponent.pod_id; // Update previous pod id, mutation is okay as variable only used in this reducer and reset above. Could include into a reducer initial object as alternative.
+      acc.prevPodId = compatComponent.pod_id; // Update previous pod id
       return acc;
     },
-    [],
+    { items: [] as React.ReactNode[], prevPodId: null as number | null }, // Initial accumulator object
   );
 
   return (
