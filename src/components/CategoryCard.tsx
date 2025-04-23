@@ -31,7 +31,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
 
   // Reducer function to calculate list content, renders Separator if necessary
   let prevPodId: number | null = null;
-  const listContent = catCardData.reduce<React.ReactNode[]>(
+  const ContentList = catCardData.reduce<React.ReactNode[]>(
     (acc, compatComponent) => {
       const showSeparator =
         prevPodId !== null && prevPodId !== compatComponent.pod_id; // Separator conditional, shows if pod id changes
@@ -62,7 +62,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
     <AccordionItem className="flex-1 md:border-none" value={category}>
       <Card className="m-0 flex flex-col gap-0 rounded-sm border-none p-0 shadow-none">
         <AccordionTrigger className="flex gap-4 px-2">
-          <div className="flex flex-1 items-center justify-start gap-2">
+          <div className="flex min-h-7 flex-1 items-center justify-start gap-2">
             <CardTitle>{category}s</CardTitle>
             <Check
               className={cn(
@@ -75,7 +75,9 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
         </AccordionTrigger>
         <AccordionContent>
           <CardContent className="divide-1 m-0 p-0">
-            <ul className="flex list-none flex-col gap-4">{listContent}</ul>
+            <ul className="flex list-none flex-col gap-4 md:gap-2">
+              {ContentList}
+            </ul>
           </CardContent>
         </AccordionContent>
       </Card>

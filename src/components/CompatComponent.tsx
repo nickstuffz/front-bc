@@ -41,44 +41,57 @@ export function CompatComponent({
   const variantNoteCategories = ["bottom bracket", "cassette", "crankset"];
   const isVariantNote = variantNoteCategories.includes(compCompData.category);
 
+  const Expander =
+    compCompData.warning || (compCompData.note && !isVariantNote) ? (
+      <button
+        className=""
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsExpanded(!isExpanded);
+        }}
+      >
+        {isExpanded ? (
+          <Minimize className="size-5" />
+        ) : (
+          <Maximize className="size-5" />
+        )}
+      </button>
+    ) : (
+      <div className="">
+        <Maximize className="text-muted size-5" />
+      </div>
+    );
+
+  const LinkOut = compCompData.link ? (
+    <a target="_blank" href={compCompData.link} rel="noreferrer" className="">
+      <SquareArrowOutUpRight className="size-4.5" />
+    </a>
+  ) : (
+    <div className="">
+      <SquareArrowOutUpRight className="text-muted size-4.5" />
+    </div>
+  );
+
   return (
     <div className="compat_component md:border-primary/50 flex items-start justify-center gap-2 md:gap-1.5 md:rounded-lg md:border md:border-dotted md:px-1.5 md:py-2">
-      {compCompData.warning || (compCompData.note && !isVariantNote) ? (
-        <button
-          className="mt-2.5 mr-1"
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          {isExpanded ? (
-            <Minimize className="h-4.5 w-4.5" />
-          ) : (
-            <Maximize className="h-4.5 w-4.5" />
-          )}
-        </button>
-      ) : (
-        <div className="mt-2.5 mr-1">
-          <Maximize className="text-muted h-4.5 w-4.5" />
-        </div>
-      )}
-
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
-        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto w-full max-w-84 flex-col gap-0 rounded-sm border p-1 md:p-0.5"
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 relative m-0 flex h-auto w-full max-w-84 flex-col gap-0 rounded-sm border p-1 md:p-0.5"
       >
         <div className="grid w-full grid-rows-3 gap-0 p-0 text-nowrap">
-          <p className="xs:text-xs xs:mr-1.5 text-end text-[0.62rem] md:mr-0 md:text-[0.6rem]">
+          <p className="2xs:text-xs xs:mr-1.5 self-start text-end text-[0.62rem] md:mr-0.5 md:text-[0.6rem]">
             {compCompData.status}
           </p>
-          <small className="2xs:text-center ml-4 self-center text-start md:ml-0 md:text-start md:text-[0.7rem]">
+          <small className="self-center text-center md:ml-0 md:py-0.5 md:text-[0.7rem] lg:py-0 lg:text-sm">
             {compCompData.code}
           </small>
           {!isExpanded && isVariantNote && (
-            <p className="xs:text-xs xs:mr-1.5 self-end text-end text-[0.62rem] md:mr-0 md:text-[0.6rem]">
+            <p className="2xs:text-xs xs:mr-1.5 self-end text-end text-[0.62rem] md:mr-0.5 md:text-[0.6rem]">
               {compCompData.note}
             </p>
           )}
         </div>
-
         {isExpanded && (
           <div>
             <p className="text-wrap md:text-[0.54rem]">{compCompData.note}</p>
@@ -90,20 +103,10 @@ export function CompatComponent({
           </div>
         )}
       </Toggle>
-      {compCompData.link ? (
-        <a
-          target="_blank"
-          href={compCompData.link}
-          rel="noreferrer"
-          className="mt-2.5 ml-1 md:ml-0"
-        >
-          <SquareArrowOutUpRight className="h-4.5 w-4.5" />
-        </a>
-      ) : (
-        <div className="mt-2.5 ml-1 md:ml-0">
-          <SquareArrowOutUpRight className="text-muted h-4.5 w-4.5" />
-        </div>
-      )}
+      <div className="flex h-13 flex-col justify-between md:h-12">
+        {LinkOut}
+        {Expander}
+      </div>
     </div>
   );
 }
