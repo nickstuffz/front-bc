@@ -1,15 +1,12 @@
 Command:
 Scroll position undesired on code select inside Command Search. Remove
 How to limit number of results in Command dropdown?
-Conditional render short circuits transition out (maybe desired)
+Optimization: renders on set closed, unnecessary maps
 
 GroupManager:
-Confirm that data filtering solution actually works
-STEP 3 CHECK POD instead of Component for SourcePodID for efficiency?
-Why two renders with isLoading?
+STEP 3 CHECK POD instead of Component for SourcePodID for efficiency
 
 ComponentCode:
-Decide on UI design
 
 TanStack Query settings:
 
@@ -19,7 +16,8 @@ Implement error visual component?
 Use library? Toastify, or DIY it
 
 Site Header:
-Optimize. Theme toggle is rendering 3x at start. 
+Optimize. Theme toggle is rendering 3x at start.
+Bug with header sitting on top of sidebar on side scroll, specific widths.
 
 Router:
 Implement Tanstack Router?
