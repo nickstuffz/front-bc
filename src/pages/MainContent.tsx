@@ -47,7 +47,7 @@ export function MainContent() {
     const allCodes = allCodesResult.data;
 
     return (
-      <div className="content xs:px-6 flex flex-1 flex-col gap-4 p-4 sm:px-8 md:px-4">
+      <div className="content xs:px-6 flex flex-1 flex-col gap-4 p-4 sm:px-8 md:px-4 lg:px-6">
         <div className="content_header flex flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
             <div className="text-primary text-x flex flex-none flex-col rounded-xs border-1 border-dashed border-blue-400 p-1.5 pt-1">
@@ -63,12 +63,12 @@ export function MainContent() {
             <div className="flex items-center gap-2">
               <h4>Selected Codes</h4>
               <Button
-                className="h-7 w-7"
+                className="group size-7"
                 variant="outline"
                 size="icon"
                 onClick={() => dispatch({ type: "clear" })}
               >
-                <RefreshCcw className="" />
+                <RefreshCcw className="group-hover:-rotate-30" />
               </Button>
             </div>
             <div className="badge_container flex flex-1 flex-wrap gap-2">

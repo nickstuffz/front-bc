@@ -36,7 +36,7 @@ export function CardGroup({ groupData }: CardGroupProps) {
         </div>
       </CardTitle>
 
-      <CardContent className="2xs:px-6 px-4 md:px-2">
+      <CardContent className="2xs:px-6 max-w-[1450px] px-4 md:px-2 lg:px-4">
         <Accordion
           type="multiple"
           className="flex flex-col gap-2 md:flex-row md:justify-between xl:gap-4"
