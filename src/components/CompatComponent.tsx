@@ -45,8 +45,7 @@ export function CompatComponent({
     compCompData.warning || (compCompData.note && !isVariantNote) ? (
       <button
         className=""
-        onClick={(e) => {
-          e.stopPropagation();
+        onClick={() => {
           setIsExpanded(!isExpanded);
         }}
       >
@@ -80,50 +79,35 @@ export function CompatComponent({
         className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto w-full flex-col gap-0 rounded-sm border p-0.5 @[210px]:p-1"
       >
         <div className="grid w-full grid-rows-3 gap-0 p-0 text-nowrap">
-          <p className="self-start text-end text-[0.6rem] @[210px]:text-[0.69rem]">
+          <p className="self-start text-end text-[0.6rem] @[210px]:text-[0.69rem] @xs:text-[0.75rem]">
             {compCompData.status}
           </p>
           <small className="my-0.5 self-center text-center text-[0.72rem] @[210px]:text-[0.8rem] @xs:text-[0.95rem]">
             {compCompData.code}
           </small>
           {!isExpanded && isVariantNote && (
-            <p className="self-end text-end text-[0.6rem] @[210px]:text-[0.69rem]">
+            <p className="self-end text-end text-[0.6rem] @[210px]:text-[0.69rem] @xs:text-[0.75rem]">
               {compCompData.note}
             </p>
           )}
         </div>
         {isExpanded && (
           <div>
-            <p className="text-[0.54rem] text-wrap @[210px]:text-[0.6rem]">
+            <p className="text-[0.54rem] text-wrap @[210px]:text-[0.6rem] @xs:text-[0.7rem]">
               {compCompData.note}
             </p>
             {compCompData.warning && (
-              <p className="mt-1 text-[0.54rem] text-wrap @[210px]:text-[0.6rem]">
+              <p className="mt-1 text-[0.54rem] text-wrap @[210px]:text-[0.6rem] @xs:text-[0.7rem]">
                 {"# " + compCompData.warning}
               </p>
             )}
           </div>
         )}
       </Toggle>
-      <div className="flex flex-col justify-start gap-2.5 py-0.5 @[210px]:gap-4.5">
+      <div className="flex flex-col justify-start gap-2.5 py-0.5 @[210px]:gap-4.5 @xs:gap-6">
         {LinkOut}
         {Expander}
       </div>
     </div>
   );
 }
-
-// status
-// 2xs:text-xs xs:mr-1.5 self-start text-end text-[0.62rem] md:mr-0.5 md:text-[0.6rem]
-
-// code
-// self-center text-center md:ml-0 md:py-0.5 md:text-[0.7rem] lg:py-0 lg:text-sm
-
-// note
-// 2xs:text-xs xs:mr-1.5 self-end text-end text-[0.62rem] md:mr-0.5 md:text-[0.6rem]
-
-// expanded:
-//  note
-// text-wrap md:text-[0.54rem]
-//  warning
-// mt-1 text-wrap md:text-[0.54rem]
