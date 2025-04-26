@@ -1,4 +1,5 @@
 import {
+  useSidebar,
   Sidebar,
   SidebarContent,
   SidebarFooter,
@@ -8,6 +9,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  SidebarRail,
 } from "@/components/ui/sidebar";
 import { Link } from "wouter";
 
@@ -35,8 +37,14 @@ const items = [
 ];
 
 export function AppSidebar({ ...props }) {
+  const { setOpenMobile } = useSidebar();
   return (
-    <Sidebar collapsible="offcanvas" variant="floating" {...props}>
+    <Sidebar
+      collapsible="offcanvas"
+      variant="floating"
+      className="z-20"
+      {...props}
+    >
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Pages</SidebarGroupLabel>
@@ -45,7 +53,9 @@ export function AppSidebar({ ...props }) {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link to={item.url}>{item.title}</Link>
+                    <Link onClick={() => setOpenMobile(false)} to={item.url}>
+                      {item.title}
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -54,6 +64,7 @@ export function AppSidebar({ ...props }) {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>Test</SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   );
 }

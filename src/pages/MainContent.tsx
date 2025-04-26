@@ -50,7 +50,7 @@ export function MainContent() {
       <div className="content xs:px-6 flex flex-1 flex-col gap-4 p-4 sm:px-8 md:px-4 lg:px-6">
         <div className="content_header flex flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
-            <div className="text-primary text-x flex flex-none flex-col rounded-xs border-1 border-dashed border-blue-400 p-1.5 pt-1">
+            <div className="text-primary text-x flex flex-none flex-col rounded-xs border-2 border-dashed border-blue-400 p-1.5 pt-1">
               <div className="xs:text-sm text-xs sm:text-base">
                 Shimano Compatibility
               </div>
