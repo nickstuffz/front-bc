@@ -22,9 +22,12 @@ export function App() {
               <main className="relative flex w-full flex-col">
                 <SiteHeader />
                 <Switch>
-                  <Route path="/">Home Page </Route>
-
+                  <Route path="/">Home Page</Route>
                   <Route path="/compatibility/" component={MainContent} />
+                  <Route path="/guide">User Guide</Route>
+                  <Route path="/about">About</Route>
+                  <Route path="/settings">Settings</Route>
+
                   <Route>404 Error, Page Not Found</Route>
                 </Switch>
               </main>

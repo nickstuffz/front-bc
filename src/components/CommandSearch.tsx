@@ -54,8 +54,8 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
         onClick={() => setOpen((open) => !open)}
       >
         Search Components...
-        <p className="text-muted-foreground text-xs">
-          <kbd className="bg-muted text-muted-foreground xs:inline-flex pointer-events-none hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
+        <p className="text-muted-foreground xs:block hidden text-xs">
+          <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
             <span className="text-sm">⌘</span>J
           </kbd>
         </p>
