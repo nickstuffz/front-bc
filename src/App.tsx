@@ -7,6 +7,7 @@ import { SidebarProvider } from "@/components/ui/sidebar"; // - shadCN
 import { AppSidebar } from "@/components/AppSidebar"; // - shadCN / Custom
 import { SiteHeader } from "@/components/SiteHeader"; // - shadCN / Custom
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"; // - Tanstack
+import { Route, Switch } from "wouter"; // Wouter
 
 export function App() {
   const queryClient = new QueryClient(); // Create a new query client for TanStack
@@ -20,7 +21,12 @@ export function App() {
               <AppSidebar />
               <main className="relative flex w-full flex-col">
                 <SiteHeader />
-                <MainContent />
+                <Switch>
+                  <Route path="/">Home Page </Route>
+
+                  <Route path="/compatibility/" component={MainContent} />
+                  <Route>404 Error, Page Not Found</Route>
+                </Switch>
               </main>
             </SidebarProvider>
           </SelectedCodesProvider>

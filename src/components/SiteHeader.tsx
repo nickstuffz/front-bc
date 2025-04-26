@@ -3,6 +3,7 @@ import { ModeToggle } from "@/components/ModeToggle";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/Spinner";
 import { useSpinnerState } from "@/lib/spinnerUtils";
+import { Link } from "wouter";
 
 export function SiteHeader() {
   const spinnerActive = useSpinnerState(); // Consume spinner state from context
@@ -19,7 +20,7 @@ export function SiteHeader() {
           id="logo"
           className="2xs:text-base xs:text-lg font-mono text-sm font-semibold"
         >
-          Bike Part Compatibility
+          <Link to="/">Bike Part Compatibility</Link>
         </div>
       </div>
       <div className="flex h-14 items-center gap-3 pr-4">

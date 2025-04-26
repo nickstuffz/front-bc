@@ -4,21 +4,56 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarHeader,
-  SidebarRail,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
 } from "@/components/ui/sidebar";
+import { Link } from "wouter";
+
+const items = [
+  {
+    title: "Home",
+    url: "/",
+  },
+  {
+    title: "Compatibility",
+    url: "/compatibility",
+  },
+  {
+    title: "User Guide",
+    url: "#",
+  },
+  {
+    title: "About",
+    url: "#",
+  },
+  {
+    title: "Settings",
+    url: "#",
+  },
+];
 
 export function AppSidebar({ ...props }) {
   return (
     <Sidebar collapsible="offcanvas" variant="floating" {...props}>
-      <SidebarHeader>
-        <SidebarGroup className="py-0 group-data-[collapsible=icon]:hidden">
-          <SidebarGroupContent></SidebarGroupContent>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Pages</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link to={item.url}>{item.title}</Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
         </SidebarGroup>
-      </SidebarHeader>
-      <SidebarContent></SidebarContent>
-      <SidebarFooter></SidebarFooter>
-      <SidebarRail />
+      </SidebarContent>
+      <SidebarFooter>Test</SidebarFooter>
     </Sidebar>
   );
 }

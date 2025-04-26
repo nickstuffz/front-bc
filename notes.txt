@@ -4,7 +4,7 @@ How to limit number of results in Command dropdown?
 Optimization: renders on set closed, unnecessary maps
 
 GroupManager:
-STEP 3 CHECK POD instead of Component for SourcePodID for efficiency
+STEP 3 CHECK POD instead of Component for SourcePodID for efficiency (optimization calculation)
 
 ComponentCode:
 
@@ -30,17 +30,19 @@ Check for consistency of data structure
 FOUC flash of light mode in header
 Some components with different notes are in the same pod, this leads to a double select in UI (might not be worth fixing)
 Install React Compiler
+Accessibility, keyboard only nav, tab through things
 
 CardGroup:
-Accordion not opening to all selected codes on additional code state set
+Set default open?
 
 Spinner:
-Figure out why transition cut short
-Conditional render short circuits transition out (maybe desired)
 
 ShadCn:
 NOTE the automatic npx shadcn install does NOT add necessary CSS as I'm not using a tailwind config file. MUST click manual install
 get the CSS from there
 
+Routing:
+Get URL working for selectedCodes state in application
+
 NOW:
-Responsive design card groups to display horizontally.
+Sidebar links / styling
