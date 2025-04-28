@@ -18,7 +18,7 @@ export function SiteHeader() {
         />
         <div
           id="logo"
-          className="2xs:text-base xs:text-lg font-mono text-sm font-semibold"
+          className="2xs:text-base xs:text-lg text-sm font-semibold font-stretch-expanded"
         >
           <Link to="/">Bike Part Compatibility</Link>
         </div>

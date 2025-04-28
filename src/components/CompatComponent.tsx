@@ -63,20 +63,20 @@ export function CompatComponent({
 
   const LinkOut = compCompData.link ? (
     <a target="_blank" href={compCompData.link} rel="noreferrer" className="">
-      <SquareArrowOutUpRight className="size-4.5" />
+      <SquareArrowOutUpRight className="size-5" />
     </a>
   ) : (
     <div className="">
-      <SquareArrowOutUpRight className="text-muted size-4.5" />
+      <SquareArrowOutUpRight className="text-muted size-5" />
     </div>
   );
 
   return (
-    <div className="compat_component md:border-primary/50 @container flex items-stretch justify-center gap-2 md:gap-1.5 md:rounded-lg md:border md:border-dotted md:px-1.5 md:py-2">
+    <div className="compat_component md:border-primary/50 overflow-x-none @container flex min-w-[160px] items-stretch gap-2 md:gap-1.5 md:rounded-lg md:border md:border-dotted md:px-1.5 md:py-2">
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
-        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto w-full flex-col gap-0 rounded-sm border p-0.5 @[210px]:p-1"
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto w-full min-w-auto flex-col gap-0 rounded-sm border p-0.5 @[210px]:p-1"
       >
         <div className="grid w-full grid-rows-3 gap-0 p-0 text-nowrap">
           <p className="self-start text-end text-[0.6rem] @[210px]:text-[0.69rem] @xs:text-[0.75rem]">
@@ -104,7 +104,7 @@ export function CompatComponent({
           </div>
         )}
       </Toggle>
-      <div className="flex flex-col justify-start gap-2.5 py-0.5 @[210px]:gap-4.5 @xs:gap-6">
+      <div className="flex min-w-auto flex-col justify-start gap-2.5 py-0.5 @[210px]:gap-4.5 @xs:gap-6">
         {LinkOut}
         {Expander}
       </div>
