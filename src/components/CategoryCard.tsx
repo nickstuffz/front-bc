@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useSelectedCodes } from "@/lib/selectedCodeUtils";
+import { useSelectedCodes } from "@/providers/selectedCodesContext";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 

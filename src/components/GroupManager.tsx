@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useQueries } from "@tanstack/react-query";
 import { fetchCompatData } from "@/services/api.ts";
-import { intersectArrays } from "@/lib/toolUtils";
+import { intersectArrays } from "@/lib/utils";
 import { CardGroup } from "@/components/CardGroup.tsx";
 import { GroupedCompatDataType } from "@/types/types.ts";
-import { useSelectedCodes } from "@/lib/selectedCodeUtils";
-import { useSpinnerAction } from "@/lib/spinnerUtils";
+import { useSelectedCodes } from "@/providers/selectedCodesContext";
+import { useSpinnerAction } from "@/providers/spinnerContext";
 
 export function GroupManager() {
   const selectedCodes = useSelectedCodes(); // Consume selected codes from context

@@ -7,8 +7,8 @@ import { CodeBadge } from "@/components/CodeBadge.tsx";
 import {
   useSelectedCodes,
   useSelectedCodesDispatch,
-} from "@/lib/selectedCodeUtils";
-import { useSpinnerAction } from "@/lib/spinnerUtils";
+} from "@/providers/selectedCodesContext";
+import { useSpinnerAction } from "@/providers/spinnerContext";
 import { RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

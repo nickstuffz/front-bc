@@ -2,7 +2,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ModeToggle } from "@/components/ModeToggle";
 import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/Spinner";
-import { useSpinnerState } from "@/lib/spinnerUtils";
+import { useSpinnerState } from "@/providers/spinnerContext";
 import { Link } from "wouter";
 
 export function SiteHeader() {

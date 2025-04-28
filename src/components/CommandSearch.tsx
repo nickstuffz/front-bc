@@ -14,7 +14,7 @@ import {
 import {
   useSelectedCodes,
   useSelectedCodesDispatch,
-} from "@/lib/selectedCodeUtils";
+} from "@/providers/selectedCodesContext";
 import { CodeObjType } from "@/types/types";
 
 interface CommandSearchProps {

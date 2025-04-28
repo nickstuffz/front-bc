@@ -1,8 +1,9 @@
 import { MainContent } from "@/pages/MainContent.tsx"; // - Custom
+import { Home } from "@/pages/Home.tsx"; // - Custom
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // Query tools - TanStack
-import { ThemeProvider } from "@/components/ThemeProvider"; // Theme provider - shadCN
-import { SpinnerProvider } from "@/components/SpinnerProvider"; // - Custom
-import { SelectedCodesProvider } from "@/components/SelectedCodesProvider"; // Context-Reducer provider for selected codes - Custom
+import { ThemeProvider } from "@/providers/ThemeProvider"; // Theme provider - shadCN
+import { SpinnerProvider } from "@/providers/SpinnerProvider"; // - Custom
+import { SelectedCodesProvider } from "@/providers/SelectedCodesProvider"; // Context-Reducer provider for selected codes - Custom
 import { SidebarProvider } from "@/components/ui/sidebar"; // - shadCN
 import { AppSidebar } from "@/components/AppSidebar"; // - shadCN / Custom
 import { SiteHeader } from "@/components/SiteHeader"; // - shadCN / Custom
@@ -22,7 +23,7 @@ export function App() {
               <main className="relative flex w-full flex-col">
                 <SiteHeader />
                 <Switch>
-                  <Route path="/">Home Page</Route>
+                  <Route path="/" component={Home}></Route>
                   <Route path="/compatibility/" component={MainContent} />
                   <Route path="/guide">User Guide</Route>
                   <Route path="/about">About</Route>

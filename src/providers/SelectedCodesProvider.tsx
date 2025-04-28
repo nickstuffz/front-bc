@@ -3,7 +3,7 @@ import {
   SelectedCodesContext,
   SelectedCodesDispatchContext,
   selectedCodesReducer,
-} from "@/lib/selectedCodeUtils";
+} from "@/providers/selectedCodesContext";
 
 export function SelectedCodesProvider({
   children,

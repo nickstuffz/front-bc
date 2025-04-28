@@ -1,7 +1,7 @@
 import * as React from "react";
 import { CompatComponentType } from "@/types/types.ts";
 import { Toggle } from "@/components/ui/toggle";
-import { useSelectedCodesDispatch } from "@/lib/selectedCodeUtils";
+import { useSelectedCodesDispatch } from "@/providers/selectedCodesContext";
 import { SquareArrowOutUpRight, Maximize, Minimize } from "lucide-react";
 
 interface CompatComponentProps {

@@ -1,5 +1,8 @@
 import * as React from "react";
-import { SpinnerStateContext, SpinnerActionContext } from "@/lib/spinnerUtils";
+import {
+  SpinnerStateContext,
+  SpinnerActionContext,
+} from "@/providers/spinnerContext";
 
 export function SpinnerProvider({ children }: { children: React.ReactNode }) {
   const [spinnerActive, setSpinnerActive] = React.useState(false);
