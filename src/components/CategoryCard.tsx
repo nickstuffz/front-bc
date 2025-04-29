@@ -61,7 +61,7 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
     <AccordionItem className="flex-1 md:border-none" value={category}>
       <Card className="m-0 flex flex-col gap-0 rounded-sm border-none p-0 shadow-none">
         <AccordionTrigger className="flex gap-4 px-2">
-          <div className="flex min-h-7 flex-1 items-center justify-start gap-2">
+          <div className="flex min-h-7 flex-1 items-center justify-start gap-2 text-nowrap">
             <CardTitle>{category}s</CardTitle>
             <Check
               className={cn(

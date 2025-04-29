@@ -7,6 +7,7 @@ GroupManager:
 STEP 3 CHECK POD instead of Component for SourcePodID for efficiency (optimization calculation)
 
 ComponentCode:
+Figure out how to properly code width of compat_component. hardset px right now. can't get the container to not overflow
 
 TanStack Query settings:
 

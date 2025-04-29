@@ -72,11 +72,11 @@ export function CompatComponent({
   );
 
   return (
-    <div className="compat_component md:border-primary/50 overflow-x-none @container flex min-w-[160px] items-stretch gap-2 md:gap-1.5 md:rounded-lg md:border md:border-dotted md:px-1.5 md:py-2">
+    <div className="compat_component md:border-primary/50 @container flex min-w-[160px] items-stretch gap-2 md:gap-1.5 md:rounded-lg md:border md:border-dotted md:px-1.5 md:py-2">
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
-        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto w-full min-w-auto flex-col gap-0 rounded-sm border p-0.5 @[210px]:p-1"
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto min-w-auto flex-1 flex-col gap-0 rounded-sm border p-0.5 @[210px]:p-1"
       >
         <div className="grid w-full grid-rows-3 gap-0 p-0 text-nowrap">
           <p className="self-start text-end text-[0.6rem] @[210px]:text-[0.69rem] @xs:text-[0.75rem]">
