@@ -27,7 +27,7 @@ export function App() {
                   <Route path="/compatibility/" component={MainContent} />
                   <Route path="/guide">User Guide</Route>
                   <Route path="/about">About</Route>
-                  <Route path="/settings">Settings</Route>
+                  {/* <Route path="/settings">Settings</Route> */}
 
                   <Route>404 Error, Page Not Found</Route>
                 </Switch>

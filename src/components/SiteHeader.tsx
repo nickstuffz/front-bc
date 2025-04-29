@@ -18,9 +18,9 @@ export function SiteHeader() {
         />
         <div
           id="logo"
-          className="2xs:text-base xs:text-lg text-sm font-semibold font-stretch-expanded"
+          className="text-lg font-semibold text-nowrap font-stretch-ultra-expanded"
         >
-          <Link to="/">Bike Part Compatibility</Link>
+          <Link to="/">BikePartZ</Link>
         </div>
       </div>
       <div className="flex h-14 items-center gap-3 pr-4">

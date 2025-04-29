@@ -12,7 +12,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { Link } from "wouter";
-import { Home, Cog, BookOpenText, Info, Settings } from "lucide-react";
+import { Home, Cog, BookOpenText, Info } from "lucide-react";
 
 const topItems = [
   {
@@ -38,11 +38,11 @@ const botItems = [
     url: "/about",
     icon: Info,
   },
-  {
-    title: "Settings",
-    url: "/settings",
-    icon: Settings,
-  },
+  // {
+  //   title: "Settings",
+  //   url: "/settings",
+  //   icon: Settings,
+  // },
 ];
 
 export function AppSidebar({ ...props }) {

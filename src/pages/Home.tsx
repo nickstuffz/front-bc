@@ -7,7 +7,7 @@ const clipPaths = [
 ];
 
 export function Home() {
-  const [clipIndex, setClipIndex] = React.useState(0);
+  const [clipIndex, setClipIndex] = React.useState(0); // State for clip path reveal of hero image
 
   const handleHeroClick = React.useCallback(() => {
     setClipIndex((prev) => (prev + 1) % clipPaths.length);
@@ -15,21 +15,39 @@ export function Home() {
 
   return (
     <div className="content flex flex-1 flex-col p-0">
-      <div className="hero_container grid items-center">
+      <div className="grid items-center justify-start">
         <div
           onClick={handleHeroClick}
-          className="hero_img_container relative overflow-hidden rounded-br-xl"
+          className="hero_container relative max-w-[1600px] overflow-hidden text-nowrap select-none"
         >
-          <img
-            src="src/assets/allezHeroColor.webp"
-            alt="Bicycle Sketched"
-            className={`hero_img_left absolute inset-0 h-full w-full object-cover object-left transition-[clip-path] ${clipPaths[clipIndex]}`}
-          />
-          <img
-            src="src/assets/allezHeroSketch.webp"
-            alt="Bicycle Sketched"
-            className="h-full w-full object-cover object-left"
-          />
+          <div
+            className={`left_container absolute inset-0 z-20 w-full transition-[clip-path] duration-800 ${clipPaths[clipIndex]}`}
+          >
+            <h1 className="xs:text-xl absolute inset-0 top-1 left-1 text-base text-white font-stretch-ultra-expanded sm:text-2xl md:top-2 md:left-2 md:text-3xl lg:text-4xl xl:text-5xl">
+              component compatibility ...
+            </h1>
+            <h1 className="xs:text-5xl absolute right-1 bottom-1 text-4xl font-extrabold text-white font-stretch-ultra-expanded sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+              ?????
+            </h1>
+            <img
+              src="src/assets/allezHeroColor.webp"
+              alt="Bicycle Sketched"
+              className="hero_img_left w-full object-cover object-left"
+            />
+          </div>
+          <div className="right_container w-full">
+            <h1 className="xs:text-xl absolute inset-0 top-1 left-1 z-10 text-base text-black font-stretch-ultra-expanded sm:text-2xl md:top-2 md:left-2 md:text-3xl lg:text-4xl xl:text-5xl">
+              component compatibility ...
+            </h1>
+            <h1 className="xs:text-5xl absolute right-1 bottom-1 text-4xl font-extrabold text-black font-stretch-ultra-expanded sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+              sorted.
+            </h1>
+            <img
+              src="src/assets/allezHeroSketchNoted.webp"
+              alt="Bicycle Sketched"
+              className="her_img_right w-full object-cover object-left"
+            />
+          </div>
         </div>
       </div>
     </div>
