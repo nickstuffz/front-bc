@@ -7,7 +7,7 @@ export function Home() {
       <div className="hero relative flex gap-4">
         <div
           onClick={() => setSketchOn(!sketchOn)}
-          className="hero_img absolute top-0 left-0 flex w-full justify-start"
+          className="hero_img @container absolute top-0 left-0 flex w-full justify-start"
         >
           <img
             src="src/assets/allezHeroSketch.webp"
@@ -20,7 +20,7 @@ export function Home() {
             className={`absolute rounded-3xl transition-opacity duration-500 ${sketchOn ? "opacity-0" : "opacity-100"}`}
           />
         </div>
-        <div className="hero_text z-10 flex flex-col gap-4 p-6 select-none">
+        <div className="hero_text z-10 flex flex-col gap-4 p-6 text-nowrap select-none">
           <h1 className="text-5xl font-stretch-expanded">
             Bicycle Component Compatibility ...
           </h1>
