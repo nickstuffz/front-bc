@@ -12,7 +12,7 @@ export function CodeBadge({ codeObj }: CodeBadgeProps) {
   const dispatch = useSelectedCodesDispatch(); // Consume selectedCodes dispatch function from context
 
   return (
-    <Badge className="hover:bg-primary/90 flex items-center justify-between gap-1 py-1 pr-1 pl-1.5">
+    <Badge className="hover:bg-primary/90 flex h-7 items-center justify-between gap-1 px-1.5 py-1">
       {codeObj.code}
       <Button
         className="size-4.5"
