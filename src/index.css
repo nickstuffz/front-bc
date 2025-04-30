@@ -167,7 +167,7 @@
     @apply text-sm leading-none font-medium;
   }
   p {
-    @apply text-[0.68rem] leading-none font-light tracking-tight;
+    @apply text-base leading-none font-light tracking-tight;
   }
 }
 

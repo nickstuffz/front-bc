@@ -61,7 +61,9 @@ export function AppSidebar({ ...props }) {
       </p>
       <SidebarContent className="flex flex-col justify-between">
         <SidebarGroup>
-          <SidebarGroupLabel className="mt-2 mb-1">Pages</SidebarGroupLabel>
+          <SidebarGroupLabel className="mt-2 mb-1 tracking-wide">
+            Pages
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="gap-2">
               {topItems.map((item) => (

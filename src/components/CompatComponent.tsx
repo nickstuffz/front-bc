@@ -76,30 +76,30 @@ export function CompatComponent({
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
-        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto min-w-auto flex-1 flex-col gap-0 rounded-sm border p-0.5 @[210px]:p-1"
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto min-w-auto flex-1 flex-col justify-start gap-0 rounded-sm border p-0.5 @[210px]:p-1"
       >
         <div className="grid w-full grid-rows-3 gap-0 p-0 text-nowrap">
-          <p className="self-start text-end text-[0.6rem] @[210px]:text-[0.69rem] @xs:text-[0.75rem]">
+          <small className="self-start text-end text-[0.6rem] @[210px]:text-[0.69rem] @xs:text-[0.75rem]">
             {compCompData.status}
-          </p>
+          </small>
           <small className="my-0.5 self-center text-center text-[0.72rem] @[210px]:text-[0.8rem] @xs:text-[0.95rem]">
             {compCompData.code}
           </small>
           {!isExpanded && isVariantNote && (
-            <p className="self-end text-end text-[0.6rem] @[210px]:text-[0.69rem] @xs:text-[0.75rem]">
+            <small className="self-end text-end text-[0.6rem] @[210px]:text-[0.69rem] @xs:text-[0.75rem]">
               {compCompData.note}
-            </p>
+            </small>
           )}
         </div>
         {isExpanded && (
-          <div>
-            <p className="text-[0.54rem] text-wrap @[210px]:text-[0.6rem] @xs:text-[0.7rem]">
+          <div className="flex flex-col">
+            <small className="text-[0.54rem] text-wrap @[210px]:text-[0.6rem] @xs:text-[0.7rem]">
               {compCompData.note}
-            </p>
+            </small>
             {compCompData.warning && (
-              <p className="mt-1 text-[0.54rem] text-wrap @[210px]:text-[0.6rem] @xs:text-[0.7rem]">
+              <small className="mt-1 text-[0.54rem] text-wrap @[210px]:text-[0.6rem] @xs:text-[0.7rem]">
                 {"# " + compCompData.warning}
-              </p>
+              </small>
             )}
           </div>
         )}

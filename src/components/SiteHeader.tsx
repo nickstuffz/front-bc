@@ -16,12 +16,12 @@ export function SiteHeader() {
           orientation="vertical"
           className="mr-2 data-[orientation=vertical]:h-4"
         />
-        <div
+        <h5
           id="logo"
           className="text-lg font-semibold text-nowrap font-stretch-ultra-expanded"
         >
           <Link to="/">BikePartZ</Link>
-        </div>
+        </h5>
       </div>
       <div className="flex h-14 items-center gap-3 pr-4">
         <Spinner isActive={spinnerActive} />

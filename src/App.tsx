@@ -1,5 +1,7 @@
 import { MainContent } from "@/pages/MainContent.tsx"; // - Custom
 import { Home } from "@/pages/Home.tsx"; // - Custom
+import { Guide } from "@/pages/Guide.tsx"; // - Custom
+import { About } from "@/pages/About.tsx"; // - Custom
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // Query tools - TanStack
 import { ThemeProvider } from "@/providers/ThemeProvider"; // Theme provider - shadCN
 import { SpinnerProvider } from "@/providers/SpinnerProvider"; // - Custom
@@ -25,8 +27,8 @@ export function App() {
                 <Switch>
                   <Route path="/" component={Home}></Route>
                   <Route path="/compatibility/" component={MainContent} />
-                  <Route path="/guide">User Guide</Route>
-                  <Route path="/about">About</Route>
+                  <Route path="/guide" component={Guide} />
+                  <Route path="/about" component={About} />
                   {/* <Route path="/settings">Settings</Route> */}
 
                   <Route>404 Error, Page Not Found</Route>
