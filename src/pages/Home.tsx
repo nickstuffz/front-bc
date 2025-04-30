@@ -9,9 +9,18 @@ const clipPaths = [
 export function Home() {
   const [clipIndex, setClipIndex] = React.useState(0); // State for clip path reveal of hero image
 
+  // Handles hero click to advance clip state
   const handleHeroClick = React.useCallback(() => {
     setClipIndex((prev) => (prev + 1) % clipPaths.length);
   }, []);
+
+  // Auto advance of clip state with timer
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setClipIndex((prev) => (prev + 1) % clipPaths.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [clipIndex]);
 
   return (
     <div className="content flex flex-1 flex-col p-0">
@@ -52,29 +61,4 @@ export function Home() {
       </div>
     </div>
   );
-}
-
-{
-  /* <div className="hero group relative flex gap-4">
-<div className="hero_img w-full flex-1 justify-start">
-  <img
-    src="src/assets/allezHeroColor.webp"
-    alt="Bicycle Sketched"
-    className={`absolute transition-opacity duration-500 group-hover:opacity-100`}
-  />
-  <img
-    src="src/assets/allezHeroSketch.webp"
-    alt="Bicycle Sketched"
-    className={`absolute transition-opacity duration-500 group-hover:opacity-0`}
-  />
-</div>
-<div className="hero_text absolute top-0 left-0 text-nowrap select-none">
-  <h1 className="text-secondary text-sm font-stretch-expanded">
-    component compatibility ...
-  </h1>
-  <h1 className="text-4xl font-extrabold font-stretch-ultra-expanded">
-    sorted.
-  </h1>
-</div>
-</div> */
 }
