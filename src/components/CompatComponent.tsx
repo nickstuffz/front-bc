@@ -2,16 +2,23 @@ import * as React from "react";
 import { CompatComponentType } from "@/types/types.ts";
 import { Toggle } from "@/components/ui/toggle";
 import { useSelectedCodesDispatch } from "@/providers/selectedCodesContext";
-import { SquareArrowOutUpRight, Maximize, Minimize } from "lucide-react";
+import {
+  SquareArrowOutUpRight,
+  Maximize,
+  Minimize,
+  Anchor,
+} from "lucide-react";
 
 interface CompatComponentProps {
   compCompData: CompatComponentType;
   isPressed: boolean;
+  isAnchor: boolean;
 }
 
 export function CompatComponent({
   compCompData,
   isPressed,
+  isAnchor,
 }: CompatComponentProps) {
   const dispatch = useSelectedCodesDispatch(); // Consume selectedCodes dispatch function from context
   const [isExpanded, setIsExpanded] = React.useState(false); // Basic state for expanded/collapsed state of compat component
@@ -76,7 +83,7 @@ export function CompatComponent({
       <Toggle
         pressed={isPressed}
         onPressedChange={handleToggle}
-        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 m-0 flex h-auto min-w-auto flex-1 flex-col justify-start gap-0 rounded-sm border p-0.5 @[210px]:p-1"
+        className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground bg-secondary data-[state=on]:hover:bg-primary/80 relative m-0 flex h-auto min-w-auto flex-1 flex-col justify-start gap-0 rounded-sm border p-0.5 @[210px]:p-1"
       >
         <div className="grid w-full grid-rows-3 gap-0 p-0 text-nowrap">
           <small className="self-start text-end text-[0.6rem] @[210px]:text-[0.69rem] @xs:text-[0.75rem]">
@@ -102,6 +109,9 @@ export function CompatComponent({
               </small>
             )}
           </div>
+        )}
+        {isAnchor && (
+          <Anchor className="absolute left-0 mt-0.5 ml-0.5 size-3.5 @[210px]:size-4" />
         )}
       </Toggle>
       <div className="flex min-w-auto flex-col justify-start gap-2.5 py-0.5 @[210px]:gap-4.5 @xs:gap-6">

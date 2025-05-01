@@ -2,9 +2,11 @@ Command:
 Scroll position undesired on code select inside Command Search. Remove
 How to limit number of results in Command dropdown?
 Optimization: renders on set closed, unnecessary maps
+How do you properly size SVGs inside of command item? struggling for some reason.
 
 GroupManager:
 STEP 3 CHECK POD instead of Component for SourcePodID for efficiency (optimization calculation)
+introduce anchor component. First component in SelectedCodes is Anchor
 
 ComponentCode:
 Figure out how to properly code width of compat_component. hardset px right now. can't get the container to not overflow
@@ -50,4 +52,4 @@ Routing:
 Get URL working for selectedCodes state in application
 
 NOW:
-Sidebar links / styling
+Issue WITH 

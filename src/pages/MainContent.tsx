@@ -73,8 +73,8 @@ export function MainContent() {
               </Button>
             </div>
             <div className="badge_container flex flex-1 flex-wrap gap-2">
-              {selectedCodes.map((codeObj) => (
-                <CodeBadge key={codeObj.code} codeObj={codeObj} />
+              {selectedCodes.map((codeObj, index) => (
+                <CodeBadge key={codeObj.code} codeObj={codeObj} index={index} />
               ))}
             </div>
           </div>

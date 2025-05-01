@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Check } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Check, Anchor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
@@ -60,6 +59,7 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
           </kbd>
         </small>
       </Button>
+
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput className="" placeholder="Search component codes..." />
         <CommandList>
@@ -67,7 +67,7 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
           {selectedCodes.length > 0 && (
             <>
               <CommandGroup heading="selected codes">
-                {selectedCodes.map((codeObj) => (
+                {selectedCodes.map((codeObj, index) => (
                   <CommandItem
                     className="flex items-center justify-between"
                     key={codeObj.code}
@@ -80,8 +80,9 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
                     }}
                   >
                     <div className="flex items-center gap-1 pl-2">
-                      <Check className={cn("mr-2 h-4 w-4", "opacity-100")} />
+                      <Check className="mr-2 opacity-100" />
                       <small>{codeObj.code}</small>
+                      {index === 0 ? <Anchor className="ml-1" /> : null}
                     </div>
                     <small className="text-primary pr-3 text-xs">
                       {codeObj.category}
@@ -106,7 +107,7 @@ export function CommandSearch({ allCodes }: CommandSearchProps) {
                 }}
               >
                 <div className="flex items-center gap-1 pl-2">
-                  <Check className={cn("mr-2 h-4 w-4", "opacity-0")} />
+                  <Check className="mr-2 opacity-0" />
                   <small>{codeObj.code}</small>
                 </div>
                 <small className="text-primary pr-3 text-xs">

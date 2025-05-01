@@ -42,12 +42,19 @@ export function CategoryCard({ category, catCardData }: CategoryCardProps) {
           />,
         );
       }
-      const isPressed = selectedCodesSet.has(compatComponent.code); // Compat component toggle state, on if in selectedCodes
+      const isPressed = selectedCodesSet.has(compatComponent.code); // Determine if CompatComponent is pressed (on state / in Selected Codes)
+
+      // Determine if the pressed CompatComponent is Anchor or not
+      const isAnchor = isPressed
+        ? selectedCodes[0].code === compatComponent.code
+        : false;
+
       acc.items.push(
         <li key={compatComponent.id} className="m-0 p-0">
           <CompatComponent
             compCompData={compatComponent}
             isPressed={isPressed}
+            isAnchor={isAnchor}
           />
         </li>,
       );

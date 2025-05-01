@@ -19,9 +19,9 @@ export function Guide() {
           <small className="text-nowrap">
             RD: Rear Derailleur
             <br />
-            R8000: Ultegra 11spd Road Groupset (R8000 Series)
+            R8000: ULTEGRA 11spd Road Groupset (R8000 Series)
             <br />
-            GS: Medium Cage (Grand Sport)
+            GS: Grand Sport (Medium Cage)
           </small>
         </div>
       </div>
