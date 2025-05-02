@@ -10,6 +10,7 @@ introduce anchor component. First component in SelectedCodes is Anchor
 
 ComponentCode:
 Figure out how to properly code width of compat_component. hardset px right now. can't get the container to not overflow
+Animate the expand state
 
 TanStack Query settings:
 
@@ -51,5 +52,10 @@ get the CSS from there
 Routing:
 Get URL working for selectedCodes state in application
 
+CodeBadge:
+Tooltip the code badges. show category
+
+Guide Page:
+Get multiple examples for component code badge. Slide to show different examples?
+
 NOW:
-Issue WITH 
