@@ -115,8 +115,8 @@ export function Guide() {
         </p>
 
         <p>
-          While we strive for accuracy, edge cases exist, and errors can happen.
-          It is recommended to verify with manufacturer documentation.
+          While I strive for accuracy, edge cases exist, and mistakes can
+          happen. It is recommended to verify with manufacturer documentation.
         </p>
         <a
           className="underline"
