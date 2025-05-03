@@ -12,7 +12,9 @@ export function Guide() {
   const [isExpanded, setIsExpanded] = React.useState(false); // Basic state for expanded/collapsed state
   return (
     <div className="content mb-4 flex max-w-[1400px] flex-1 flex-col gap-4 border-r p-2">
-      <h2 className="pb-3 pl-1">Compatibility Set</h2>
+      <h1 className="w-4/5 rounded-br-lg border-r border-b pb-3 pl-1">
+        User Guide
+      </h1>
       <div className="flex flex-col items-start gap-4">
         <p>
           BikePartZ filters data to reveal component codes that are compatible
@@ -29,9 +31,9 @@ export function Guide() {
           Select your first component code. <Anchor className="inline size-4" />
         </p>
         <p>
-          Continue selecting component codes in order to filter down your{" "}
+          Continue selecting component codes to filter down your{" "}
           <b className="font-bold text-nowrap">Compatibility Option</b> group
-          and refine your own compatibility set.
+          and refine your own sorted compatibility set.
         </p>
         <div className="bg-secondary text-secondary-foreground relative right-2 flex items-center gap-3 rounded-r-lg p-4 md:right-4 md:pl-6">
           <a

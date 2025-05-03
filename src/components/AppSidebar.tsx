@@ -27,7 +27,7 @@ const topItems = [
   },
   {
     title: "User Guide",
-    url: "/guide",
+    url: "/user-guide",
     icon: BookOpenText,
   },
 ];

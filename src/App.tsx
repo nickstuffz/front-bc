@@ -27,7 +27,7 @@ export function App() {
                 <Switch>
                   <Route path="/" component={Home}></Route>
                   <Route path="/compatibility/" component={MainContent} />
-                  <Route path="/guide" component={Guide} />
+                  <Route path="/user-guide" component={Guide} />
                   <Route path="/about" component={About} />
                   {/* <Route path="/settings">Settings</Route> */}
 
