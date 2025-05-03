@@ -22,14 +22,14 @@ export function Home() {
       setClipIndex((prev) => (prev + 1) % clipPaths.length);
     }, 6000);
     return () => clearInterval(interval);
-  }, [clipIndex]);
+  }, []);
 
   return (
-    <div className="content flex flex-1 flex-col p-0">
+    <div className="content flex flex-1 flex-col p-0 select-none">
       <div className="grid items-center justify-start">
         <div
           onClick={handleHeroClick}
-          className="hero_container relative max-w-[1600px] overflow-hidden text-nowrap select-none"
+          className="hero_container relative max-w-[1600px] overflow-hidden text-nowrap"
         >
           <div
             className={`left_container absolute inset-0 z-20 w-full transition-[clip-path] duration-800 ${clipPaths[clipIndex]}`}
