@@ -1,4 +1,6 @@
 import * as React from "react";
+import allezHeroColor from "@/assets/allezHeroColor.webp";
+import allezHeroSketchNoted from "@/assets/allezHeroSketchNoted.webp";
 
 const clipPaths = [
   "[clip-path:polygon(0_0,_0_112.5%,_90%_0)]",
@@ -39,7 +41,7 @@ export function Home() {
               ?????
             </h1>
             <img
-              src="src/assets/allezHeroColor.webp"
+              src={allezHeroColor}
               alt="Bicycle Sketched"
               className="hero_img_left w-full object-cover object-left"
             />
@@ -52,7 +54,7 @@ export function Home() {
               sorted.
             </h1>
             <img
-              src="src/assets/allezHeroSketchNoted.webp"
+              src={allezHeroSketchNoted}
               alt="Bicycle Sketched"
               className="her_img_right w-full object-cover object-left"
             />

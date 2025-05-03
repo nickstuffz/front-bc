@@ -1,3 +1,8 @@
+import TypeScriptSVG from "@/assets/TypeScript.svg";
+import ReactSVG from "@/assets/React.svg";
+import ExpressSVG from "@/assets/Express.svg";
+import PostgreSQLSVG from "@/assets/PostgreSQL.svg";
+
 export function About() {
   return (
     <div className="content mb-4 flex max-w-[1600px] flex-1 flex-col gap-4 border-r p-2">
@@ -22,23 +27,23 @@ export function About() {
       <div className="flex flex-col items-start gap-4">
         <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-wrap items-start gap-2 rounded-r-lg p-4 md:right-4 md:pl-6">
           <div className="flex gap-2">
-            <img src="src/assets/TypeScript.svg" className="size-4" />
+            <img src={TypeScriptSVG} className="size-4" />
             <small>TypeScript</small>
             <small>|</small>
           </div>
 
           <div className="flex gap-2">
-            <img src="src/assets/React.svg" className="size-4" />
+            <img src={ReactSVG} className="size-4" />
             <small>React</small>
           </div>
           <small>|</small>
           <div className="flex gap-2">
-            <img src="src/assets/Express.svg" className="size-4" />
+            <img src={ExpressSVG} className="size-4" />
             <small>Express</small>
             <small>|</small>
           </div>
           <div className="flex gap-2">
-            <img src="src/assets/PostgreSQL.svg" className="size-4" />
+            <img src={PostgreSQLSVG} className="size-4" />
             <small>PostgreSQL</small>
           </div>
         </div>
