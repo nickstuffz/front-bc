@@ -32,12 +32,12 @@ export function Home() {
           className="hero_container relative max-w-[1600px] overflow-hidden text-nowrap"
         >
           <div
-            className={`left_container absolute inset-0 z-20 w-full transition-[clip-path] duration-800 ${clipPaths[clipIndex]}`}
+            className={`left_container absolute inset-0 z-10 w-full transition-[clip-path] duration-800 ${clipPaths[clipIndex]}`}
           >
-            <h1 className="xs:text-xl absolute inset-0 top-1 left-1 text-base text-white font-stretch-ultra-expanded sm:text-2xl md:top-2 md:left-2 md:text-3xl lg:text-4xl xl:text-5xl">
+            <h1 className="xs:text-xl absolute inset-0 top-1 left-1 z-10 text-base text-white font-stretch-ultra-expanded sm:text-2xl md:top-2 md:left-2 md:text-3xl lg:text-4xl xl:text-5xl">
               component compatibility ...
             </h1>
-            <h1 className="xs:text-5xl absolute right-1 bottom-1 text-4xl font-extrabold text-white font-stretch-ultra-expanded sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+            <h1 className="xs:text-5xl absolute right-1 bottom-1 z-10 text-4xl font-extrabold text-white font-stretch-ultra-expanded sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
               ?????
             </h1>
             <img
@@ -47,7 +47,7 @@ export function Home() {
             />
           </div>
           <div className="right_container w-full">
-            <h1 className="xs:text-xl absolute inset-0 top-1 left-1 z-10 text-base text-black font-stretch-ultra-expanded sm:text-2xl md:top-2 md:left-2 md:text-3xl lg:text-4xl xl:text-5xl">
+            <h1 className="xs:text-xl absolute inset-0 top-1 left-1 text-base text-black font-stretch-ultra-expanded sm:text-2xl md:top-2 md:left-2 md:text-3xl lg:text-4xl xl:text-5xl">
               component compatibility ...
             </h1>
             <h1 className="xs:text-5xl absolute right-1 bottom-1 text-4xl font-extrabold text-black font-stretch-ultra-expanded sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
