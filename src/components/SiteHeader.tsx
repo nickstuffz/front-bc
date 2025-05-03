@@ -20,7 +20,7 @@ export function SiteHeader() {
           id="logo"
           className="text-lg font-semibold text-nowrap font-stretch-ultra-expanded"
         >
-          <Link to="/">BikePartZ</Link>
+          <Link to="/">BikeCompatZ</Link>
         </h5>
       </div>
       <div className="flex h-14 items-center gap-3 pr-4">

@@ -11,20 +11,24 @@ import {
 export function Guide() {
   const [isExpanded, setIsExpanded] = React.useState(false); // Basic state for expanded/collapsed state
   return (
-    <div className="content mb-4 flex max-w-[1400px] flex-1 flex-col gap-4 border-r p-2">
+    <div className="content mb-4 flex max-w-[1600px] flex-1 flex-col gap-4 border-r p-2">
       <h1 className="w-4/5 rounded-br-lg border-r border-b pb-3 pl-1">
         User Guide
       </h1>
       <div className="flex flex-col items-start gap-4">
         <p>
-          BikePartZ filters data to reveal component codes that are compatible
-          with a chosen set of component codes,{" "}
+          BikeCompatZ filters data to display component codes that are
+          compatible with your chosen set of component codes, named{" "}
           <b className="font-bold text-nowrap">Selected Codes</b>.
+        </p>
+        <p>
+          Displayed codes are grouped into{" "}
+          <b className="font-bold text-nowrap">Compatibility Options</b>
         </p>
         <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-col items-start gap-3 rounded-r-lg p-4 md:right-4 md:pl-6">
           <p className="font-extrabold">
-            Codes in a Compatibility Option are compatible with your Selected
-            Codes.
+            All displayed codes are compatible with every code in your Selected
+            Codes set.
           </p>
         </div>
         <p>
@@ -32,8 +36,8 @@ export function Guide() {
         </p>
         <p>
           Continue selecting component codes to filter down your{" "}
-          <b className="font-bold text-nowrap">Compatibility Option</b> group
-          and refine your own sorted compatibility set.
+          <b className="font-bold text-nowrap">Compatibility Option</b> groups
+          and refine your own compatibility set.
         </p>
         <div className="bg-secondary text-secondary-foreground relative right-2 flex items-center gap-3 rounded-r-lg p-4 md:right-4 md:pl-6">
           <a
@@ -81,8 +85,8 @@ export function Guide() {
         <p>
           Shimano product codes are marked on the product itself. Characters
           before the first dash denote the category of the product. The group of
-          characters after the first dash denote the product's series and serve
-          as its main identifier. Characters after a second dash denote
+          characters after the first dash denotes the product's series and
+          serves as its main identifier. Characters after a second dash denote
           additional traits of the product.
         </p>
         <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-col items-start gap-3 rounded-r-lg p-4 md:right-4 md:pl-6">
@@ -101,24 +105,24 @@ export function Guide() {
 
       <h2 className="pb-3 pl-1">Data Source</h2>
       <div className="flex flex-col items-start gap-4">
-        <p>BikePartZ current data:</p>
+        <p>BikeCompatZ current data:</p>
         <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-col items-start rounded-r-lg p-4 md:right-4 md:pl-6">
           <h4>Shimano Compatibility </h4>
           <h6 className="font-light">2024-2025 ver. 3.0</h6>
         </div>
         <p>
-          Component compatibility information is sourced from Shimano's official
+          Component compatibility data is sourced from Shimano's official
           products compatibility information PDFs. Shimano releases new versions
           throughout the year.
         </p>
 
         <p className="font-extrabold">
-          New releases are not automatically added to BikePartZ.
+          New releases are not automatically added to BikeCompatZ.
         </p>
 
         <p>
-          While I strive for accuracy, edge cases exist, and mistakes can
-          happen. It is recommended to verify with manufacturer documentation.
+          While I strive for accuracy, mistakes can happen. It is recommended to
+          verify with manufacturer documentation before a purchasing decision.
         </p>
         <a
           className="underline"

@@ -1,61 +1,45 @@
 Command:
-Scroll position undesired on code select inside Command Search. Remove
-How to limit number of results in Command dropdown?
-Optimization: renders on set closed, unnecessary maps
-How do you properly size SVGs inside of command item? struggling for some reason.
+Scroll position saver undesirable behavior?
+Setting size of SVG inside CommandItem behaving unexpectedly
 
 GroupManager:
-STEP 3 CHECK POD instead of Component for SourcePodID for efficiency (optimization calculation)
-introduce anchor component. First component in SelectedCodes is Anchor
+Consider data processing step 3, check Pod instead of Component for SourcePodID for efficiency
 
 ComponentCode:
-Figure out how to properly code width of compat_component. hardset px right now. can't get the container to not overflow
-Animate the expand state
+Set width of compat_component dynamically instead of hard-set
+Animate the change of isExpanded
 
 TanStack Query settings:
 
 Home:
-Hero flashes on load undesirably
+FOUC: Hero flashes on load undesirably. Clip path style coming in too late causing flash.
 
 Errors:
 Runtime error boundary?
-Implement error visual component?
-Use library? Toastify, or DIY it
+Implement error visual component like a toast?
 
 Site Header:
-Optimize. Theme toggle is rendering 3x at start.
-Bug with header sitting on top of sidebar on side scroll, specific widths.
 
 Router:
-Implement Tanstack Router?
-What pages to have in future?
-- Compatibility
-- About
+Implement storing selected codes "state" in URL for compatibility page
 
 General:
-Check typography throughout component
-Check for consistency of data structure
-FOUC flash of light mode in header
-Some components with different notes are in the same pod, this leads to a double select in UI (might not be worth fixing)
 Install React Compiler
-Accessibility, keyboard only nav, tab through things
+Accessibility check
+Keyboard navigation check (tabbing through)
+
+Sidebar:
+Set current page to style link?
 
 CardGroup:
 Set default open?
 
 Spinner:
 
-ShadCn:
-NOTE the automatic npx shadcn install does NOT add necessary CSS as I'm not using a tailwind config file. MUST click manual install
-get the CSS from there
-
 Routing:
-Get URL working for selectedCodes state in application
 
 CodeBadge:
-Tooltip the code badges. show category
+Tooltip on Hover?
 
 Guide Page:
 Get multiple examples for component code badge. Slide to show different examples?
-
-NOW:

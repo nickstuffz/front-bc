@@ -1,22 +1,22 @@
 export function About() {
   return (
-    <div className="content mb-4 flex max-w-[1400px] flex-1 flex-col gap-4 border-r p-2">
+    <div className="content mb-4 flex max-w-[1600px] flex-1 flex-col gap-4 border-r p-2">
       <h1 className="w-4/5 rounded-br-lg border-r border-b pb-3 pl-1">About</h1>
       <div className="flex flex-col items-start gap-4">
         <p>
-          <b className="font-bold text-nowrap">Hi there!</b> I hope you find use
-          in this component compatibility website. I'm a bicycle mechanic and I
-          know that confirming compatibility or determining options is an ever
-          present task. Pulling up and digging through the Shimano PDF every
-          time is a pain, so I created BikePartZ.
+          <b className="font-bold text-nowrap">Hi there.</b> I hope you find use
+          in this component compatibility website. I'm a bicycle mechanic, and I
+          know that confirming compatibility or determining options is an
+          ever-present task. Pulling up and digging through the Shimano PDF
+          every time is a pain, so I created BikeCompatZ.
         </p>
         <p>
           Currently, only compatibility of Rear Drivetrain, Front Drivetrain,
           and Brake System groups from one of Shimano's recent products
-          compatibility information PDF are supported. <em>Sorry!</em> Continue
+          compatibility information PDFs are supported. <em>Sorry!</em> Continue
           to rely on your local bike nerds for your niche combinations.
         </p>
-        <p>BikePartZ may expand component coverage in the future.</p>
+        <p>BikeCompatZ may expand component coverage in the future.</p>
       </div>
       <h2>Tech</h2>
       <div className="flex flex-col items-start gap-4">
@@ -45,6 +45,10 @@ export function About() {
       </div>
       <h2>Contact</h2>
       <div className="flex flex-col items-start gap-4">
+        <p>
+          Please contact me with any feedback, bug reports, inquiries or
+          musings!
+        </p>
         <p>@stuffz </p>
       </div>
     </div>

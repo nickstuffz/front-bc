@@ -46,7 +46,7 @@ export function MainContent() {
     const allCodes = allCodesResult.data;
 
     return (
-      <div className="content flex flex-1 flex-col gap-4 p-2">
+      <div className="content flex max-w-[1600px] flex-1 flex-col gap-4 p-2">
         <div className="content_header flex flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
             <div className="text-primary text-x flex flex-none flex-col gap-0.5 rounded-xs">
