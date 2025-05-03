@@ -25,7 +25,7 @@ export function Guide() {
           Displayed codes are grouped into{" "}
           <b className="font-bold text-nowrap">Compatibility Options</b>
         </p>
-        <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-col items-start gap-3 rounded-r-lg p-4 md:right-4 md:pl-6">
+        <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-col items-start gap-3 rounded-r-lg p-4 md:pl-6">
           <p className="font-extrabold">
             All displayed codes are compatible with every code in your Selected
             Codes set.
@@ -39,7 +39,7 @@ export function Guide() {
           <b className="font-bold text-nowrap">Compatibility Option</b> groups
           and refine your own compatibility set.
         </p>
-        <div className="bg-secondary text-secondary-foreground relative right-2 flex items-center gap-3 rounded-r-lg p-4 md:right-4 md:pl-6">
+        <div className="bg-secondary text-secondary-foreground relative right-2 flex items-center gap-3 rounded-r-lg p-4 md:pl-6">
           <a
             target="_blank"
             href="https://en.wikipedia.org/wiki/Kitten"
@@ -50,7 +50,7 @@ export function Guide() {
           </a>
           <p className="flex-1">Some codes have a product page link.</p>
         </div>
-        <div className="bg-secondary text-secondary-foreground relative right-2 flex items-start gap-3 rounded-r-lg p-4 md:right-4 md:pl-6">
+        <div className="bg-secondary text-secondary-foreground relative right-2 flex items-start gap-3 rounded-r-lg p-4 md:pl-6">
           <button
             onClick={() => {
               setIsExpanded(!isExpanded);
@@ -89,7 +89,7 @@ export function Guide() {
           serves as its main identifier. Characters after a second dash denote
           additional traits of the product.
         </p>
-        <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-col items-start gap-3 rounded-r-lg p-4 md:right-4 md:pl-6">
+        <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-col items-start gap-3 rounded-r-lg p-4 md:pl-6">
           <Badge className="hover:bg-primary/90 flex h-7 items-center justify-start gap-0 py-1 pr-1 pl-1">
             RD-R8000-GS
           </Badge>
@@ -106,7 +106,7 @@ export function Guide() {
       <h2 className="pb-3 pl-1">Data Source</h2>
       <div className="flex flex-col items-start gap-4">
         <p>BikeCompatZ current data:</p>
-        <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-col items-start rounded-r-lg p-4 md:right-4 md:pl-6">
+        <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-col items-start rounded-r-lg p-4 md:pl-6">
           <h4>Shimano Compatibility </h4>
           <h6 className="font-light">2024-2025 ver. 3.0</h6>
         </div>

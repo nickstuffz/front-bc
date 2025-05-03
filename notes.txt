@@ -30,6 +30,7 @@ Keyboard navigation check (tabbing through)
 
 Sidebar:
 Set current page to style link?
+Sidebar getting overlapped by Guide gray boxes.
 
 CardGroup:
 Set default open?
@@ -43,3 +44,4 @@ Tooltip on Hover?
 
 Guide Page:
 Get multiple examples for component code badge. Slide to show different examples?
+

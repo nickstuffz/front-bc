@@ -25,7 +25,7 @@ export function About() {
       </div>
       <h2>Tech</h2>
       <div className="flex flex-col items-start gap-4">
-        <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-wrap items-start gap-2 rounded-r-lg p-4 md:right-4 md:pl-6">
+        <div className="bg-secondary text-secondary-foreground relative right-2 flex flex-wrap items-start gap-2 rounded-r-lg p-4 md:pl-6">
           <div className="flex gap-2">
             <img src={TypeScriptSVG} className="size-4" />
             <small>TypeScript</small>
